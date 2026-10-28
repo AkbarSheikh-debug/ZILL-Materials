@@ -19,8 +19,6 @@ Zill is a small agent harness written in plain Python (standard library only). O
 | 5 | [Memory, sub-agents and durability](lectures/lecture-5.md) | Long-term memory, skills, resumable sessions and sub-agents. |
 | 6 | [Harness, fleet and client](lectures/lecture-6.md) | Wiring everything into one class, running a fleet of agents, and the command-line front door. |
 
-Lecture 5 also has a shorter [60-minute cut](lectures/lecture-5-short.md).
-
 ## All six in one file
 
 [`resources/Lecture-1-to-Lecture-6.md`](resources/Lecture-1-to-Lecture-6.md) holds every lecture back to back, with all pictures and the build prompts at the end.
@@ -38,7 +36,7 @@ Lecture 5 also has a shorter [60-minute cut](lectures/lecture-5-short.md).
 | [`code/mini-harness/`](code/mini-harness/) | A single-file runnable mini harness |
 | [`code/tools/`](code/tools/) | Scripts that render the diagram sheets to PNG |
 | [`sources/`](sources/) | The HTML sheets the diagrams were rendered from |
-| [`archive/`](archive/) | Earlier drafts of some lecture scripts |
+| [`archive/`](archive/) | The original speaking scripts and earlier drafts. Not needed for study |
 
 ## Run Zill
 

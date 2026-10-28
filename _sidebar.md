@@ -6,7 +6,6 @@
   - [Lecture 3: Tools and security](/lectures/lecture-3.md)
   - [Lecture 4: Context and compaction](/lectures/lecture-4.md)
   - [Lecture 5: Memory, sub-agents and durability](/lectures/lecture-5.md)
-  - [Lecture 5 (short): Memory, sub-agents and durability (60-minute cut)](/lectures/lecture-5-short.md)
   - [Lecture 6: Harness, fleet and client](/lectures/lecture-6.md)
 
 - Resources

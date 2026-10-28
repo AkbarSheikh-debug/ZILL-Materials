@@ -1,12 +1,15 @@
-# Lecture 5 (short) — Memory, sub-agents and durability (60-minute cut)
+# Lecture 5 — Memory, Sub-agents and Durability (60-minute version)
 
-> **Lecture 5 of 6 — memory, sub-agents and durability (60-minute cut)**
-> Same lecture as Lecture 5, compressed to about an hour.
+Read this out exactly as written. The only extra things are small cues in square brackets:
+
+- [PICTURE 12] = put picture 12 on screen (folder `diagrams-lecture5-short/`).
+- [ASK, wait 3 sec] = ask the viewers this question, wait 3 seconds, then keep reading. The answer is the next lines.
+- [PAUSE] = take a breath, a new topic starts.
+- [DO: ...] = something you type or run on screen.
 
 # PART 1 — Memory
 
-![Picture 01](../assets/lecture-5/diagrams-60min/diagram-01.png)
-*Picture 01*
+[PICTURE 01]
 
 Hey everyone, welcome back to the Harness Engineering series. This is lecture five.
 
@@ -16,8 +19,7 @@ Today, four new files join the repo. memory.py, so Zill can remember things acro
 
 And the nice part is, the loop doesn't change shape. Each of these plugs into a socket we already have. Next time, one small file wires them all together, and Zill is basically done.
 
-![Picture 02](../assets/lecture-5/diagrams-60min/diagram-02.png)
-*Picture 02*
+[PICTURE 02]
 
 So here's today's plan. Four stops.
 
@@ -31,10 +33,9 @@ And fourth, we build all of it into Zill.
 
 For each topic, I won't show you just one harness. We'll look at how Pi, Hermes, OpenClaw, Codex, Claude Code and DeepSeek Harness each do it. And you'll see they all solve the same problem in really different ways.
 
----
+[PAUSE]
 
-![Picture 03](../assets/lecture-5/diagrams-60min/diagram-03.png)
-*Picture 03*
+[PICTURE 03]
 
 [ASK, wait 3 sec] Let's start with a simple question. Think about the loop we built in lecture two. Where does memory actually show up in it?
 
@@ -48,8 +49,7 @@ Short-term memory is just the conversation itself. Your messages, the model's re
 
 So memory isn't some special part inside the agent. It's just text we put back into the call. And the more you remember, the more text you send. Keep that in mind, because that's where the trade-off comes from.
 
-![Picture 04](../assets/lecture-5/diagrams-60min/diagram-04.png)
-*Picture 04*
+[PICTURE 04]
 
 But first, why does memory matter so much? Let me explain with two tutors.
 
@@ -63,8 +63,7 @@ We're just wired that way. We like being remembered. And the open-source agents 
 
 So if you want your AI product to feel human, and not like a tool you have to re-explain everything to every morning, it needs good memory. That's why we're spending real time on this.
 
-![Picture 05](../assets/lecture-5/diagrams-60min/diagram-05.png)
-*Picture 05*
+[PICTURE 05]
 
 Now the price.
 
@@ -74,8 +73,7 @@ The green line loads very little memory, so it grows slowly. The orange line loa
 
 So every good memory system is really trying to answer one question. How do I remember a lot, but only load a little?
 
-![Picture 06](../assets/lecture-5/diagrams-60min/diagram-06.png)
-*Picture 06*
+[PICTURE 06]
 
 There are two kinds of memory.
 
@@ -87,10 +85,9 @@ And look at the bottom of the blue box. The hard part isn't saving things. Anyon
 
 Every harness has short-term memory, otherwise the agent would forget what it did two seconds ago. Long-term memory is where they really differ. So let's go through them.
 
----
+[PAUSE]
 
-![Picture 07](../assets/lecture-5/diagrams-60min/diagram-07.png)
-*Picture 07*
+[PICTURE 07]
 
 Let's start with Pi.
 
@@ -104,8 +101,7 @@ And that's on purpose. Pi is built to be minimal. It's clean, and you can read e
 
 But think about our tutor again. Imagine a tutor who says at the end of every lesson, "Before you leave, please write on the board what I should remember about you." It works. But it doesn't feel human. Ideally, the harness should notice what matters on its own. So let's see who does that.
 
-![Picture 08](../assets/lecture-5/diagrams-60min/diagram-08.png)
-*Picture 08*
+[PICTURE 08]
 
 Hermes.
 
@@ -121,8 +117,7 @@ So one file for the work, and one file for the person.
 
 And look at the bars at the bottom. Both files are small on purpose. Around two thousand characters for MEMORY.md, and around thirteen hundred for USER.md. The agent can even see how full they are. A small limit forces it to keep only what matters, instead of hoarding everything.
 
-![Picture 09](../assets/lecture-5/diagrams-60min/diagram-09.png)
-*Picture 09*
+[PICTURE 09]
 
 Here's a real example, and it's actually mine.
 
@@ -134,8 +129,7 @@ But a smart harness spots the pattern. After a turn, it quietly writes one line 
 
 I didn't add that. The agent did. And from the next session on, it just writes the way I like. That's the moment it starts to feel like Tutor B.
 
-![Picture 10](../assets/lecture-5/diagrams-60min/diagram-10.png)
-*Picture 10*
+[PICTURE 10]
 
 Now, there's a clever detail in how Hermes loads this memory.
 
@@ -149,8 +143,7 @@ Because of the cache. Remember prompt caching from last time? If you change the 
 
 The Hermes docs even have a help entry for people who say, "I told it to remember, and it didn't." The answer is, it did. You'll see it next session.
 
-![Picture 11](../assets/lecture-5/diagrams-60min/diagram-11.png)
-*Picture 11*
+[PICTURE 11]
 
 But there's a risk here, and I want you to really think about it. Memory can be attacked.
 
@@ -164,8 +157,7 @@ So Hermes scans everything before it goes into memory. Normal text gets saved. A
 
 The rule is simple. Anything that lives in the prompt forever should be checked the hardest.
 
-![Picture 12](../assets/lecture-5/diagrams-60min/diagram-12.png)
-*Picture 12*
+[PICTURE 12]
 
 So how does Hermes decide what's worth saving?
 
@@ -177,8 +169,7 @@ It runs quietly, with only the memory and skill tools. Your conversation isn't t
 
 It's a bit like a person who thinks back over their day before going to sleep, and jots down what mattered.
 
-![Picture 13](../assets/lecture-5/diagrams-60min/diagram-13.png)
-*Picture 13*
+[PICTURE 13]
 
 And Hermes goes one step further. This is the part that honestly made me sit up. It has a command called /learn, and with it, the agent writes its own skills.
 
@@ -190,8 +181,7 @@ Here's the thing, though. It isn't hard to build. Any language model can read a 
 
 Normally, a good session just ends, and whatever you figured out lives only in your head. Here, it becomes a file the agent can use next week.
 
-![Picture 14](../assets/lecture-5/diagrams-60min/diagram-14.png)
-*Picture 14*
+[PICTURE 14]
 
 But there's a catch. If the agent writes a new skill every time it solves something, what happens after a few months?
 
@@ -203,10 +193,9 @@ And it never deletes anything. The worst that can happen is an archive, and you 
 
 I love the line at the bottom. A learning loop without a curator is just a hoarding loop.
 
----
+[PAUSE]
 
-![Picture 15](../assets/lecture-5/diagrams-60min/diagram-15.png)
-*Picture 15*
+[PICTURE 15]
 
 Now OpenClaw. When it came out, this human feeling was already built into the way it remembers you, and I think that's a big reason people loved it.
 
@@ -222,8 +211,7 @@ And the idea is simple. Write a lot in the daily notes, because they're cheap. O
 
 And then there's DREAMS.md, which I'll come to in a minute, because it's my favourite part.
 
-![Picture 16](../assets/lecture-5/diagrams-60min/diagram-16.png)
-*Picture 16*
+[PICTURE 16]
 
 [ASK, wait 3 sec] But here's something you might be wondering. If memory keeps growing for months, how does it all fit in the context window?
 
@@ -237,8 +225,7 @@ So what goes to the model is small. USER.md, those two pieces, and your question
 
 And OpenClaw actually runs two searches at once. One by meaning, for the note you half remember. And one by exact words, for things like an error code, where a meaning search isn't great. Both results get merged into one list.
 
-![Picture 17](../assets/lecture-5/diagrams-60min/diagram-17.png)
-*Picture 17*
+[PICTURE 17]
 
 Okay, dreaming. My favourite.
 
@@ -256,8 +243,7 @@ Third, the questions that pulled it up should be varied. If it only ever comes u
 
 Pass all three, and it goes into MEMORY.md. And OpenClaw also writes a little diary of what it noticed into DREAMS.md, so you can read it yourself.
 
-![Picture 18](../assets/lecture-5/diagrams-60min/diagram-18.png)
-*Picture 18*
+[PICTURE 18]
 
 Now here's an idea for your own harness, mixing what we've seen.
 
@@ -269,10 +255,9 @@ Think about how that would feel. It noticed something you didn't. And instead of
 
 Honestly, I keep wondering why nobody has combined the best of all of these. Hermes has /learn but no dreaming. OpenClaw has dreaming but no /learn. Someone should put them together, and that someone could be you.
 
----
+[PAUSE]
 
-![Picture 19](../assets/lecture-5/diagrams-60min/diagram-19.png)
-*Picture 19*
+[PICTURE 19]
 
 Now Codex. Codex sits somewhere in the middle.
 
@@ -282,8 +267,7 @@ And on the right, see what's missing. No curator, so nothing gets cleaned up ove
 
 Some people would call that less smart. But flip it around. If you decide what gets remembered, nothing has to guess. And for a lot of companies, that's exactly what they want.
 
-![Picture 20](../assets/lecture-5/diagrams-60min/diagram-20.png)
-*Picture 20*
+[PICTURE 20]
 
 What about Claude Code?
 
@@ -295,10 +279,9 @@ On top of that, there's auto memory. Claude saves notes for itself, like build c
 
 My honest take? Claude Code is amazing at getting work done. But it has never surprised me with something it learned about me. Memory just isn't what it's known for. In fact, someone built a separate project called claude-mem just to add memory to it, and it's hugely popular. That tells you people wanted more.
 
----
+[PAUSE]
 
-![Picture 21](../assets/lecture-5/diagrams-60min/diagram-21.png)
-*Picture 21*
+[PICTURE 21]
 
 Now DeepSeek Harness. This one thinks about memory in a completely different way.
 
@@ -316,8 +299,7 @@ Now look at the red box. No notes the agent writes for itself. No profile of you
 
 So in DeepSeek Harness, memory isn't a feature. It's a socket, and you choose what to plug in.
 
-![Picture 22](../assets/lecture-5/diagrams-60min/diagram-22.png)
-*Picture 22*
+[PICTURE 22]
 
 Let's look at the built-in part, because one thing here is really different.
 
@@ -333,8 +315,7 @@ And along the bottom, there's a nice touch. Say the agent opens a file deep insi
 
 One honest limit, which they point out themselves. There's no file watcher. If the agent just changes folder inside bash, DeepSeek won't notice.
 
-![Picture 23](../assets/lecture-5/diagrams-60min/diagram-23.png)
-*Picture 23*
+[PICTURE 23]
 
 And here's the optional part, plugging in a memory server. I really like this picture, because it's their own test, and it's the right test for any memory system.
 
@@ -344,8 +325,7 @@ Session B, on the right, is completely fresh. Nothing from session A. You ask, "
 
 So the bar is three steps. Save it in one session, find it in a brand new one, and actually use it in an answer. Not just "it connected". That's the bar I'd want for any memory system you build.
 
-![Picture 24](../assets/lecture-5/diagrams-60min/diagram-24.png)
-*Picture 24*
+[PICTURE 24]
 
 So let's put all six side by side. Three questions. Who writes the memory? How does it reach the model? And who cleans it up?
 
@@ -363,10 +343,9 @@ DeepSeek. You, or whatever plugin you pick. Instructions arrive as a logged mess
 
 Same problem, six answers. The real question is which one your users would trust.
 
----
+[PAUSE]
 
-![Picture 25](../assets/lecture-5/diagrams-60min/diagram-25.png)
-*Picture 25*
+[PICTURE 25]
 
 Now a quick detour, because this is something I really care about.
 
@@ -390,8 +369,7 @@ Plus one more, the purple box. An audit trail. Who wrote each memory, and when.
 
 None of this is new. It's the same memory ideas we've seen today, just with gates around them. And honestly, I think a memory system built this way, safe for companies, could be a product on its own. If you've worked in a big company and this excites you, tell me in the comments.
 
-![Picture 26](../assets/lecture-5/diagrams-60min/diagram-26.png)
-*Picture 26*
+[PICTURE 26]
 
 Since we're talking about companies, let's talk about security for a minute. Because whenever you show an agent to a big company, the very first thing they ask is, "Is it safe?"
 
@@ -419,12 +397,11 @@ And the line at the bottom is the one I'd like you to remember. Security has to 
 
 Okay, back to the harness.
 
----
+[PAUSE]
 
 # PART 2 — Sub-agents
 
-![Picture 27](../assets/lecture-5/diagrams-60min/diagram-27.png)
-*Picture 27*
+[PICTURE 27]
 
 Okay, let's move on to the second stop, which is sub-agents.
 
@@ -440,8 +417,7 @@ So the model reads through its tools like it always does, and when it spots a jo
 
 Which means one small line of text, that description, decides everything. If you write it badly, the model either never uses your helpers, or it uses them for absolutely everything.
 
-![Picture 28](../assets/lecture-5/diagrams-60min/diagram-28.png)
-*Picture 28*
+[PICTURE 28]
 
 Now, a lot of people mix up two things here, skills and sub-agents. They sound like the same idea, but they're really not.
 
@@ -453,8 +429,7 @@ And the reason this matters is space. When the agent reads a skill, those instru
 
 So the way I remember it is this. A skill teaches me how. A sub-agent does the work for me.
 
-![Picture 29](../assets/lecture-5/diagrams-60min/diagram-29.png)
-*Picture 29*
+[PICTURE 29]
 
 When most people hear the word sub-agent, they picture one thing: the main agent hands a job to a helper, and the helper comes back with an answer. But that's just one way of dealing with the problem, and Pi actually gives you three.
 
@@ -468,8 +443,7 @@ And the third, at the top in purple, is an orchestrator. That's for really big j
 
 So you can send a helper, you can start fresh, or you can run lots of copies at once. We'll spend our time on the first two.
 
-![Picture 30](../assets/lecture-5/diagrams-60min/diagram-30.png)
-*Picture 30*
+[PICTURE 30]
 
 Let's start with the normal sub-agent, and there's one question here I find really interesting. Where does the helper actually run?
 
@@ -481,8 +455,7 @@ Now think about opening a new tab in your browser instead. It's instant, and the
 
 So whichever way you go, you pay for it somewhere. Keeping things separate costs you time, and going fast costs you care.
 
-![Picture 31](../assets/lecture-5/diagrams-60min/diagram-31.png)
-*Picture 31*
+[PICTURE 31]
 
 Now let's look at Pi's sub-agent tool, because I think it's really nicely put together. It's one tool, but you can use it in three ways.
 
@@ -494,8 +467,7 @@ And the third way, which I like the most, is a chain, where whatever one helper 
 
 And every harness puts some kind of limit on this. How many helpers can run at the same time, and whether a helper is allowed to start helpers of its own. Hermes, for example, doesn't let helpers start their own helpers at all by default. Which makes sense, because without limits like these, handing work out quickly becomes a very expensive way of not doing the work.
 
-![Picture 32](../assets/lecture-5/diagrams-60min/diagram-32.png)
-*Picture 32*
+[PICTURE 32]
 
 So how do you actually create one of these helpers in Pi? It's just a markdown file.
 
@@ -509,8 +481,7 @@ Pi actually ships with a little team of these. A scout that finds the files, a p
 
 There's one warning at the bottom, in red, that's worth taking seriously. A project you download can come with its own helper files, and those helpers can run commands on your machine. So be a little careful with repos you don't trust.
 
-![Picture 33](../assets/lecture-5/diagrams-60min/diagram-33.png)
-*Picture 33*
+[PICTURE 33]
 
 Let me show you why this saves so much room.
 
@@ -522,10 +493,9 @@ Only that last line travels back to the main agent. Everything else, which could
 
 But here's something people often get wrong. This saves space in the main agent's memory, but it doesn't save you money. You still pay for those fifty thousand tokens. You just don't have to drag them along for the rest of the task.
 
----
+[PAUSE]
 
-![Picture 34](../assets/lecture-5/diagrams-60min/diagram-34.png)
-*Picture 34*
+[PICTURE 34]
 
 Okay, now the second answer, the handoff. I want to explain this one with a little story.
 
@@ -537,8 +507,7 @@ But sometimes the general is just too tired to carry on. That's the yellow side.
 
 That's a handoff. With scouts, they report back to you. With a handoff, you hand over command.
 
-![Picture 35](../assets/lecture-5/diagrams-60min/diagram-35.png)
-*Picture 35*
+[PICTURE 35]
 
 Here's what that looks like in Pi.
 
@@ -550,10 +519,9 @@ And then a brand new session starts, completely clean, with only that goal in it
 
 It's easy to confuse this with compaction, so here's a simple way to keep the three apart. Compaction keeps a summary of the past. A handoff keeps only the goal. And a sub-agent keeps only the answer. They're three different tools, but they're all fighting the same problem, a context window that's just too small.
 
----
+[PAUSE]
 
-![Picture 36](../assets/lecture-5/diagrams-60min/diagram-36.png)
-*Picture 36*
+[PICTURE 36]
 
 Now let's see how DeepSeek Harness does this. And as you can probably guess by now, they made it a plugin.
 
@@ -565,8 +533,7 @@ Then there are three kinds of helper it can start. A spawn is a fresh helper tha
 
 So the model only ever sees one simple tool, but on the other side of it, the helper could be a whole other harness.
 
-![Picture 37](../assets/lecture-5/diagrams-60min/diagram-37.png)
-*Picture 37*
+[PICTURE 37]
 
 There's one more thing about DeepSeek's helpers that genuinely surprised me.
 
@@ -576,8 +543,7 @@ On the left there's a nice little detail. If the model asks for two helpers in t
 
 And at the bottom are the limits. By default, helpers can't start helpers of their own. If you set the depth to zero, delegation is switched off completely. And you can have up to eight helpers alive at once.
 
-![Picture 38](../assets/lecture-5/diagrams-60min/diagram-38.png)
-*Picture 38*
+[PICTURE 38]
 
 One last thing on sub-agents, and it's probably the most useful thing in this whole section.
 
@@ -591,12 +557,11 @@ Here's a little trick that helps. Write down the answer you're hoping for first,
 
 And honestly, this works just as well with people.
 
----
+[PAUSE]
 
 # PART 3 — Durability
 
-![Picture 39](../assets/lecture-5/diagrams-60min/diagram-39.png)
-*Picture 39*
+[PICTURE 39]
 
 Okay, third stop, durability. Hardly anyone talks about this, but it really matters.
 
@@ -610,8 +575,7 @@ And this isn't some rare thing. Laptops go to sleep, Wi-Fi drops out, somebody p
 
 It's like playing a video game with no save points. You're three hours in, you've finally reached the final boss, the power cuts out, and you're right back at the start. And we all know the fix for that. You need a save point.
 
-![Picture 40](../assets/lecture-5/diagrams-60min/diagram-40.png)
-*Picture 40*
+[PICTURE 40]
 
 [ASK, wait 3 sec] So what's the simplest save point you could build?
 
@@ -627,8 +591,7 @@ And because you never touch the old lines, a crash can't damage them. The worst 
 
 So a session is really just a file. That's the whole idea.
 
-![Picture 41](../assets/lecture-5/diagrams-60min/diagram-41.png)
-*Picture 41*
+[PICTURE 41]
 
 So what does each harness actually leave on disk?
 
@@ -636,8 +599,7 @@ Pi keeps one file per session, just like the one we just saw. Hermes uses a smal
 
 So that's five harnesses, and five slightly different answers to the same question.
 
-![Picture 42](../assets/lecture-5/diagrams-60min/diagram-42.png)
-*Picture 42*
+[PICTURE 42]
 
 [ASK, wait 3 sec] Here's a question for you. In one turn, the model replies, then some tools run, and then the turn ends. A crash could happen at any point in there. So when should you save?
 
@@ -655,8 +617,7 @@ And DeepSeek gathers things up for a tiny moment and saves them in small batches
 
 And the line at the bottom sums it up nicely. The earlier you save, the less a crash is going to cost you.
 
-![Picture 43](../assets/lecture-5/diagrams-60min/diagram-43.png)
-*Picture 43*
+[PICTURE 43]
 
 Now there's one kind of crash that's really nasty, and I want you to see it.
 
@@ -668,8 +629,7 @@ When you load that file and send it to the model, the provider just refuses the 
 
 That means somebody has to fix it. Pi and Codex patch it up just before they send it, but they leave the broken file on disk exactly as it was. DeepSeek, as you'll see in a minute, actually fixes the saved file.
 
-![Picture 44](../assets/lecture-5/diagrams-60min/diagram-44.png)
-*Picture 44*
+[PICTURE 44]
 
 There's another side to all this. So far, we've only been talking about the conversation. But your agent is also changing files on your computer. So what if you want to undo those changes?
 
@@ -679,10 +639,9 @@ Pi doesn't do anything here. Hermes quietly takes a git snapshot before every tu
 
 So it goes all the way from nothing at all, to a hundred snapshots.
 
----
+[PAUSE]
 
-![Picture 45](../assets/lecture-5/diagrams-60min/diagram-45.png)
-*Picture 45*
+[PICTURE 45]
 
 Now let's talk about DeepSeek, because honestly, this is the most careful design I've seen.
 
@@ -698,8 +657,7 @@ And then there's their rule, in red. If the model can see something, it has to b
 
 Saving is quick, too. Things get saved in small batches, and everything's written to disk before the next turn starts. And only one program is ever allowed to write to a session, so two of them can never end up fighting over it.
 
-![Picture 46](../assets/lecture-5/diagrams-60min/diagram-46.png)
-*Picture 46*
+[PICTURE 46]
 
 And this is my favourite part, what DeepSeek does after a crash.
 
@@ -715,8 +673,7 @@ Anything that's only reading old sessions fixes them in memory, and never writes
 
 And there's one more habit of theirs I'd love you to copy. Every session file has a version number, and old files never get rewritten. So put a version number in your own file format from day one.
 
-![Picture 47](../assets/lecture-5/diagrams-60min/diagram-47.png)
-*Picture 47*
+[PICTURE 47]
 
 Before we start building, I want you to step back and look at this, because I think it's one of the nicest ideas in this whole series.
 
@@ -730,12 +687,11 @@ Every single time, we turned the problem into a message, and just let the loop c
 
 We never wrote an error handler. We wrote a mailbox.
 
----
+[PAUSE]
 
 # PART 4 — Build it into Zill
 
-![Picture 48](../assets/lecture-5/diagrams-60min/diagram-48.png)
-*Picture 48*
+[PICTURE 48]
 
 Alright. We've seen how the best harnesses do all this, so now it's our turn. We're adding four small files.
 
@@ -751,8 +707,7 @@ On top of that, there are some tests that use a fake model, and three demos. The
 
 And we're deliberately building the simplest version of each idea. Memory the way Pi does it, and one line per message. Once that's working, you can add dreaming, a USER.md, or anything else you like.
 
-![Picture 49](../assets/lecture-5/diagrams-60min/diagram-49.png)
-*Picture 49*
+[PICTURE 49]
 
 There's one idea in memory.py that people often find confusing, so let me walk you through it. I call it the two clocks.
 
@@ -766,8 +721,7 @@ So when you ask the same question again, it just says "make test" on the very fi
 
 That's the two clocks. The conversation grows while a session is running, and the prompt gets rebuilt between sessions. The first time, it had to go and investigate. The second time, it just knew.
 
-![Picture 50](../assets/lecture-5/diagrams-60min/diagram-50.png)
-*Picture 50*
+[PICTURE 50]
 
 Now let's talk about saving sessions. And the nice thing is, the loop already has the hook we need.
 
@@ -783,8 +737,7 @@ Notice what that note doesn't do, though. It doesn't pretend the tool ran, and i
 
 And because every tool result is already in the file, Zill doesn't redo any of its old work. Not a single model call gets spent on the past.
 
-![Picture 51](../assets/lecture-5/diagrams-60min/diagram-51.png)
-*Picture 51*
+[PICTURE 51]
 
 And finally, sub-agents. That purple box is pretty much all of subagent.py.
 
@@ -800,11 +753,12 @@ And the funny thing is, every single piece was doing exactly what it was designe
 
 The fix turned out to be one line. Helpers are created with persist=False, so they don't save sessions at all. And after that fix, three agents ran, and there's exactly one session file.
 
----
+[PAUSE]
 
 Okay, let's actually build it now. Open up Claude Code inside your Zill folder, and paste in this prompt.
 
-> **Do:** paste the prompt below into Claude Code. It's also saved as `zill-lecture5-build-prompt.md`.
+[DO: paste the prompt below into Claude Code. It's also saved as `zill-lecture5-build-prompt.md`.]
+
 ```text
 You are building the next part of Zill (lecture 5 of the series): long-term
 memory, skills, durable sessions, and sub-agents. The parts are cumulative.
@@ -998,28 +952,33 @@ success.
 
 While that's running, let me point out a few things about this prompt. It adds four new files and doesn't touch any of the existing ones, so it's really easy to check. It spells out the three ideas we care about, which are the two clocks, saving every message, and the harness inside the harness. It says very clearly, never pretend a tool ran and never delete the request, because that lazy fix would keep the provider happy while lying to the agent. And at the end, it says exactly what done looks like, and asks Claude Code to be honest about anything it couldn't check.
 
-> **Do:** when it finishes, run `python -m demos.memory_demo demo-memory` in the terminal.
+[DO: when it finishes, run `python -m demos.memory_demo demo-memory` in the terminal.]
+
 Okay, it's done, so let's start with memory. In the first run, it doesn't know how the tests work, so it reads the Makefile and calls remember. The second run is a brand new conversation, and it answers on the very first turn without using any tools. PASS.
 
-> **Do:** run `python -m demos.resume_demo start demo-resume` in the terminal.
+[DO: run `python -m demos.resume_demo start demo-resume` in the terminal.]
+
 Now the fun part. Let's kill it. You can see the files being created, part1, part2... and now.
 
-> **Do:** kill the process. On Windows, use `taskkill /F /PID <pid>`. On Mac or Linux, `kill -9 <pid>`. The demo prints the pid.
+[DO: kill the process. On Windows, use `taskkill /F /PID <pid>`. On Mac or Linux, `kill -9 <pid>`. The demo prints the pid.]
+
 And it's gone. Three files exist, and if you look at the session file, the last line is cut off halfway.
 
-> **Do:** run `python -m demos.resume_demo resume demo-resume`.
+[DO: run `python -m demos.resume_demo resume demo-resume`.]
+
 And there's our note, "Interrupted before this ran." The model checks what's actually on disk and just carries on. part4, part5, SUMMARY.md. PASS.
 
-> **Do:** run `python -m demos.subagent_demo demo-subagents`.
+[DO: run `python -m demos.subagent_demo demo-subagents`.]
+
 And the last demo. Two helpers, one writing utils.py and the other writing the tests, and then the main agent runs the tests itself.
 
-> **Do:** list the files in `demo-subagents/.zill/sessions`.
+[DO: list the files in `demo-subagents/.zill/sessions`.]
+
 Three agents ran, and there's only one session file. That's our persist=False fix, working right there on screen.
 
----
+[PAUSE]
 
-![Picture 52](../assets/lecture-5/diagrams-60min/diagram-52.png)
-*Picture 52*
+[PICTURE 52]
 
 So, if you ever build a harness of your own, everything we talked about today really comes down to three questions.
 
