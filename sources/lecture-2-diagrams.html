@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Zill Harness · Day 1 diagrams</title>
+<style>
+  html,body{margin:0;background:#05070f}
+  svg.d{display:block;width:100%;height:auto;margin:0 0 24px}
+  body.single svg.d{margin:0;width:100vw;height:100vh}
+  svg text{font-family:"Segoe UI",Arial,sans-serif;fill:#e8ecf8}
+  .h{font-size:60px;font-weight:700;fill:#fff}
+  .sub{font-size:30px;fill:#8f9bc0}
+  .b{font-size:30px}
+  .bb{font-size:32px;font-weight:700}
+  .big{font-size:52px;font-weight:700}
+  .sm{font-size:24px;fill:#8f9bc0}
+  .md{font-size:26px}
+  svg .mono, svg .mono text{font-family:"Cascadia Code",Consolas,monospace;white-space:pre}
+  .c{text-anchor:middle}
+  .box{fill:#151c33;stroke:#2a3558;stroke-width:2}
+  .ln{stroke:#8f9bc0;stroke-width:4;fill:none}
+  svg .am{fill:#ffb547} svg .te{fill:#3ddbc0} svg .vi{fill:#9d8cff} svg .co{fill:#ff7a70} svg .bl{fill:#5aa9ff} svg .mu{fill:#8f9bc0} svg .dk{fill:#0b1020}
+  .sam{stroke:#ffb547} .ste{stroke:#3ddbc0} .svi{stroke:#9d8cff} .sco{stroke:#ff7a70} .sbl{stroke:#5aa9ff}
+  .fam{fill:rgba(255,181,71,.16)} .fte{fill:rgba(61,219,192,.14)} .fvi{fill:rgba(157,140,255,.16)} .fco{fill:rgba(255,122,112,.15)} .fbl{fill:rgba(90,169,255,.15)}
+</style>
+<style>
+  /* hand-drawn whiteboard theme (overrides the block above) */
+  html,body{background:#e9e6df}
+  svg text{font-family:"Ink Free","Segoe Print","Comic Sans MS",cursive;fill:#1e1e1e;font-weight:700}
+  .h{font-family:"Segoe Print","Ink Free",cursive;font-size:54px;font-weight:700;fill:#1e1e1e}
+  .sub{font-size:32px;fill:#495057}
+  .b{font-size:33px}
+  .bb{font-size:36px;font-weight:700}
+  .big{font-size:58px;font-weight:700}
+  .sm{font-size:27px;fill:#495057}
+  .md{font-size:29px}
+  svg .mono, svg .mono text, svg .an, svg .ft{font-family:"Cascadia Code",Consolas,monospace;font-weight:600}
+  svg .mono, svg .mono text{white-space:pre}
+  svg .an{font-size:22px}
+  svg .ft{font-size:20px;fill:#868e96}
+  .box{fill:#fff;stroke:#1e1e1e;stroke-width:3}
+  .ln{stroke:#1e1e1e;stroke-width:3.5;fill:none;stroke-linecap:round}
+  .da{stroke-dasharray:9 9}
+  .ul{stroke:#f08c00;stroke-width:6;fill:none;stroke-linecap:round}
+  svg .am{fill:#e8590c} svg .te{fill:#2b8a3e} svg .vi{fill:#6741d9} svg .co{fill:#e03131} svg .bl{fill:#1971c2} svg .mu{fill:#6b7280} svg .dk{fill:#1e1e1e}
+  .sam{stroke:#e8590c} .ste{stroke:#2f9e44} .svi{stroke:#6741d9} .sco{stroke:#e03131} .sbl{stroke:#1971c2}
+  .fam{fill:#fff3bf} .fte{fill:#d3f9d8} .fvi{fill:#e5dbff} .fco{fill:#ffe3e3} .fbl{fill:#d0ebff}
+</style>
+<style>
+  /* professional theme: open the page with ?theme=pro */
+  body.pro{background:#e2e8f0}
+  body.pro svg text{font-family:"Segoe UI Variable Display","Segoe UI",Arial,sans-serif;fill:#0f172a;font-weight:500}
+  body.pro .h{font-family:"Segoe UI Variable Display","Segoe UI",Arial,sans-serif;font-size:56px;font-weight:700;fill:#0f172a;letter-spacing:-.6px}
+  body.pro .sub{font-size:28px;fill:#64748b;font-weight:400}
+  body.pro .b{font-size:30px}
+  body.pro .bb{font-size:32px;font-weight:700}
+  body.pro .big{font-size:52px;font-weight:700}
+  body.pro .sm{font-size:24px;fill:#64748b}
+  body.pro .md{font-size:26px}
+  body.pro svg .mono, body.pro svg .mono text, body.pro svg .an, body.pro svg .kick{font-family:"Cascadia Code",Consolas,monospace;font-weight:600}
+  body.pro svg .an{font-size:20px;letter-spacing:.4px}
+  body.pro svg .kick{font-size:19px;fill:#4f46e5;letter-spacing:3px}
+  body.pro svg .ft{font-family:"Segoe UI",Arial,sans-serif;font-size:20px;fill:#94a3b8;font-weight:500}
+  body.pro .box{fill:#fff;stroke:#cbd5e1;stroke-width:2}
+  body.pro .ln{stroke:#334155;stroke-width:3}
+  body.pro .ul{stroke:#4f46e5;stroke-width:8}
+  body.pro svg .am{fill:#b45309} body.pro svg .te{fill:#047857} body.pro svg .vi{fill:#6d28d9} body.pro svg .co{fill:#be123c} body.pro svg .bl{fill:#1d4ed8} body.pro svg .mu{fill:#64748b} body.pro svg .dk{fill:#0f172a}
+  body.pro .sam{stroke:#d97706} body.pro .ste{stroke:#059669} body.pro .svi{stroke:#7c3aed} body.pro .sco{stroke:#e11d48} body.pro .sbl{stroke:#2563eb}
+  body.pro .fam{fill:#fef3c7} body.pro .fte{fill:#d1fae5} body.pro .fvi{fill:#ede9fe} body.pro .fco{fill:#ffe4e6} body.pro .fbl{fill:#dbeafe}
+  body.pro .box, body.pro .fam, body.pro .fte, body.pro .fvi, body.pro .fco, body.pro .fbl{filter:drop-shadow(0 6px 12px rgba(15,23,42,.09))}
+  body.pro [fill="#ffd43b"]{fill:#fbbf24;stroke:#d97706}
+  body.pro [fill="#ced4da"]{fill:#cbd5e1}
+  body.pro rect[fill="#fff9db"]{fill:#0f172a;stroke:#0f172a;filter:drop-shadow(0 10px 18px rgba(15,23,42,.22))}
+  body.pro rect[fill="#fff9db"] + g.mono text, body.pro rect[fill="#fff9db"] + text.mono{fill:#e2e8f0}
+  body.pro rect[fill="#fff9db"] + g.mono .vi, body.pro rect[fill="#fff9db"] + text.mono.vi{fill:#c4b5fd}
+  body.pro rect[fill="#fff9db"] + g.mono .te{fill:#6ee7b7}
+  body.pro rect[fill="#fff9db"] + g.mono .am, body.pro rect[fill="#fff9db"] + text.mono.am{fill:#fbbf24}
+</style>
+</head>
+<body>
+
+<!-- 01 -->
+<svg class="d" data-t="The five elements of a harness" data-s="Every agentic harness is built from the same five layers. We build one per day.">
+  <polygon points="578,240 822,240 909,384 491,384" class="fvi svi" stroke-width="3"/>
+  <polygon points="491,384 909,384 997,528 403,528" class="fbl sbl" stroke-width="3"/>
+  <polygon points="403,528 997,528 1085,672 315,672" class="fte ste" stroke-width="3"/>
+  <polygon points="315,672 1085,672 1172,816 228,816" class="fco sco" stroke-width="3"/>
+  <polygon points="228,816 1172,816 1260,960 140,960" fill="#ffd43b" stroke="#1e1e1e" stroke-width="3"/>
+  <text x="700" y="324" class="bb c">5 · Orchestration</text>
+  <text x="700" y="468" class="bb c">4 · Durability</text>
+  <text x="700" y="612" class="bb c">3 · Context &amp; Memory</text>
+  <text x="700" y="756" class="bb c">2 · Tools</text>
+  <text x="700" y="902" class="big c dk">1 · THE LOOP</text>
+  <text x="1310" y="306" class="md">How do many agents work together?</text><text x="1310" y="340" class="sm">Day 5</text>
+  <text x="1310" y="450" class="md">What survives a crash?</text><text x="1310" y="484" class="sm">Day 4</text>
+  <text x="1310" y="594" class="md">What does the model get to see?</text><text x="1310" y="628" class="sm">Day 3</text>
+  <text x="1310" y="738" class="md">What is the agent allowed to touch?</text><text x="1310" y="772" class="sm">Day 2</text>
+  <text x="1310" y="882" class="md am" font-weight="700">How does a thought become an action?</text><text x="1310" y="918" class="sm am">Day 1 · TODAY · the heartbeat</text>
+</svg>
+
+<!-- 02 -->
+<svg class="d" data-t="Small harness, detailed skills" data-s="The bet behind Zill: keep the engine tiny, put your knowledge into skill files.">
+  <rect x="110" y="320" width="480" height="340" rx="24" class="fam sam" stroke-width="3"/>
+  <text x="350" y="390" class="sm c am">ZILL HARNESS</text>
+  <text x="350" y="500" class="c am" font-size="88" font-weight="700">~1,000</text>
+  <text x="350" y="580" class="b c">lines of Python</text>
+  <text x="655" y="520" class="c mu" font-size="90" font-weight="700">+</text>
+  <rect x="720" y="320" width="480" height="340" rx="24" class="fvi svi" stroke-width="3"/>
+  <text x="960" y="390" class="sm c vi">SKILL FILES</text>
+  <text x="960" y="495" class="big c vi">Very detailed</text>
+  <text x="960" y="580" class="b c">your know-how, written down</text>
+  <text x="1265" y="520" class="c mu" font-size="90" font-weight="700">=</text>
+  <rect x="1330" y="320" width="480" height="340" rx="24" class="fte ste" stroke-width="3"/>
+  <text x="1570" y="390" class="sm c te">RESULT</text>
+  <text x="1570" y="495" class="big c te">Real products</text>
+  <text x="1570" y="580" class="b c">not toy demos</text>
+  <rect x="110" y="760" width="1700" height="150" rx="20" class="box"/>
+  <text x="960" y="825" class="bb c">The harness does not have to be big to be powerful.</text>
+  <text x="960" y="872" class="b c mu">The human contribution moves from the engine into the instructions.</text>
+</svg>
+
+<!-- 03 -->
+<svg class="d" data-t="A model, on its own, can't do anything" data-s="A language model is just a function: messages go in, one message comes out. Then it stops.">
+  <rect x="120" y="330" width="400" height="220" rx="18" class="box"/>
+  <text x="320" y="420" class="bb c">messages</text><text x="320" y="470" class="sm c">a list of text</text>
+  <line x1="530" y1="440" x2="690" y2="440" class="ln" marker-end="url(#a)"/>
+  <rect x="710" y="270" width="500" height="330" rx="8" class="fvi svi" stroke-width="5"/>
+  <text x="960" y="256" class="an c vi">LOCKED ROOM</text>
+  <use href="#man" x="750" y="340"/>
+  <text x="1040" y="410" class="c vi" font-size="64">MODEL</text>
+  <rect x="890" y="450" width="300" height="115" rx="14" class="fco sco" stroke-width="3"/>
+  <text x="1040" y="497" class="md c co">can THINK,</text><text x="1040" y="538" class="md c co">can't TOUCH</text>
+  <text x="960" y="655" class="an c co">ISOLATED — no direct access to files, terminal or the web</text>
+  <line x1="1220" y1="440" x2="1380" y2="440" class="ln" marker-end="url(#a)"/>
+  <rect x="1400" y="330" width="400" height="220" rx="18" class="box"/>
+  <text x="1600" y="420" class="bb c">one message</text><text x="1600" y="470" class="sm c">just text, sitting there</text>
+  <text x="100" y="700" class="b mu">On its own, it cannot:</text>
+  <g>
+    <rect x="100" y="730" width="400" height="90" rx="45" class="fco sco" stroke-width="2"/><text x="300" y="786" class="b c">✕ open a file</text>
+    <rect x="540" y="730" width="400" height="90" rx="45" class="fco sco" stroke-width="2"/><text x="740" y="786" class="b c">✕ run a command</text>
+    <rect x="980" y="730" width="400" height="90" rx="45" class="fco sco" stroke-width="2"/><text x="1180" y="786" class="b c">✕ remember anything</text>
+    <rect x="1420" y="730" width="400" height="90" rx="45" class="fco sco" stroke-width="2"/><text x="1620" y="786" class="b c">✕ check its own work</text>
+  </g>
+  <text x="960" y="930" class="bb c am">A genius locked in a room, passing notes under the door.</text>
+</svg>
+
+<!-- 04 -->
+<svg class="d" data-t="So what is a harness?" data-s="Everything around the model. The model gives judgment; the harness gives hands, memory and persistence.">
+  <rect x="360" y="250" width="1200" height="740" rx="36" class="fte ste" stroke-width="4" stroke-dasharray="14 10"/>
+  <text x="400" y="310" class="bb te">HARNESS</text>
+  <circle cx="960" cy="560" r="125" class="fvi svi" stroke-width="4"/>
+  <text x="960" y="555" class="bb c vi">MODEL</text><text x="960" y="595" class="sm c">judgment</text>
+  <rect x="410" y="470" width="350" height="180" rx="18" class="box"/>
+  <text x="585" y="530" class="bb c te">1 · ASSEMBLE</text><text x="585" y="575" class="sm c">builds what the</text><text x="585" y="607" class="sm c">model sees</text>
+  <rect x="1160" y="470" width="350" height="180" rx="18" class="box"/>
+  <text x="1335" y="530" class="bb c am">2 · EXECUTE</text><text x="1335" y="575" class="sm c">does what the</text><text x="1335" y="607" class="sm c">model asks</text>
+  <rect x="760" y="790" width="400" height="150" rx="18" class="box"/>
+  <text x="960" y="850" class="bb c co">3 · REPEAT</text><text x="960" y="895" class="sm c">decides to go around again</text>
+  <line x1="765" y1="560" x2="822" y2="560" class="ln" marker-end="url(#a)"/>
+  <line x1="1090" y1="560" x2="1147" y2="560" class="ln" marker-end="url(#a)"/>
+  <path d="M1335 655 Q1335 865 1175 865" class="ln" marker-end="url(#a)"/>
+  <path d="M755 865 Q585 865 585 665" class="ln" marker-end="url(#a)"/>
+  <use href="#man" x="120" y="445"/>
+  <text x="170" y="420" class="bb c">YOU</text><text x="170" y="690" class="sm c">your request</text>
+  <line x1="305" y1="560" x2="397" y2="560" class="ln" marker-end="url(#a)"/>
+  <g class="md">
+    <rect x="1640" y="330" width="230" height="80" rx="14" class="box"/><text x="1755" y="380" class="c">Files</text>
+    <rect x="1640" y="450" width="230" height="80" rx="14" class="box"/><text x="1755" y="500" class="c">Terminal</text>
+    <rect x="1640" y="570" width="230" height="80" rx="14" class="box"/><text x="1755" y="620" class="c">Web</text>
+    <rect x="1640" y="690" width="230" height="80" rx="14" class="box"/><text x="1755" y="740" class="c">APIs</text>
+  </g>
+  <line x1="1515" y1="560" x2="1625" y2="560" class="ln sam" marker-end="url(#a)"/>
+</svg>
+
+<!-- 05 -->
+<svg class="d" data-t="The heartbeat: Thought → Action → Observation" data-s="Also called the ReAct loop. Nothing to do with the web framework — it means Reason + Act.">
+  <rect x="780" y="270" width="360" height="130" rx="22" class="fvi svi" stroke-width="4"/>
+  <text x="960" y="328" class="bb c vi">THOUGHT</text><text x="960" y="368" class="sm c">model decides the next step</text>
+  <rect x="1120" y="700" width="360" height="130" rx="22" class="fam sam" stroke-width="4"/>
+  <text x="1300" y="758" class="bb c am">ACTION</text><text x="1300" y="798" class="sm c">harness runs a tool</text>
+  <rect x="440" y="700" width="360" height="130" rx="22" class="fte ste" stroke-width="4"/>
+  <text x="620" y="758" class="bb c te">OBSERVATION</text><text x="620" y="798" class="sm c">result goes back in</text>
+  <line x1="1085" y1="410" x2="1262" y2="685" class="ln" marker-end="url(#a)"/>
+  <line x1="1110" y1="765" x2="818" y2="765" class="ln" marker-end="url(#a)"/>
+  <line x1="660" y1="690" x2="836" y2="414" class="ln" marker-end="url(#a)"/>
+  <text x="90" y="318" class="an am">EMPHASIS —</text><text x="90" y="350" class="an am">the loop IS the agent</text>
+  <line x1="400" y1="335" x2="762" y2="335" class="ln sam da" marker-end="url(#a)"/>
+  <text x="960" y="590" class="c" font-size="76" font-weight="700">ReAct</text>
+  <text x="960" y="640" class="b c mu">Reason + Act</text>
+  <line x1="1150" y1="335" x2="1445" y2="335" class="ln sco" marker-end="url(#a)"/>
+  <text x="1295" y="312" class="sm c">no tool needed?</text>
+  <rect x="1465" y="270" width="380" height="130" rx="22" class="fco sco" stroke-width="4"/>
+  <text x="1655" y="328" class="bb c co">FINAL ANSWER</text><text x="1655" y="368" class="sm c">the loop ends</text>
+  <text x="960" y="950" class="bb c">Around and around — until the model has nothing left to ask for.</text>
+</svg>
+
+<!-- 06 -->
+<svg class="d" data-t="One task, six laps" data-s="“Fix this GitHub issue.” Watch the same three beats repeat until the work is done.">
+  <text x="170" y="262" class="bb vi">THOUGHT</text>
+  <text x="730" y="262" class="bb am">ACTION (tool)</text>
+  <text x="1270" y="262" class="bb te">OBSERVATION</text>
+  <g class="md">
+    <rect x="70" y="285" width="1780" height="96" rx="14" class="box"/>
+    <text x="110" y="344" class="mu">1</text><text x="170" y="344">I need to see the issue</text><text x="730" y="344" class="mono am">github.get_issue</text><text x="1270" y="344">Issue fetched</text>
+    <rect x="70" y="393" width="1780" height="96" rx="14" class="box"/>
+    <text x="110" y="452" class="mu">2</text><text x="170" y="452">Let me read the code</text><text x="730" y="452" class="mono am">read_file</text><text x="1270" y="452">Here is the file</text>
+    <rect x="70" y="501" width="1780" height="96" rx="14" class="box"/>
+    <text x="110" y="560" class="mu">3</text><text x="170" y="560">Found the bug. Fix it.</text><text x="730" y="560" class="mono am">edit_file</text><text x="1270" y="560">File updated</text>
+    <rect x="70" y="609" width="1780" height="96" rx="14" class="box"/>
+    <text x="110" y="668" class="mu">4</text><text x="170" y="668">Did my fix actually work?</text><text x="730" y="668" class="mono am">run_tests</text><text x="1270" y="668">All tests pass</text>
+    <rect x="70" y="717" width="1780" height="96" rx="14" class="box"/>
+    <text x="110" y="776" class="mu">5</text><text x="170" y="776">Open a pull request</text><text x="730" y="776" class="mono am">github.create_pr</text><text x="1270" y="776">PR created</text>
+    <rect x="70" y="825" width="1780" height="96" rx="14" class="fco sco" stroke-width="2"/>
+    <text x="110" y="884" class="mu">6</text><text x="170" y="884">Nothing left to do</text><text x="730" y="884" class="mu">— no tool —</text><text x="1270" y="884" class="co" font-weight="700">Final answer → loop exits</text>
+  </g>
+  <text x="960" y="980" class="b c mu">Nobody told it “six steps”. The model chose every step, and chose when to stop.</text>
+</svg>
+
+<!-- 07 -->
+<svg class="d" data-t="The memory is not in the model. It is in the list." data-s="The model forgets everything after every call. The harness re-sends the whole messages array each time.">
+  <text x="350" y="275" class="bb c">Call 1</text><text x="960" y="275" class="bb c">Call 2</text><text x="1570" y="275" class="bb c">Call 3</text>
+  <text x="140" y="540" class="an co">STATELESS —</text><text x="140" y="572" class="an co">the model keeps nothing</text><text x="140" y="604" class="an co">between calls</text>
+  <g font-size="26">
+    <rect x="140" y="300" width="420" height="60" rx="10" class="fam sam" stroke-width="2"/><text x="160" y="338">system + tools + skills</text>
+    <rect x="140" y="370" width="420" height="60" rx="10" class="fam sam" stroke-width="2"/><text x="160" y="408">user: fix the failing test</text>
+
+    <rect x="750" y="300" width="420" height="60" rx="10" class="box"/><text x="770" y="338" class="mu">system + tools + skills</text>
+    <rect x="750" y="370" width="420" height="60" rx="10" class="box"/><text x="770" y="408" class="mu">user: fix the failing test</text>
+    <rect x="750" y="440" width="420" height="60" rx="10" class="fam sam" stroke-width="2"/><text x="770" y="478">assistant: read the test file →</text>
+    <rect x="750" y="510" width="420" height="60" rx="10" class="fam sam" stroke-width="2"/><text x="770" y="548">tool result: file contents</text>
+
+    <rect x="1360" y="300" width="420" height="60" rx="10" class="box"/><text x="1380" y="338" class="mu">system + tools + skills</text>
+    <rect x="1360" y="370" width="420" height="60" rx="10" class="box"/><text x="1380" y="408" class="mu">user: fix the failing test</text>
+    <rect x="1360" y="440" width="420" height="60" rx="10" class="box"/><text x="1380" y="478" class="mu">assistant: read the test file →</text>
+    <rect x="1360" y="510" width="420" height="60" rx="10" class="box"/><text x="1380" y="548" class="mu">tool result: file contents</text>
+    <rect x="1360" y="580" width="420" height="60" rx="10" class="fam sam" stroke-width="2"/><text x="1380" y="618">assistant: run the tests →</text>
+    <rect x="1360" y="650" width="420" height="60" rx="10" class="fam sam" stroke-width="2"/><text x="1380" y="688">tool result: 1 failed</text>
+  </g>
+  <line x1="580" y1="400" x2="730" y2="400" class="ln" marker-end="url(#a)"/>
+  <line x1="1190" y1="400" x2="1340" y2="400" class="ln" marker-end="url(#a)"/>
+  <rect x="140" y="760" width="36" height="36" rx="6" class="fam sam" stroke-width="2"/><text x="192" y="788" class="sm">new this turn</text>
+  <rect x="400" y="760" width="36" height="36" rx="6" class="box"/><text x="452" y="788" class="sm">sent again from before</text>
+  <text x="960" y="890" class="bb c">Append = remember.   Delete = forget.</text>
+  <text x="960" y="945" class="b c am">Want to know what the agent knows? Print the list.</text>
+</svg>
+
+<!-- 08 -->
+<svg class="d" data-t="Three voices in the array" data-s="Every message is just a role plus content. There are only three roles to learn.">
+  <rect x="90" y="250" width="540" height="330" rx="22" class="fbl sbl" stroke-width="3"/>
+  <text x="130" y="320" class="mono bl" font-size="44" font-weight="700">system</text>
+  <text x="130" y="380" class="bb">The standing rules</text>
+  <text x="130" y="435" class="sm">who the agent is, which tools</text><text x="130" y="469" class="sm">exist, how to behave</text>
+  <text x="130" y="535" class="sm bl">written once · sits at the top</text>
+  <rect x="690" y="250" width="540" height="330" rx="22" class="fte ste" stroke-width="3"/>
+  <text x="730" y="320" class="mono te" font-size="44" font-weight="700">user</text>
+  <text x="730" y="380" class="bb">Everything from outside</text>
+  <text x="730" y="435" class="sm">your request… and, to the model,</text><text x="730" y="469" class="sm">tool results look the same</text>
+  <text x="730" y="535" class="sm te">the model's ear</text>
+  <rect x="1290" y="250" width="540" height="330" rx="22" class="fvi svi" stroke-width="3"/>
+  <text x="1330" y="320" class="mono vi" font-size="44" font-weight="700">assistant</text>
+  <text x="1330" y="380" class="bb">The model's own voice</text>
+  <text x="1330" y="435" class="sm">its text, and its requests</text><text x="1330" y="469" class="sm">to run tools</text>
+  <text x="1330" y="535" class="sm vi">the model's mouth</text>
+
+  <g class="sm">
+    <rect x="120" y="650" width="340" height="60" rx="30" class="box"/><text x="290" y="689" class="c">a human typing</text>
+    <rect x="120" y="730" width="340" height="60" rx="30" class="box"/><text x="290" y="769" class="c">a file's contents</text>
+    <rect x="120" y="810" width="340" height="60" rx="30" class="box"/><text x="290" y="849" class="c">a command's output</text>
+  </g>
+  <path d="M470 680 Q620 680 740 745" class="ln ste" marker-end="url(#a)"/>
+  <line x1="470" y1="760" x2="738" y2="760" class="ln ste" marker-end="url(#a)"/>
+  <path d="M470 840 Q620 840 740 775" class="ln ste" marker-end="url(#a)"/>
+  <rect x="760" y="670" width="400" height="180" rx="22" class="fvi svi" stroke-width="4"/>
+  <text x="960" y="775" class="big c vi">MODEL</text>
+  <line x1="1170" y1="760" x2="1378" y2="760" class="ln svi" marker-end="url(#a)"/>
+  <rect x="1400" y="700" width="400" height="120" rx="18" class="box"/><text x="1600" y="770" class="b c">assistant message</text>
+  <text x="960" y="960" class="b c am">One ear, one mouth. The model cannot tell a person from a program.</text>
+</svg>
+
+<!-- 09 -->
+<svg class="d" data-t="The tax you pay on every turn" data-s="Because the whole array is re-sent, every later turn pays again for everything before it.">
+  <line x1="150" y1="860" x2="1780" y2="860" class="ln" stroke-width="2"/>
+  <g>
+    <rect x="200" y="800" width="120" height="60" fill="#ffd43b"/>
+    <rect x="390" y="800" width="120" height="60" fill="#ced4da"/><rect x="390" y="740" width="120" height="60" fill="#ffd43b"/>
+    <rect x="580" y="740" width="120" height="120" fill="#ced4da"/><rect x="580" y="680" width="120" height="60" fill="#ffd43b"/>
+    <rect x="770" y="680" width="120" height="180" fill="#ced4da"/><rect x="770" y="620" width="120" height="60" fill="#ffd43b"/>
+    <rect x="960" y="620" width="120" height="240" fill="#ced4da"/><rect x="960" y="560" width="120" height="60" fill="#ffd43b"/>
+    <rect x="1150" y="560" width="120" height="300" fill="#ced4da"/><rect x="1150" y="500" width="120" height="60" fill="#ffd43b"/>
+    <rect x="1340" y="500" width="120" height="360" fill="#ced4da"/><rect x="1340" y="440" width="120" height="60" fill="#ffd43b"/>
+    <rect x="1530" y="440" width="120" height="420" fill="#ced4da"/><rect x="1530" y="380" width="120" height="60" fill="#ffd43b"/>
+  </g>
+  <g class="sm c">
+    <text x="260" y="900">Turn 1</text><text x="450" y="900">Turn 2</text><text x="640" y="900">Turn 3</text><text x="830" y="900">Turn 4</text>
+    <text x="1020" y="900">Turn 5</text><text x="1210" y="900">Turn 6</text><text x="1400" y="900">Turn 7</text><text x="1590" y="900">Turn 8</text>
+  </g>
+  <rect x="200" y="290" width="36" height="36" fill="#ffd43b"/><text x="252" y="318" class="md">new work this turn</text>
+  <rect x="200" y="344" width="36" height="36" fill="#ced4da"/><text x="252" y="372" class="md">everything re-read from before</text>
+  <text x="960" y="975" class="bb c am">Same amount of new work each turn — but the bill keeps climbing. Keep the context lean.</text>
+</svg>
+
+<!-- 10 -->
+<svg class="d" data-t="How a tool call finds its result" data-s="Every request carries a ticket number. The result must come back holding the same ticket.">
+  <rect x="120" y="270" width="760" height="360" rx="22" class="fvi svi" stroke-width="3"/>
+  <text x="160" y="330" class="sm vi">THE MODEL ASKS</text>
+  <g class="mono" font-size="30">
+    <text x="160" y="395">role: "assistant"</text>
+    <text x="160" y="445">tool_call:</text>
+    <text x="160" y="495">  id:   <tspan class="am" font-weight="700">"A17"</tspan></text>
+    <text x="160" y="545">  name: "read_file"</text>
+    <text x="160" y="595">  args: { path: "test.py" }</text>
+  </g>
+  <rect x="1040" y="270" width="760" height="360" rx="22" class="fte ste" stroke-width="3"/>
+  <text x="1080" y="330" class="sm te">THE HARNESS ANSWERS</text>
+  <g class="mono" font-size="30">
+    <text x="1080" y="395">role: "tool"</text>
+    <text x="1080" y="445">tool_result:</text>
+    <text x="1080" y="495">  id:   <tspan class="am" font-weight="700">"A17"</tspan></text>
+    <text x="1080" y="545">  text: "def test_add(): ..."</text>
+  </g>
+  <line x1="410" y1="476" x2="1092" y2="476" class="ln sam" stroke-dasharray="10 8" marker-end="url(#a)"/>
+  <text x="960" y="455" class="sm c am">same ticket</text>
+  <rect x="120" y="710" width="760" height="170" rx="18" class="box"/>
+  <text x="160" y="775" class="bb am">Rule 1</text><text x="160" y="825" class="md">Every request gets exactly one result.</text>
+  <rect x="1040" y="710" width="760" height="170" rx="18" class="box"/>
+  <text x="1080" y="775" class="bb am">Rule 2</text><text x="1080" y="825" class="md">One turn can carry several requests at once.</text>
+  <text x="960" y="965" class="b c mu">A request left unanswered breaks the array — and the next call fails.</text>
+</svg>
+
+<!-- 11 -->
+<svg class="d" data-t="The loop, as a picture" data-s="Call the model. If it asked for a tool, run it, append the result, and go around again.">
+  <rect x="90" y="290" width="400" height="120" rx="60" class="box"/>
+  <text x="290" y="342" class="sm c">START</text><text x="290" y="380" class="mono c" font-size="22">messages = [system, user]</text>
+  <line x1="495" y1="350" x2="602" y2="350" class="ln" marker-end="url(#a)"/>
+  <rect x="620" y="290" width="380" height="120" rx="18" class="fvi svi" stroke-width="4"/>
+  <text x="810" y="362" class="bb c">1 · Call the model</text>
+  <line x1="1005" y1="350" x2="1122" y2="350" class="ln" marker-end="url(#a)"/>
+  <polygon points="1140,350 1340,240 1540,350 1340,460" class="box" stroke-width="3"/>
+  <text x="1340" y="345" class="md c" font-weight="700">Did it ask</text><text x="1340" y="380" class="md c" font-weight="700">for a tool?</text>
+  <line x1="1545" y1="350" x2="1612" y2="350" class="ln sco" marker-end="url(#a)"/>
+  <text x="1580" y="325" class="sm c co">NO</text>
+  <rect x="1630" y="290" width="250" height="120" rx="18" class="fco sco" stroke-width="4"/>
+  <text x="1755" y="342" class="bb c co">Return</text><text x="1755" y="382" class="bb c co">answer</text>
+  <line x1="1340" y1="465" x2="1340" y2="582" class="ln sam" marker-end="url(#a)"/>
+  <text x="1385" y="535" class="sm am">YES</text>
+  <rect x="1150" y="600" width="380" height="120" rx="18" class="fam sam" stroke-width="4"/>
+  <text x="1340" y="672" class="bb c">2 · Run the tool</text>
+  <line x1="1145" y1="660" x2="1018" y2="660" class="ln" marker-end="url(#a)"/>
+  <rect x="620" y="600" width="380" height="120" rx="18" class="fte ste" stroke-width="4"/>
+  <text x="810" y="672" class="bb c">3 · Append result</text>
+  <line x1="810" y1="595" x2="810" y2="428" class="ln ste" marker-end="url(#a)"/>
+  <text x="1075" y="520" class="c mu" font-size="40">↻ loop</text>
+  <rect x="620" y="800" width="910" height="140" rx="18" class="box"/>
+  <text x="1075" y="858" class="md c am" font-weight="700">Safety belt: max_turns</text>
+  <text x="1075" y="902" class="sm c">if the laps run out, ask for a wrap-up summary — never end without a report</text>
+</svg>
+
+<!-- 12 -->
+<svg class="d" data-t="The heartbeat, in about ten lines" data-s="This is the core of every coding agent you have ever used.">
+  <rect x="160" y="250" width="1600" height="610" rx="22" fill="#fff9db" stroke="#1e1e1e" stroke-width="3"/>
+  <g class="mono" font-size="30">
+    <text x="200" y="320"><tspan class="vi">def</tspan> run_loop(messages, tools, max_turns=80):</text>
+    <text x="200" y="370">    <tspan class="vi">for</tspan> turn <tspan class="vi">in</tspan> range(max_turns):</text>
+    <text x="200" y="420">        reply = call_model(messages, tools)      <tspan class="te"># 1 think</tspan></text>
+    <text x="200" y="470">        messages.append(reply)                   <tspan class="te">#   remember it</tspan></text>
+    <text x="200" y="520">        <tspan class="vi">if not</tspan> reply.tool_calls:                 <tspan class="te"># 2 no request?</tspan></text>
+    <text x="200" y="570">            <tspan class="vi">return</tspan> reply.text                    <tspan class="te">#   then we're done</tspan></text>
+    <text x="200" y="620">        <tspan class="vi">for</tspan> call <tspan class="vi">in</tspan> reply.tool_calls:            <tspan class="te"># 3 act</tspan></text>
+    <text x="200" y="670">            result = run_tool(call)</text>
+    <text x="200" y="720">            messages.append(tool_msg(call, result))  <tspan class="te"># 4 observe</tspan></text>
+    <text x="200" y="770">    <tspan class="vi">return</tspan> wrap_up(messages)                     <tspan class="te"># 5 safety exit</tspan></text>
+  </g>
+  <text x="960" y="940" class="bb c am">Agency is not magic inside the model. It is a loop around it.</text>
+</svg>
+
+<!-- 13 -->
+<svg class="d" data-t="Workflow vs agent: who decides when it's done?" data-s="The difference is not the model. It is who owns the steps and the exit.">
+  <rect x="100" y="250" width="800" height="600" rx="24" class="box"/>
+  <text x="500" y="320" class="bb c bl">WORKFLOW</text>
+  <g class="md">
+    <rect x="140" y="470" width="150" height="100" rx="14" class="fbl sbl" stroke-width="3"/><text x="215" y="530" class="c">Step 1</text>
+    <rect x="330" y="470" width="150" height="100" rx="14" class="fbl sbl" stroke-width="3"/><text x="405" y="530" class="c">Step 2</text>
+    <rect x="520" y="470" width="150" height="100" rx="14" class="fbl sbl" stroke-width="3"/><text x="595" y="530" class="c">Step 3</text>
+    <rect x="710" y="470" width="150" height="100" rx="14" class="fbl sbl" stroke-width="3"/><text x="785" y="530" class="c">Done</text>
+  </g>
+  <line x1="294" y1="520" x2="318" y2="520" class="ln" marker-end="url(#a)"/>
+  <line x1="484" y1="520" x2="508" y2="520" class="ln" marker-end="url(#a)"/>
+  <line x1="674" y1="520" x2="698" y2="520" class="ln" marker-end="url(#a)"/>
+  <text x="500" y="700" class="b c">You write the steps.</text>
+  <text x="500" y="750" class="b c mu">You decide how many.</text>
+  <rect x="1020" y="250" width="800" height="600" rx="24" class="fte ste" stroke-width="3"/>
+  <text x="1420" y="320" class="bb c te">AGENT</text>
+  <path d="M1420 390 A130 130 0 1 1 1296 480" class="ln ste" stroke-width="6" marker-end="url(#a)"/>
+  <text x="1420" y="495" class="md c">think</text><text x="1420" y="530" class="md c">act</text><text x="1420" y="565" class="md c">observe</text>
+  <text x="1420" y="720" class="b c">The model picks each step.</text>
+  <text x="1420" y="770" class="b c te">The model decides when to stop.</text>
+  <text x="960" y="930" class="bb c am">You hand over the steering wheel — and keep one brake: max_turns.</text>
+</svg>
+
+<!-- 14 -->
+<svg class="d" data-t="A skill is not a tool" data-s="People mix these up all the time. One is know-how. The other is a hand.">
+  <rect x="120" y="260" width="780" height="560" rx="24" class="fvi svi" stroke-width="3"/>
+  <text x="170" y="340" class="big vi">SKILL</text><text x="170" y="395" class="b">a recipe</text>
+  <text x="170" y="480" class="md">• Plain-language instructions (a .md file)</text>
+  <text x="170" y="535" class="md">• How to do a job, step by step</text>
+  <text x="170" y="590" class="md">• Can say which tools to use</text>
+  <rect x="170" y="670" width="680" height="90" rx="14" fill="#fff9db"/>
+  <text x="510" y="725" class="mono c vi" font-size="24">frontend.md · design-system.md</text>
+  <rect x="1020" y="260" width="780" height="560" rx="24" class="fam sam" stroke-width="3"/>
+  <text x="1070" y="340" class="big am">TOOL</text><text x="1070" y="395" class="b">a utensil</text>
+  <text x="1070" y="480" class="md">• A function the harness can run (code)</text>
+  <text x="1070" y="535" class="md">• Does one concrete thing</text>
+  <text x="1070" y="590" class="md">• Has a name and arguments</text>
+  <rect x="1070" y="670" width="680" height="90" rx="14" fill="#fff9db"/>
+  <text x="1410" y="725" class="mono c am" font-size="24">read_file() · run_bash()</text>
+  <text x="960" y="920" class="bb c">The skill is the know-how. The tool is the hand that does it.</text>
+</svg>
+
+<!-- 15 -->
+<svg class="d" data-t="provider.py — the one doorway to the model" data-s="Only this file knows which vendor we use. Everything else speaks one neutral format.">
+  <rect x="100" y="430" width="420" height="220" rx="22" class="fte ste" stroke-width="3"/>
+  <text x="310" y="525" class="mono c te" font-size="38" font-weight="700">loop.py</text>
+  <text x="310" y="580" class="sm c">speaks one neutral format</text>
+  <line x1="538" y1="540" x2="702" y2="540" class="ln" marker-end="url(#a)" marker-start="url(#b)"/>
+  <rect x="720" y="250" width="500" height="600" rx="24" class="fam sam" stroke-width="4"/>
+  <text x="970" y="315" class="mono c am" font-size="38" font-weight="700">provider.py</text>
+  <g>
+    <rect x="750" y="350" width="440" height="105" rx="14" class="box"/><text x="775" y="395" class="bb">1 · Authenticate</text><text x="775" y="432" class="sm">holds the API key</text>
+    <rect x="750" y="470" width="440" height="105" rx="14" class="box"/><text x="775" y="515" class="bb">2 · Translate</text><text x="775" y="552" class="sm">our format ⇄ the vendor's</text>
+    <rect x="750" y="590" width="440" height="105" rx="14" class="box"/><text x="775" y="635" class="bb">3 · Retry</text><text x="775" y="672" class="sm">on temporary failures</text>
+    <rect x="750" y="710" width="440" height="105" rx="14" class="box"/><text x="775" y="755" class="bb">4 · Normalize</text><text x="775" y="792" class="sm">text, tool calls, token usage</text>
+  </g>
+  <g class="b">
+    <rect x="1420" y="300" width="400" height="110" rx="55" class="box"/><text x="1620" y="365" class="c">Gemini</text>
+    <rect x="1420" y="485" width="400" height="110" rx="55" class="box"/><text x="1620" y="550" class="c">Claude</text>
+    <rect x="1420" y="670" width="400" height="110" rx="55" class="box"/><text x="1620" y="735" class="c">OpenRouter</text>
+  </g>
+  <path d="M1230 500 Q1320 360 1402 356" class="ln" marker-end="url(#a)"/>
+  <line x1="1230" y1="540" x2="1402" y2="540" class="ln" marker-end="url(#a)"/>
+  <path d="M1230 580 Q1320 720 1402 724" class="ln" marker-end="url(#a)"/>
+  <text x="960" y="945" class="bb c am">Want a different model? Change one file. Nothing else notices.</text>
+</svg>
+
+<!-- 16 -->
+<svg class="d" data-t="What we build today" data-s="Two small files. That is the whole of Day 1.">
+  <rect x="120" y="260" width="760" height="540" rx="22" fill="#fff9db" stroke="#1e1e1e" stroke-width="3"/>
+  <g class="mono" font-size="30">
+    <text x="170" y="335">zill-harness/</text>
+    <text x="170" y="390">├─ zill/</text>
+    <text x="170" y="445">│   ├─ __init__.py</text>
+    <text x="170" y="500" class="am" font-weight="700">│   ├─ provider.py   ← today</text>
+    <text x="170" y="555" class="am" font-weight="700">│   └─ loop.py       ← today</text>
+    <text x="170" y="610">├─ demos/</text>
+    <text x="170" y="665">│   └─ day1_dice.py</text>
+    <text x="170" y="720">└─ .gitignore</text>
+  </g>
+  <g>
+    <rect x="1000" y="260" width="800" height="92" rx="16" fill="#ffd43b"/><text x="1040" y="318" class="bb dk">Day 1 · The Loop</text><text x="1760" y="318" class="md dk" text-anchor="end" font-weight="700">TODAY</text>
+    <rect x="1000" y="372" width="800" height="92" rx="16" class="box"/><text x="1040" y="430" class="bb">Day 2 · Tools</text>
+    <rect x="1000" y="484" width="800" height="92" rx="16" class="box"/><text x="1040" y="542" class="bb">Day 3 · Context &amp; Memory</text>
+    <rect x="1000" y="596" width="800" height="92" rx="16" class="box"/><text x="1040" y="654" class="bb">Day 4 · Durability</text>
+    <rect x="1000" y="708" width="800" height="92" rx="16" class="box"/><text x="1040" y="766" class="bb">Day 5 · Orchestration</text>
+  </g>
+  <text x="960" y="920" class="bb c am">Two small files tonight. Your own complete harness by Day 5.</text>
+</svg>
+
+<!-- 17 : the loop, derived (replaces 11 in the running order) -->
+<svg class="d" data-t="The loop, derived" data-s="Nobody designs this loop. Every step is forced by what the model cannot do.">
+  <text x="240" y="285" class="bb c">messages</text>
+  <text x="240" y="322" class="sm c">grows every lap</text>
+  <rect x="80" y="345" width="320" height="50" rx="8" class="fam sam" stroke-width="2"/><text x="100" y="379" class="sm">system</text>
+  <rect x="80" y="405" width="320" height="50" rx="8" class="fam sam" stroke-width="2"/><text x="100" y="439" class="sm">user</text>
+  <rect x="80" y="465" width="320" height="50" rx="8" class="fam sam" stroke-width="2"/><text x="100" y="499" class="sm">assistant → tool call</text>
+  <rect x="80" y="525" width="320" height="50" rx="8" class="fam sam" stroke-width="2"/><text x="100" y="559" class="sm">tool result</text>
+  <rect x="80" y="585" width="320" height="50" rx="8" class="box da"/><text x="100" y="619" class="sm">+ next lap…</text>
+  <text x="80" y="690" class="an co">THIS list is the memory</text>
+  <line x1="410" y1="368" x2="602" y2="336" class="ln sam da" marker-end="url(#a)"/>
+
+  <rect x="620" y="280" width="420" height="100" rx="14" class="fbl sbl" stroke-width="3"/>
+  <text x="830" y="340" class="md mono c">call_model(messages)</text>
+  <circle cx="620" cy="280" r="22" class="box"/><text x="620" y="290" class="md c">1</text>
+  <line x1="830" y1="386" x2="830" y2="446" class="ln" marker-end="url(#a)"/>
+
+  <polygon points="630,560 830,460 1030,560 830,660" class="box" stroke-width="3"/>
+  <text x="830" y="552" class="md c">did it ask</text><text x="830" y="588" class="md c">for a tool?</text>
+  <circle cx="1000" cy="488" r="22" class="box"/><text x="1000" y="498" class="md c">2</text>
+
+  <line x1="830" y1="666" x2="830" y2="758" class="ln sco" marker-end="url(#a)"/>
+  <text x="872" y="722" class="md co">NO</text>
+  <rect x="620" y="775" width="420" height="90" rx="14" class="fte ste" stroke-width="3"/>
+  <text x="830" y="830" class="md c te">return the answer ✓</text>
+
+  <line x1="1036" y1="560" x2="1182" y2="560" class="ln sam" marker-end="url(#a)"/>
+  <text x="1108" y="540" class="md c am">YES</text>
+  <rect x="1200" y="500" width="360" height="120" rx="14" class="fam sam" stroke-width="3"/>
+  <text x="1380" y="552" class="bb c am">OUR code</text><text x="1380" y="592" class="md c">runs each tool</text>
+  <circle cx="1200" cy="500" r="22" class="box"/><text x="1200" y="510" class="md c">3</text>
+
+  <line x1="1380" y1="494" x2="1380" y2="398" class="ln" marker-end="url(#a)"/>
+  <rect x="1150" y="280" width="500" height="100" rx="14" class="fvi svi" stroke-width="3"/>
+  <text x="1400" y="340" class="md mono c">append result → messages</text>
+  <circle cx="1150" cy="280" r="22" class="box"/><text x="1150" y="290" class="md c">4</text>
+
+  <line x1="1144" y1="330" x2="1058" y2="330" class="ln sbl" marker-end="url(#a)"/>
+  <circle cx="1072" cy="232" r="22" class="box"/><text x="1072" y="242" class="md c">5</text>
+  <text x="1108" y="240" class="an bl">model now sees the result</text>
+
+  <text x="80" y="770" class="an am">max_turns = 80</text>
+  <text x="80" y="810" class="sm">safety brake: if the laps run out,</text>
+  <text x="80" y="846" class="sm">ask for a wrap-up, then stop</text>
+
+  <rect x="1240" y="720" width="600" height="190" rx="18" class="box da"/>
+  <text x="1540" y="785" class="b c">the loop isn't designed —</text>
+  <text x="1540" y="830" class="b c">it's forced by what</text>
+  <text x="1540" y="875" class="b c">the model can't do.</text>
+</svg>
+
+<!-- 18 : who decides when it's done (replaces 13 in the running order) -->
+<svg class="d" data-t="Who decides when it's done?" data-s="A workflow and an agent can use the same model. The difference is who owns the exit.">
+  <text x="100" y="275" class="bb bl">(A) WORKFLOW — you author the steps</text>
+  <text x="100" y="340" class="an bl">the plan is fixed, written ahead of time</text>
+  <g class="md">
+    <rect x="100" y="400" width="130" height="80" rx="12" class="fbl sbl" stroke-width="3"/><text x="165" y="450" class="c">plan</text>
+    <rect x="260" y="400" width="130" height="80" rx="12" class="fbl sbl" stroke-width="3"/><text x="325" y="450" class="c">step 1</text>
+    <rect x="420" y="400" width="130" height="80" rx="12" class="fbl sbl" stroke-width="3"/><text x="485" y="450" class="c">step 2</text>
+    <rect x="580" y="400" width="130" height="80" rx="12" class="fbl sbl" stroke-width="3"/><text x="645" y="450" class="c">step 3</text>
+    <rect x="740" y="400" width="130" height="80" rx="12" class="fbl sbl" stroke-width="3"/><text x="805" y="450" class="c">done</text>
+  </g>
+  <line x1="233" y1="440" x2="250" y2="440" class="ln" marker-end="url(#a)"/>
+  <line x1="393" y1="440" x2="410" y2="440" class="ln" marker-end="url(#a)"/>
+  <line x1="553" y1="440" x2="570" y2="440" class="ln" marker-end="url(#a)"/>
+  <line x1="713" y1="440" x2="730" y2="440" class="ln" marker-end="url(#a)"/>
+  <path d="M260 498v16H710v-16" class="ln ste"/>
+  <text x="260" y="556" class="an te">YOU decided there are 3 steps</text>
+  <text x="100" y="640" class="an co">breaks when the task is unpredictable</text>
+  <text x="100" y="672" class="an co">(what if 2 were enough? or 5 needed?)</text>
+  <text x="100" y="745" class="an mu">no branching, no decisions along the way</text>
+
+  <text x="950" y="345" class="md c co">INVERSION</text><text x="950" y="382" class="md c co">OF CONTROL</text>
+  <line x1="892" y1="440" x2="1010" y2="440" class="ln sco" stroke-width="7" marker-end="url(#a)"/>
+  <text x="950" y="505" class="an c co">the exit moves</text><text x="950" y="537" class="an c co">INTO the model</text>
+
+  <text x="1080" y="275" class="bb am">(B) AGENT — the model decides</text>
+  <circle cx="1330" cy="560" r="172" class="ln sam"/>
+  <circle cx="1337" cy="555" r="160" class="ln sam"/>
+  <circle cx="1323" cy="566" r="149" class="ln sam"/>
+  <circle cx="1330" cy="560" r="58" class="ln" stroke-width="5"/>
+  <circle cx="1330" cy="560" r="14" class="ln" stroke-width="5"/>
+  <path d="M1330 546V502M1318 567L1280 589M1342 567L1380 589" class="ln" stroke-width="5"/>
+  <line x1="1070" y1="650" x2="1152" y2="610" class="ln" marker-end="url(#a)"/>
+  <text x="1040" y="690" class="sm">START</text>
+  <line x1="1330" y1="738" x2="1330" y2="800" class="ln" marker-end="url(#a)"/>
+  <text x="1330" y="842" class="sm c">EXIT — done</text>
+  <text x="1545" y="380" class="an vi">while tool_calls:</text><text x="1545" y="412" class="an vi">    keep going</text>
+  <text x="1545" y="500" class="an bl">the MODEL chooses</text><text x="1545" y="532" class="an bl">each lap: act again,</text><text x="1545" y="564" class="an bl">or stop</text>
+  <text x="1545" y="660" class="an am">number of laps</text><text x="1545" y="692" class="an am">depends on the task</text>
+
+  <rect x="460" y="880" width="1000" height="118" rx="18" class="box da"/>
+  <text x="960" y="928" class="b c">an agent decides for itself when it's finished.</text>
+  <text x="960" y="972" class="b c">that's the whole difference.</text>
+</svg>
+
+<!-- 19 : the three pieces of a bare harness -->
+<svg class="d" data-t="The three pieces of a bare harness" data-s="A model client, a message array and tools — spun in a loop.">
+  <rect x="700" y="260" width="520" height="112" rx="16" class="fte ste" stroke-width="3"/>
+  <text x="960" y="308" class="bb c">MODEL CLIENT</text><text x="960" y="348" class="sm mono c">send(messages) → reply</text>
+  <circle cx="700" cy="260" r="22" class="box"/><text x="700" y="270" class="md c">1</text>
+  <text x="1290" y="296" class="an te">the only piece that</text><text x="1290" y="328" class="an te">talks to the vendor</text>
+
+  <rect x="174" y="654" width="580" height="130" rx="16" class="fbl sbl" stroke-width="3"/>
+  <rect x="160" y="640" width="580" height="130" rx="16" class="fbl sbl" stroke-width="3"/>
+  <text x="450" y="692" class="bb c">MESSAGE ARRAY</text><text x="450" y="734" class="sm mono c">[system, user, assistant, tool…]</text>
+  <circle cx="160" cy="640" r="22" class="box"/><text x="160" y="650" class="md c">2</text>
+  <text x="80" y="470" class="an bl">appends every message,</text><text x="80" y="502" class="an bl">keeps the history</text><text x="80" y="534" class="an bl">across turns</text>
+
+  <rect x="1240" y="640" width="440" height="130" rx="16" class="fvi svi" stroke-width="3"/>
+  <text x="1460" y="692" class="bb c">TOOLS</text><text x="1460" y="734" class="sm mono c">{name: schema + fn}</text>
+  <circle cx="1240" cy="640" r="22" class="box"/><text x="1240" y="650" class="md c">3</text>
+  <text x="1470" y="470" class="an vi">def read_file(path):</text><text x="1470" y="502" class="an vi">    return open(path).read()</text>
+
+  <line x1="800" y1="384" x2="528" y2="626" class="ln" marker-end="url(#a)" marker-start="url(#b)"/>
+  <line x1="1120" y1="384" x2="1392" y2="626" class="ln" marker-end="url(#a)" marker-start="url(#b)"/>
+  <line x1="772" y1="705" x2="1226" y2="705" class="ln" marker-end="url(#a)" marker-start="url(#b)"/>
+
+  <path d="M960 445 A115 115 0 1 1 851 524" class="ln sam" stroke-width="6" marker-end="url(#a)"/>
+  <text x="960" y="574" class="bb c am">THE LOOP</text>
+  <text x="960" y="822" class="an c am">send → tool? → run → append → repeat</text>
+
+  <rect x="80" y="850" width="360" height="110" rx="55" class="fco sco" stroke-width="3"/>
+  <text x="260" y="896" class="md c co">this list IS the</text><text x="260" y="932" class="md c co">agent's state</text>
+  <line x1="300" y1="846" x2="380" y2="792" class="ln sco da" marker-end="url(#a)"/>
+
+  <rect x="620" y="866" width="680" height="118" rx="18" class="box da"/>
+  <text x="960" y="914" class="b c">client + message array + tools,</text>
+  <text x="960" y="958" class="b c">spun in a loop = an agent.</text>
+</svg>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const only=new URLSearchParams(location.search).get('s');
+const pro=new URLSearchParams(location.search).get('theme')==='pro';
+if(pro) document.body.classList.add('pro');
+const all=[...document.querySelectorAll('svg.d')];
+const ORDER=[1,2,3,4,5,6,7,8,9,10,17,12,18,14,19,15,16]; // teaching order (matches the script); old 11 and 13 are superseded by 17 and 18
+all.forEach((s,k)=>{ if(!ORDER.includes(k+1)) s.remove(); });
+const slides=ORDER.map(k=>all[k-1]);
+slides.forEach(s=>document.body.insertBefore(s,document.currentScript));
+slides.forEach((svg,i)=>{
+  const n=i+1, nn=String(n).padStart(2,'0');
+  if(only && +only!==n){svg.remove();return;}
+  svg.setAttribute('viewBox','0 0 1920 1080');
+  svg.setAttribute('xmlns',NS);
+  let head=`<defs>
+    <marker id="a${n}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker>
+    <marker id="b${n}" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M10 0L0 5L10 10z" fill="context-stroke"/></marker>
+  </defs>
+  <defs>
+    <filter id="wob${n}" filterUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+      <feTurbulence type="fractalNoise" baseFrequency="0.016" numOctaves="2" seed="${n*7}" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="8" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <g id="man${n}" fill="none" stroke="#1e1e1e" stroke-width="4" stroke-linecap="round">
+      <circle cx="50" cy="28" r="24" fill="#ffffff"/>
+      <path d="M41 23v5M59 23v5M40 37q10 9 20 0"/>
+      <path d="M50 52V125M50 78L12 108M50 78L90 100M50 125L22 196M50 125L80 196"/>
+    </g>
+  </defs>
+  <rect width="1920" height="1080" fill="#fffdf7"/>
+  <g filter="url(#wob${n})">
+  <text x="960" y="108" class="h c">${svg.dataset.t}</text>
+  <path class="ul" d=""/>
+  <text x="960" y="182" class="sub c">${svg.dataset.s}</text>
+  <text x="70" y="1048" class="ft">ZILL HARNESS · Day 1 · The Loop</text>
+  <text x="1850" y="1048" class="ft" text-anchor="end">${nn}</text>`;
+  if(pro) head=head.split('<rect width="1920"')[0]+`<pattern id="dots${n}" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="#d5dde7"/></pattern>
+  <rect width="1920" height="1080" fill="#f8fafc"/><rect width="1920" height="1080" fill="url(#dots${n})"/>
+  <g>
+  <path class="ul" d="M78 66V186"/>
+  <text x="104" y="84" class="kick">ZILL HARNESS · DAY 1 · THE LOOP</text>
+  <text x="104" y="142" class="h">${svg.dataset.t}</text>
+  <text x="104" y="186" class="sub">${svg.dataset.s}</text>
+  <text x="1850" y="1048" class="ft" text-anchor="end">${nn} / ${slides.length}</text>`;
+  svg.innerHTML=head+svg.innerHTML.replaceAll('url(#a)',`url(#a${n})`).replaceAll('url(#b)',`url(#b${n})`).replaceAll('#man',`#man${n}`)+'</g>';
+  if(!pro){
+    const L=Math.min(svg.querySelector('.h').getComputedTextLength(),1750);
+    svg.querySelector('.ul').setAttribute('d',`M${960-L/2} 130 q${L/4} 12 ${L/2} 0 t${L/2} 0`);
+  }
+});
+if(only) document.body.classList.add('single');
+</script>
+</body>
+</html>

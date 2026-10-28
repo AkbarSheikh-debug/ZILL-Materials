@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tic-Tac-Toe - built by ZILL-Harness</title>
+<style>
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:#1b1530;color:#f2eeff;font-family:system-ui,sans-serif;text-align:center}
+#b{display:grid;grid-template-columns:repeat(3,100px);gap:8px;margin:16px auto;width:max-content}
+#b button{width:100px;height:100px;font-size:48px;background:#2a2147;color:#f2eeff;border:0;border-radius:12px;cursor:pointer}
+#b button:hover:not(:disabled){background:#38295f}.x{color:#ff8fab}.o{color:#8fd3ff}
+#r{background:#7c5cff;color:#fff;border:0;border-radius:8px;padding:8px 18px;cursor:pointer}
+.t{font-size:12px;color:#8c82ad;margin-top:12px}
+</style></head><body><main>
+<h2>Tic-Tac-Toe</h2><div id="m">You are X. Your move.</div>
+<div id="b"></div><button id="r">New game</button>
+<div class="t">Unbeatable computer (minimax) &middot; built by ZILL-Harness</div>
+</main><script>
+const L=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+let g,end;const bd=document.getElementById('b'),m=document.getElementById('m');
+function win(s){for(const[a,b,c]of L)if(s[a]&&s[a]==s[b]&&s[a]==s[c])return s[a];return s.every(v=>v)?'draw':null}
+function mm(s,p){const w=win(s);if(w)return w=='O'?1:w=='X'?-1:0;
+  let best=p=='O'?-2:2;
+  s.forEach((v,i)=>{if(v)return;s[i]=p;const r=mm(s,p=='O'?'X':'O');s[i]='';
+    best=p=='O'?Math.max(best,r):Math.min(best,r);});return best}
+function ai(){let bi,bs=-2;g.forEach((v,i)=>{if(v)return;g[i]='O';const r=mm(g,'X');g[i]='';if(r>bs){bs=r;bi=i}});g[bi]='O'}
+function show(){bd.innerHTML='';g.forEach((v,i)=>{const b=document.createElement('button');b.textContent=v;b.className=v.toLowerCase();
+  b.disabled=!!v||end;b.onclick=()=>play(i);bd.append(b)});}
+function check(){const w=win(g);if(w){end=true;m.textContent=w=='draw'?"It's a draw.":(w=='X'?'You win!':'Computer wins.');}return end}
+function play(i){g[i]='X';if(!check()){ai();check()}show()}
+function init(){g=Array(9).fill('');end=false;m.textContent='You are X. Your move.';show()}
+document.getElementById('r').onclick=init;init();
+</script></body></html>

@@ -1,0 +1,1507 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Zill Harness · Lecture 4 diagrams</title>
+<style>
+  html,body{margin:0;background:#05070f}
+  svg.d{display:block;width:100%;height:auto;margin:0 0 24px}
+  body.single svg.d{margin:0;width:100vw;height:100vh}
+  svg text{font-family:"Segoe UI",Arial,sans-serif;fill:#e8ecf8}
+  .h{font-size:60px;font-weight:700;fill:#fff}
+  .sub{font-size:30px;fill:#8f9bc0}
+  .b{font-size:30px}
+  .bb{font-size:32px;font-weight:700}
+  .big{font-size:52px;font-weight:700}
+  .sm{font-size:24px;fill:#8f9bc0}
+  .md{font-size:26px}
+  svg .mono, svg .mono text{font-family:"Cascadia Code",Consolas,monospace;white-space:pre}
+  .c{text-anchor:middle}
+  .box{fill:#151c33;stroke:#2a3558;stroke-width:2}
+  .ln{stroke:#8f9bc0;stroke-width:4;fill:none}
+  svg .am{fill:#ffb547} svg .te{fill:#3ddbc0} svg .vi{fill:#9d8cff} svg .co{fill:#ff7a70} svg .bl{fill:#5aa9ff} svg .mu{fill:#8f9bc0} svg .dk{fill:#0b1020}
+  .sam{stroke:#ffb547} .ste{stroke:#3ddbc0} .svi{stroke:#9d8cff} .sco{stroke:#ff7a70} .sbl{stroke:#5aa9ff}
+  .fam{fill:rgba(255,181,71,.16)} .fte{fill:rgba(61,219,192,.14)} .fvi{fill:rgba(157,140,255,.16)} .fco{fill:rgba(255,122,112,.15)} .fbl{fill:rgba(90,169,255,.15)}
+</style>
+<style>
+  /* hand-drawn whiteboard theme (overrides the block above) */
+  html,body{background:#e9e6df}
+  svg text{font-family:"Ink Free","Segoe Print","Comic Sans MS",cursive;fill:#1e1e1e;font-weight:700}
+  .h{font-family:"Segoe Print","Ink Free",cursive;font-size:54px;font-weight:700;fill:#1e1e1e}
+  .sub{font-size:32px;fill:#495057}
+  .b{font-size:33px}
+  .bb{font-size:36px;font-weight:700}
+  .big{font-size:58px;font-weight:700}
+  .sm{font-size:27px;fill:#495057}
+  .md{font-size:29px}
+  svg .mono, svg .mono text, svg .an, svg .ft{font-family:"Cascadia Code",Consolas,monospace;font-weight:600}
+  svg .mono, svg .mono text{white-space:pre}
+  svg .an{font-size:22px}
+  svg .ft{font-size:20px;fill:#868e96}
+  .box{fill:#fff;stroke:#1e1e1e;stroke-width:3}
+  .ln{stroke:#1e1e1e;stroke-width:3.5;fill:none;stroke-linecap:round}
+  .da{stroke-dasharray:9 9}
+  .ul{stroke:#f08c00;stroke-width:6;fill:none;stroke-linecap:round}
+  svg .am{fill:#e8590c} svg .te{fill:#2b8a3e} svg .vi{fill:#6741d9} svg .co{fill:#e03131} svg .bl{fill:#1971c2} svg .mu{fill:#6b7280} svg .dk{fill:#1e1e1e}
+  .sam{stroke:#e8590c} .ste{stroke:#2f9e44} .svi{stroke:#6741d9} .sco{stroke:#e03131} .sbl{stroke:#1971c2}
+  .fam{fill:#fff3bf} .fte{fill:#d3f9d8} .fvi{fill:#e5dbff} .fco{fill:#ffe3e3} .fbl{fill:#d0ebff}
+</style>
+</head>
+<body>
+
+<!-- 01 -->
+<svg class="d" data-t="Where we are" data-s="Your Zill repo after Lecture 3. Today one new file joins it.">
+  <g class="md">
+  <rect x="90" y="260" width="300" height="110" rx="14" class="fte ste" stroke-width="4"/><text x="240" y="328" class="c mono" font-size="28">provider.py</text>
+  <rect x="440" y="260" width="300" height="110" rx="14" class="fte ste" stroke-width="4"/><text x="590" y="328" class="c mono" font-size="28">loop.py</text>
+  <rect x="790" y="260" width="300" height="110" rx="14" class="fte ste" stroke-width="4"/><text x="940" y="328" class="c mono" font-size="28">tools.py</text>
+  <rect x="1140" y="260" width="300" height="110" rx="14" class="fte ste" stroke-width="4"/><text x="1290" y="328" class="c mono" font-size="28">security.py</text>
+  <rect x="1490" y="260" width="330" height="110" rx="14" class="fte ste" stroke-width="4"/><text x="1655" y="328" class="c mono" font-size="28">operations.py</text>
+  </g>
+  <text x="240" y="410" class="sm c">L2 · the model client</text>
+  <text x="590" y="410" class="sm c">L2 · the heartbeat</text>
+  <text x="940" y="410" class="sm c">L3 · the hands</text>
+  <text x="1290" y="410" class="sm c">L3 · the conscience</text>
+  <text x="1655" y="410" class="sm c">L3 · where tools run</text>
+  <text x="960" y="470" class="an c te">✓ already in your repo</text>
+
+  <rect x="610" y="530" width="700" height="190" rx="18" class="fam sam da" stroke-width="5"/>
+  <text x="960" y="605" class="big c am">context.py</text>
+  <text x="960" y="665" class="md c">TODAY · keeps the tape under budget</text>
+  <path d="M560 425 Q520 560 600 620" class="ln sam" marker-end="url(#a)"/>
+  <text x="300" y="560" class="sm c">plugs into the loop</text>
+  <text x="300" y="600" class="an c am">before_turn=compact</text>
+
+  <rect x="410" y="820" width="1100" height="120" rx="16" class="box da"/>
+  <text x="960" y="872" class="md c">The loop keeps its shape.</text>
+  <text x="960" y="915" class="sm c">Compaction plugs in through one new socket.</text>
+</svg>
+
+<!-- 02 -->
+<svg class="d" data-t="Two different jobs" data-s="Context engineering fills the window. Context management keeps it alive.">
+  <rect x="110" y="250" width="800" height="560" rx="20" class="fbl sbl" stroke-width="4"/>
+  <text x="510" y="320" class="bb c bl">CONTEXT ENGINEERING</text>
+  <text x="510" y="380" class="md c">WHAT goes into the window</text>
+  <text x="510" y="470" class="b c">the ingredients</text>
+  <text x="510" y="550" class="sm c">system prompt · tools · skills</text>
+  <text x="510" y="595" class="sm c">memory files · the conversation</text>
+  <text x="510" y="700" class="an c mu">most courses stop here</text>
+
+  <rect x="1010" y="250" width="800" height="560" rx="20" class="fam sam" stroke-width="5"/>
+  <text x="1410" y="320" class="bb c am">CONTEXT MANAGEMENT</text>
+  <text x="1410" y="380" class="md c">HOW the harness keeps it under budget</text>
+  <text x="1410" y="470" class="b c">the kitchen</text>
+  <text x="1410" y="550" class="sm c">when to compact · what to keep</text>
+  <text x="1410" y="595" class="sm c">where to cut · what if it fails</text>
+  <text x="1410" y="700" class="an c am">a harness lives here ← TODAY</text>
+  <line x1="915" y1="530" x2="1000" y2="530" class="ln" marker-end="url(#a)"/>
+
+  <text x="960" y="905" class="b c">Knowing the ingredients is not the same as running the kitchen.</text>
+</svg>
+
+<!-- 03 -->
+<svg class="d" data-t="Context is the fuel" data-s="Lecture 1's picture: the LLM is the engine, tools are the wheels, context is the fuel.">
+  <path d="M220 640 L220 520 Q240 470 330 465 L520 460 L620 360 Q640 340 680 340 L1000 340 Q1040 340 1060 370 L1150 460 L1260 470 Q1320 480 1320 540 L1320 640 Z" class="fbl sbl" stroke-width="5"/>
+  <rect x="650" y="370" width="170" height="90" rx="10" class="box"/>
+  <rect x="850" y="370" width="170" height="90" rx="10" class="box"/>
+  <rect x="600" y="480" width="360" height="100" rx="14" class="fvi svi" stroke-width="4"/>
+  <text x="780" y="522" class="bb c vi">LLM</text>
+  <text x="780" y="560" class="sm c">the engine</text>
+  <circle cx="460" cy="660" r="85" class="box" stroke-width="5"/><circle cx="460" cy="660" r="30" class="fte ste" stroke-width="4"/>
+  <circle cx="1100" cy="660" r="85" class="box" stroke-width="5"/><circle cx="1100" cy="660" r="30" class="fte ste" stroke-width="4"/>
+  <text x="780" y="810" class="bb c te">TOOLS = the wheels</text>
+  <line x1="640" y1="790" x2="540" y2="720" class="ln ste" marker-end="url(#a)"/>
+  <line x1="920" y1="790" x2="1020" y2="720" class="ln ste" marker-end="url(#a)"/>
+
+  <rect x="1440" y="300" width="380" height="420" rx="30" class="fam sam" stroke-width="5"/>
+  <text x="1630" y="370" class="bb c am">CONTEXT</text>
+  <text x="1630" y="410" class="sm c">= the fuel</text>
+  <path d="M1500 600 A130 130 0 0 1 1760 600" class="ln" stroke-width="5"/>
+  <text x="1500" y="640" class="bb c co">E</text><text x="1760" y="640" class="bb c te">F</text>
+  <line x1="1630" y1="600" x2="1545" y2="520" class="ln sco" stroke-width="7"/>
+  <circle cx="1630" cy="600" r="10" class="dk"/>
+  <text x="1630" y="690" class="an c co">running low…</text>
+  <line x1="1430" y1="520" x2="1330" y2="560" class="ln sam" marker-end="url(#a)"/>
+
+  <text x="960" y="930" class="b c">The tank has a size. You cannot keep pouring forever.</text>
+  <text x="960" y="985" class="sm c">Context is a BUDGET, not a bottomless tank.</text>
+</svg>
+
+<!-- 04 -->
+<svg class="d" data-t="The tape only grows" data-s="Every turn appends. Nothing is ever removed. And all of it is re-sent on every call.">
+  <rect x="290" y="250" width="330" height="90" rx="14" class="fvi svi" stroke-width="4"/><text x="455" y="307" class="md c">call the model</text>
+  <rect x="580" y="480" width="300" height="90" rx="14" class="box"/><text x="730" y="537" class="md c">tool needed?</text>
+  <rect x="290" y="710" width="330" height="90" rx="14" class="fte ste" stroke-width="4"/><text x="455" y="767" class="md c">run the tool</text>
+  <rect x="40" y="480" width="330" height="90" rx="14" class="fam sam" stroke-width="5"/><text x="205" y="525" class="md c">APPEND to</text><text x="205" y="557" class="md c">messages</text>
+  <path d="M600 345 Q720 380 730 470" class="ln" marker-end="url(#a)"/>
+  <path d="M720 580 Q700 690 625 740" class="ln" marker-end="url(#a)"/>
+  <path d="M290 760 Q190 700 200 585" class="ln" marker-end="url(#a)"/>
+  <path d="M210 475 Q230 330 285 310" class="ln" marker-end="url(#a)"/>
+  <text x="830" y="650" class="an mu">no → done</text>
+
+  <line x1="1050" y1="900" x2="1830" y2="900" class="ln"/>
+  <line x1="1050" y1="900" x2="1050" y2="320" class="ln"/>
+  <line x1="1050" y1="452" x2="1840" y2="452" class="ln sco da" stroke-width="5"/>
+  <text x="1070" y="440" class="an co">the window (the ceiling)</text>
+  <rect x="1080" y="883" width="110" height="17" class="fte ste" stroke-width="3"/>
+  <rect x="1230" y="850" width="110" height="50" class="fte ste" stroke-width="3"/>
+  <rect x="1380" y="766" width="110" height="134" class="fam sam" stroke-width="3"/>
+  <rect x="1530" y="614" width="110" height="286" class="fam sam" stroke-width="3"/>
+  <rect x="1680" y="396" width="110" height="504" class="fco sco" stroke-width="4"/>
+  <text x="1135" y="870" class="an c">3k</text><text x="1285" y="838" class="an c">9k</text><text x="1435" y="754" class="an c">24k</text><text x="1585" y="602" class="an c">51k</text><text x="1735" y="384" class="an c co">90k!</text>
+  <text x="1135" y="945" class="sm c">turn 1</text><text x="1285" y="945" class="sm c">5</text><text x="1435" y="945" class="sm c">10</text><text x="1585" y="945" class="sm c">20</text><text x="1735" y="945" class="sm c">30</text>
+  <text x="1440" y="300" class="md c">size of the tape we send</text>
+
+  <text x="960" y="1005" class="b c">Turn 30 of a real task: the tape hits the ceiling.</text>
+</svg>
+
+<!-- 05 -->
+<svg class="d" data-t="Nine things ride into every call" data-s="Everything the model sees on one turn. Only one group of them is ever compacted.">
+  <g class="md">
+  <rect x="110" y="232" width="1200" height="62" rx="12" class="box"/><text x="140" y="274">1 · System prompt: how the agent must behave</text>
+  <rect x="110" y="306" width="1200" height="62" rx="12" class="box"/><text x="140" y="348">2 · Tools: name · label · description · parameters</text>
+  <rect x="110" y="380" width="1200" height="62" rx="12" class="box"/><text x="140" y="422">3 · Skills: ONLY the name + a short description</text>
+  <rect x="110" y="454" width="1200" height="62" rx="12" class="fam sam" stroke-width="4"/><text x="140" y="496">4 · User messages</text>
+  <rect x="110" y="528" width="1200" height="62" rx="12" class="fam sam" stroke-width="4"/><text x="140" y="570">5 · Assistant messages (replies + thinking)</text>
+  <rect x="110" y="602" width="1200" height="62" rx="12" class="fam sam" stroke-width="4"/><text x="140" y="644">6 · Tool calls + tool results</text>
+  <rect x="110" y="676" width="1200" height="62" rx="12" class="box"/><text x="140" y="718">7 · Memory files: AGENTS.md / CLAUDE.md</text>
+  <rect x="110" y="750" width="1200" height="62" rx="12" class="box da"/><text x="140" y="792">8 · Memory fragments saved to disk (Hermes, OpenClaw)</text>
+  <rect x="110" y="824" width="1200" height="62" rx="12" class="box"/><text x="140" y="866">9 · Current working directory + today's date</text>
+  </g>
+  <g class="an te">
+  <text x="1340" y="274">NC · never compacted</text><text x="1340" y="348">NC</text><text x="1340" y="422">NC</text>
+  <text x="1340" y="718">NC</text><text x="1340" y="792">NC · optional</text><text x="1340" y="866">NC</text>
+  </g>
+  <path d="M1330 458 Q1370 460 1370 500 L1370 540 Q1370 558 1395 560 Q1370 562 1370 580 L1370 620 Q1370 660 1330 662" class="ln sam" stroke-width="5"/>
+  <text x="1420" y="540" class="bb am">THE MESSAGES</text>
+  <text x="1420" y="585" class="bb am">ARRAY</text>
+  <text x="1420" y="630" class="sm">← the ONLY part</text>
+  <text x="1420" y="665" class="sm">that is compacted</text>
+  <text x="960" y="960" class="b c">Fixed parts ride along untouched. Only the conversation gets folded.</text>
+</svg>
+
+<!-- 06 -->
+<svg class="d" data-t="Three voices in the context" data-s="System prompt, user message, assistant message: who writes them, and when do they change?">
+  <rect x="90" y="250" width="540" height="560" rx="20" class="fvi svi" stroke-width="4"/>
+  <text x="360" y="320" class="bb c vi">SYSTEM PROMPT</text>
+  <text x="360" y="380" class="md c">HOW to behave</text>
+  <rect x="130" y="420" width="460" height="200" rx="12" class="box"/>
+  <text x="150" y="470" class="an">"You are an expert coding</text>
+  <text x="150" y="505" class="an">assistant operating inside</text>
+  <text x="150" y="540" class="an">pi... Available tools: ..."</text>
+  <text x="360" y="690" class="sm c">same for EVERY session</text>
+  <text x="360" y="735" class="sm c">written by the harness</text>
+
+  <rect x="690" y="250" width="540" height="560" rx="20" class="fbl sbl" stroke-width="4"/>
+  <text x="960" y="320" class="bb c bl">USER</text>
+  <text x="960" y="380" class="md c">WHAT you want now</text>
+  <rect x="730" y="420" width="460" height="200" rx="12" class="box"/>
+  <text x="750" y="490" class="an">"Migrate this code</text>
+  <text x="750" y="525" class="an">base to Rust."</text>
+  <text x="960" y="690" class="sm c">changes EVERY session</text>
+  <text x="960" y="735" class="sm c">written by you</text>
+
+  <rect x="1290" y="250" width="540" height="560" rx="20" class="fte ste" stroke-width="4"/>
+  <text x="1560" y="320" class="bb c te">ASSISTANT</text>
+  <text x="1560" y="380" class="md c">what the model says</text>
+  <rect x="1330" y="420" width="460" height="200" rx="12" class="box"/>
+  <text x="1350" y="490" class="an">thinking tokens + reply</text>
+  <text x="1350" y="525" class="an">+ tool calls it makes</text>
+  <text x="1560" y="690" class="sm c">grows EVERY turn</text>
+  <text x="1560" y="735" class="sm c">written by the LLM</text>
+
+  <text x="960" y="905" class="b c">The system prompt is the high-level guideline. The user message is today's job.</text>
+</svg>
+
+<!-- 07 -->
+<svg class="d" data-t="Pi builds its prompt from five pieces" data-s="buildSystemPrompt() stacks them in order. The prompt is composed, not hard-coded.">
+  <rect x="440" y="250" width="960" height="84" rx="14" class="fbl sbl" stroke-width="4"/>
+  <text x="470" y="303" class="md bl">⑤ current date + current working directory: stamped LAST</text>
+  <rect x="440" y="354" width="960" height="84" rx="14" class="fte ste" stroke-width="4"/>
+  <text x="470" y="407" class="md te">④ &lt;available_skills&gt;: name + description + location</text>
+  <rect x="440" y="458" width="960" height="84" rx="14" class="box" stroke-width="5"/>
+  <text x="470" y="511" class="md">③ &lt;project_context&gt;: every AGENTS.md / CLAUDE.md found</text>
+  <rect x="440" y="562" width="960" height="84" rx="14" class="fam sam" stroke-width="4"/>
+  <text x="470" y="615" class="md am">② appendSystemPrompt: extra text glued on</text>
+  <rect x="440" y="666" width="960" height="110" rx="14" class="fvi svi" stroke-width="4"/>
+  <text x="470" y="712" class="md vi">① BASE TEMPLATE: "expert coding assistant</text>
+  <text x="470" y="752" class="md vi">operating inside pi" + the available tools list</text>
+
+  <path d="M1420 255 Q1470 260 1470 320 L1470 480 Q1470 512 1500 515 Q1470 518 1470 550 L1470 710 Q1470 772 1420 776" class="ln sco" stroke-width="4"/>
+  <text x="1520" y="490" class="md co">one string,</text>
+  <text x="1520" y="530" class="md co">rebuilt every call</text>
+
+  <text x="250" y="420" class="sm c am">only if the</text>
+  <text x="250" y="455" class="sm c am">read tool exists</text>
+  <path d="M330 420 Q380 410 432 400" class="ln sam da" marker-end="url(#a)"/>
+  <text x="250" y="800" class="sm c am">customPrompt</text>
+  <text x="250" y="835" class="sm c am">replaces ① entirely</text>
+  <path d="M330 790 Q380 760 432 740" class="ln sam da" marker-end="url(#a)"/>
+
+  <rect x="560" y="850" width="800" height="130" rx="16" class="box da"/>
+  <text x="960" y="905" class="md c">The model's identity is built fresh each time.</text>
+  <text x="960" y="950" class="sm c">Pi merges the tools list into the base template.</text>
+</svg>
+
+<!-- 08 -->
+<svg class="d" data-t="Same template, three prompts" data-s="The template is constant. The assembly is not: date, context and skills all move.">
+  <text x="350" y="275" class="md c am">(A) Monday, repo /app</text>
+  <text x="960" y="275" class="md c am">(B) Tuesday, same repo</text>
+  <text x="1570" y="275" class="md c am">(C) no read tool</text>
+  <rect x="170" y="300" width="360" height="460" rx="22" class="box da"/>
+  <rect x="780" y="300" width="360" height="460" rx="22" class="box da"/>
+  <rect x="1390" y="300" width="360" height="460" rx="22" class="box da"/>
+  <g class="md">
+  <rect x="210" y="350" width="280" height="90" rx="14" class="fbl sbl" stroke-width="4"/><text x="350" y="407" class="c bl">2026-10-14</text>
+  <rect x="210" y="490" width="280" height="90" rx="14" class="fam sam" stroke-width="4"/><text x="350" y="547" class="c">AGENTS.md ×1</text>
+  <rect x="210" y="630" width="280" height="90" rx="14" class="fte ste" stroke-width="4"/><text x="350" y="687" class="c">3 skills</text>
+  <rect x="820" y="350" width="280" height="90" rx="14" class="fbl sbl" stroke-width="6"/><text x="960" y="407" class="c bl">2026-10-15</text>
+  <rect x="820" y="490" width="280" height="90" rx="14" class="fam sam" stroke-width="4"/><text x="960" y="547" class="c">AGENTS.md ×1</text>
+  <rect x="820" y="630" width="280" height="90" rx="14" class="fte ste" stroke-width="4"/><text x="960" y="687" class="c">3 skills</text>
+  <rect x="1430" y="350" width="280" height="90" rx="14" class="fbl sbl" stroke-width="4"/><text x="1570" y="407" class="c bl">2026-10-15</text>
+  <rect x="1430" y="490" width="280" height="90" rx="14" class="fam sam" stroke-width="4"/><text x="1570" y="547" class="c">AGENTS.md ×1</text>
+  <rect x="1430" y="630" width="280" height="90" rx="14" class="box da"/><text x="1570" y="687" class="c mu">skills: gone</text>
+  </g>
+  <line x1="1440" y1="640" x2="1700" y2="710" class="ln sco" stroke-width="5"/><line x1="1440" y1="710" x2="1700" y2="640" class="ln sco" stroke-width="5"/>
+  <line x1="540" y1="395" x2="810" y2="395" class="ln sbl da" marker-end="url(#a)"/>
+  <text x="665" y="380" class="an c bl">date injection</text>
+  <text x="960" y="805" class="sm c co">↑ only the date changed</text>
+  <text x="1570" y="805" class="sm c co">no read tool → no skills block</text>
+  <rect x="460" y="860" width="1000" height="110" rx="16" class="box da"/>
+  <text x="960" y="928" class="md c">The template is constant; the assembly is not.</text>
+</svg>
+
+<!-- 09 -->
+<svg class="d" data-t="The AGENTS.md walk-up" data-s="Pi loads the global file first, then walks UP from the working folder to the root.">
+  <rect x="120" y="230" width="330" height="100" rx="14" class="fvi svi" stroke-width="4"/>
+  <text x="285" y="272" class="md c vi">~/.pi/agent/</text><text x="285" y="310" class="sm c">GLOBAL: loaded FIRST</text>
+  <rect x="100" y="370" width="760" height="600" rx="16" class="box"/>
+  <text x="130" y="415" class="md te">/Users/you</text><text x="380" y="415" class="an">(has AGENTS.md)</text>
+  <rect x="150" y="440" width="660" height="500" rx="16" class="box"/>
+  <text x="180" y="485" class="md">/Users/you/work</text>
+  <rect x="200" y="510" width="560" height="400" rx="16" class="fam sam" stroke-width="4"/>
+  <text x="230" y="555" class="md am">…/work/repo</text><text x="500" y="555" class="an">(has CLAUDE.md)</text>
+  <rect x="250" y="680" width="460" height="130" rx="16" class="fbl sbl" stroke-width="4"/>
+  <text x="480" y="755" class="md c bl">…/repo/src</text>
+  <text x="480" y="860" class="sm c">cwd: you start here</text>
+  <path d="M900 800 Q930 700 900 600" class="ln sbl" marker-end="url(#a)"/>
+  <path d="M900 590 Q930 500 900 440" class="ln sbl" marker-end="url(#a)"/>
+  <path d="M900 430 Q930 370 900 300" class="ln sbl" marker-end="url(#a)"/>
+  <text x="950" y="720" class="an am">① src: nothing</text>
+  <text x="950" y="575" class="an am">② repo: grab CLAUDE.md</text>
+  <text x="950" y="470" class="an">③ work: nothing</text>
+  <text x="950" y="370" class="an te">④ you: grab AGENTS.md</text>
+  <text x="950" y="285" class="an mu">⑤ … up to the root</text>
+
+  <text x="1580" y="270" class="md c">final order into &lt;project_context&gt;</text>
+  <rect x="1400" y="300" width="360" height="90" rx="12" class="fvi svi" stroke-width="4"/><text x="1580" y="357" class="md c">global</text>
+  <rect x="1400" y="390" width="360" height="90" rx="12" class="fte ste" stroke-width="4"/><text x="1580" y="447" class="md c">furthest ancestor</text>
+  <rect x="1400" y="480" width="360" height="90" rx="12" class="box"/><text x="1580" y="537" class="md c">…</text>
+  <rect x="1400" y="570" width="360" height="90" rx="12" class="fam sam" stroke-width="4"/><text x="1580" y="627" class="md c">closest</text>
+  <text x="1580" y="710" class="sm c co">closest speaks LAST,</text>
+  <text x="1580" y="745" class="sm c co">so it wins a conflict</text>
+  <text x="1580" y="800" class="an c">dedup by path:</text>
+  <text x="1580" y="830" class="an c">never loaded twice</text>
+  <text x="1440" y="900" class="an c">candidates per folder:</text>
+  <text x="1440" y="940" class="an c bl">AGENTS.md · AGENTS.MD · CLAUDE.md · CLAUDE.MD</text>
+</svg>
+
+<!-- 10 -->
+<svg class="d" data-t="Walk again on every rebuild" data-s="Why redo the walk each time? So an edit made mid-session is seen on the very next turn.">
+  <rect x="80" y="330" width="380" height="200" rx="16" class="box"/>
+  <text x="270" y="400" class="bb c">turn 4</text><text x="270" y="460" class="sm c">agent uses npm</text>
+  <rect x="540" y="330" width="380" height="200" rx="16" class="fam sam" stroke-width="5"/>
+  <text x="730" y="390" class="md c am">YOU edit CLAUDE.md</text>
+  <text x="730" y="450" class="an c">"- use pnpm, never npm"</text>
+  <rect x="1000" y="330" width="380" height="200" rx="16" class="fbl sbl" stroke-width="4"/>
+  <text x="1190" y="400" class="md c bl">turn 5: rebuild</text><text x="1190" y="460" class="sm c">the walk finds the edit</text>
+  <rect x="1460" y="330" width="380" height="200" rx="16" class="fte ste" stroke-width="4"/>
+  <text x="1650" y="400" class="md c te">turn 5</text><text x="1650" y="460" class="sm c">agent uses pnpm ✓</text>
+  <line x1="465" y1="430" x2="532" y2="430" class="ln" marker-end="url(#a)"/>
+  <line x1="925" y1="430" x2="992" y2="430" class="ln" marker-end="url(#a)"/>
+  <line x1="1385" y1="430" x2="1452" y2="430" class="ln" marker-end="url(#a)"/>
+
+  <rect x="200" y="640" width="700" height="220" rx="16" class="box da"/>
+  <text x="550" y="700" class="md c">Is there a limit on files?</text>
+  <text x="550" y="760" class="sm c">No. Pi takes every one it finds.</text>
+  <text x="550" y="805" class="sm c co">So keep FEW memory files per project.</text>
+  <rect x="1020" y="640" width="700" height="220" rx="16" class="box da"/>
+  <text x="1370" y="700" class="md c">Two files disagree?</text>
+  <text x="1370" y="760" class="sm c">The one closest to your repo</text>
+  <text x="1370" y="805" class="sm c">is read last and wins.</text>
+  <text x="960" y="960" class="b c">Pi's ONLY memory is these files. You keep them up to date.</text>
+</svg>
+
+<!-- 11 -->
+<svg class="d" data-t="A skill file is a trailer" data-s="Only the top of the file sits in the context. The body loads when the skill is picked.">
+  <text x="560" y="265" class="md c vi">SKILL.md</text>
+  <rect x="330" y="290" width="460" height="560" rx="18" class="box" stroke-width="5"/>
+  <rect x="345" y="305" width="430" height="170" rx="10" class="fam"/>
+  <text x="365" y="350" class="an vi">name: processing-pdfs</text>
+  <text x="365" y="390" class="an vi">description: Extracts text</text>
+  <text x="365" y="425" class="an vi">and tables from PDF files...</text>
+  <line x1="345" y1="490" x2="775" y2="490" class="ln da"/>
+  <path d="M380 560h330M380 610h280M380 660h320M380 710h250M380 760h300" class="ln mu" stroke="#adb5bd"/>
+  <text x="200" y="400" class="md c">frontmatter</text>
+  <text x="200" y="680" class="md c">the body</text>
+  <path d="M810 390 Q900 360 960 380" class="ln ste da" marker-start="url(#b)"/>
+  <text x="980" y="370" class="md te">ALWAYS in the context</text>
+  <text x="980" y="410" class="sm">every turn, every skill</text>
+  <path d="M810 660 Q900 630 960 650" class="ln sam da" marker-start="url(#b)"/>
+  <text x="980" y="640" class="md am">loaded ONLY when the</text>
+  <text x="980" y="680" class="md am">model picks this skill</text>
+
+  <rect x="1420" y="760" width="200" height="110" rx="8" class="fco sco" stroke-width="4"/>
+  <text x="1520" y="825" class="sm c">TRAILER</text>
+  <rect x="1650" y="740" width="200" height="150" rx="8" class="box da"/>
+  <text x="1750" y="800" class="sm c mu">full movie</text><text x="1750" y="835" class="an c mu">(later)</text>
+  <text x="960" y="960" class="b c">This is called PROGRESSIVE DISCLOSURE.</text>
+</svg>
+
+<!-- 12 -->
+<svg class="d" data-t="Three levels of loading" data-s="A skill is paid for in three instalments, and most requests stop at the first.">
+  <rect x="560" y="250" width="440" height="100" rx="14" class="fte ste" stroke-width="4"/><text x="780" y="312" class="md c">name + description</text>
+  <rect x="520" y="440" width="520" height="100" rx="14" class="fam sam" stroke-width="4"/><text x="780" y="502" class="md c">SKILL.md body</text>
+  <rect x="420" y="630" width="720" height="100" rx="14" class="box"/><text x="780" y="692" class="md c mono" font-size="26">reference.md, examples.md, scripts/</text>
+  <line x1="780" y1="355" x2="780" y2="432" class="ln" marker-end="url(#a)"/><text x="810" y="405" class="md">①</text>
+  <line x1="780" y1="545" x2="780" y2="622" class="ln" marker-end="url(#a)"/><text x="810" y="595" class="md">②</text>
+  <text x="1040" y="290" class="sm te">loaded at startup,</text><text x="1040" y="325" class="sm te">for EVERY skill</text>
+  <text x="1080" y="480" class="sm am">read only when the</text><text x="1080" y="515" class="sm am">skill is triggered</text>
+  <text x="1180" y="670" class="sm">read only if that</text><text x="1180" y="705" class="sm">specific thing is needed</text>
+  <text x="1650" y="460" class="md c am">a bundled file</text>
+  <text x="1650" y="500" class="md c am">costs NOTHING</text>
+  <text x="1650" y="540" class="md c am">until it is opened</text>
+  <rect x="460" y="820" width="1000" height="130" rx="16" class="box da"/>
+  <text x="960" y="875" class="md c bl">The model pays for a skill in three instalments,</text>
+  <text x="960" y="920" class="md c bl">and usually stops at the first.</text>
+</svg>
+
+<!-- 13 -->
+<svg class="d" data-t="Tool or skill?" data-s="A tool is HOW. A skill is WHAT to do and WHEN to do it.">
+  <rect x="110" y="250" width="800" height="560" rx="20" class="fte ste" stroke-width="4"/>
+  <text x="510" y="320" class="big c te">TOOL</text>
+  <text x="510" y="385" class="md c">HOW to do one action</text>
+  <text x="510" y="470" class="mono c" font-size="28">read_file · bash · grep</text>
+  <text x="510" y="560" class="sm c">the full contract is in the</text>
+  <text x="510" y="600" class="sm c">context EVERY turn</text>
+  <text x="510" y="700" class="md c">= the HANDS</text>
+
+  <rect x="1010" y="250" width="800" height="560" rx="20" class="fvi svi" stroke-width="4"/>
+  <text x="1410" y="320" class="big c vi">SKILL</text>
+  <text x="1410" y="385" class="md c">WHAT to do + WHEN</text>
+  <text x="1410" y="470" class="mono c" font-size="26">writing-style · frontend-identity</text>
+  <text x="1410" y="560" class="sm c">only name + description</text>
+  <text x="1410" y="600" class="sm c">until it is picked</text>
+  <text x="1410" y="700" class="md c">= the RECIPE (a procedure)</text>
+
+  <text x="960" y="905" class="b c">A recipe can call for many hands. A hand never tells you the recipe.</text>
+</svg>
+
+<!-- 14 -->
+<svg class="d" data-t="A real skill: my writing style" data-s="Write the rules once. Reuse them for every book, post and page.">
+  <rect x="90" y="330" width="80" height="300" rx="6" class="fbl sbl" stroke-width="4"/>
+  <rect x="180" y="310" width="80" height="320" rx="6" class="fam sam" stroke-width="4"/>
+  <rect x="270" y="340" width="80" height="290" rx="6" class="fte ste" stroke-width="4"/>
+  <text x="220" y="690" class="md c">a few chapters</text><text x="220" y="730" class="sm c">of my own book</text>
+  <line x1="370" y1="480" x2="500" y2="480" class="ln" marker-end="url(#a)"/>
+  <circle cx="590" cy="480" r="80" class="fvi svi" stroke-width="4"/><text x="590" y="492" class="md c">agent</text>
+  <line x1="680" y1="480" x2="790" y2="480" class="ln" marker-end="url(#a)"/>
+  <rect x="800" y="260" width="620" height="520" rx="16" class="box" stroke-width="5"/>
+  <text x="830" y="310" class="an vi">name: writing-style</text>
+  <text x="830" y="350" class="an vi">description: Writes in the voice of</text>
+  <text x="830" y="385" class="an vi">  my book. Use for any chapter,</text>
+  <text x="830" y="420" class="an vi">  article or post I ask for.</text>
+  <line x1="815" y1="445" x2="1405" y2="445" class="ln da"/>
+  <text x="830" y="495" class="an">- no double dashes</text>
+  <text x="830" y="535" class="an">- never "delve", never "honestly"</text>
+  <text x="830" y="575" class="an">- short paragraphs, real numbers</text>
+  <text x="830" y="615" class="an">- explain with one analogy first</text>
+  <text x="830" y="655" class="an mu">  ... (a long list)</text>
+  <text x="1110" y="740" class="sm c">writing-style.md</text>
+  <line x1="1430" y1="400" x2="1560" y2="330" class="ln ste" marker-end="url(#a)"/>
+  <line x1="1430" y1="520" x2="1560" y2="520" class="ln ste" marker-end="url(#a)"/>
+  <line x1="1430" y1="640" x2="1560" y2="710" class="ln ste" marker-end="url(#a)"/>
+  <text x="1580" y="340" class="md te">book #2</text><text x="1580" y="530" class="md te">a blog post</text><text x="1580" y="720" class="md te">a landing page</text>
+  <text x="960" y="900" class="b c">I never explain my style again. The skill carries it.</text>
+</svg>
+
+<!-- 15 -->
+<svg class="d" data-t="Say less" data-s="Assume the model already knows what a PDF is and how libraries work.">
+  <text x="420" y="285" class="md c te">① good: about 50 tokens</text>
+  <rect x="200" y="310" width="440" height="420" rx="18" class="box" stroke-width="4"/>
+  <path d="M240 370h330M240 415h260M240 460h300M240 505h180" class="ln"/>
+  <text x="1440" y="285" class="md c co">② too verbose: about 150 tokens</text>
+  <rect x="1220" y="310" width="440" height="420" rx="18" class="box" stroke-width="4"/>
+  <path d="M1260 360h340M1260 395h300M1260 430h330M1260 465h280M1260 500h340M1260 535h310M1260 570h330M1260 605h290M1260 640h340M1260 675h250" class="ln"/>
+  <path d="M1200 480 Q930 380 670 480" class="ln sam da" marker-end="url(#a)"/>
+  <text x="935" y="390" class="md c am">③ cut this</text>
+  <text x="960" y="810" class="md c bl">Explaining what a PDF is, what React is, why Rust is fast: wasted budget.</text>
+  <rect x="560" y="860" width="800" height="100" rx="16" class="box da"/>
+  <text x="960" y="922" class="md c">Only add what the model does not already know.</text>
+</svg>
+
+<!-- 16 -->
+<svg class="d" data-t="The two required fields" data-s="Every skill has exactly two fields at the top, and both of them are checked.">
+  <rect x="200" y="260" width="680" height="440" rx="20" class="box" stroke-width="5"/>
+  <text x="540" y="330" class="bb c vi">name</text>
+  <text x="540" y="420" class="md c te">64 characters maximum</text>
+  <text x="540" y="490" class="md c">lowercase, numbers, hyphens</text>
+  <text x="540" y="560" class="md c co">no "claude", no "anthropic"</text>
+  <rect x="1040" y="260" width="680" height="440" rx="20" class="box" stroke-width="5"/>
+  <text x="1380" y="330" class="bb c vi">description</text>
+  <text x="1380" y="420" class="md c te">1,024 characters maximum</text>
+  <text x="1380" y="490" class="md c co">must NOT be empty</text>
+  <text x="1380" y="560" class="md c bl">says what it does</text>
+  <text x="1380" y="600" class="md c bl">AND when to use it</text>
+  <text x="960" y="770" class="md c co">no XML tags in either field</text>
+  <rect x="510" y="830" width="900" height="110" rx="16" class="box da"/>
+  <text x="960" y="898" class="md c am">Two fields, and both of them are validated.</text>
+</svg>
+
+<!-- 17 -->
+<svg class="d" data-t="The description is how a skill gets found" data-s="The model picks between skills on this one sentence alone.">
+  <text x="200" y="345" class="big c te">✓</text>
+  <rect x="280" y="260" width="1360" height="150" rx="16" class="fte ste" stroke-width="4"/>
+  <text x="310" y="315" class="md">Extract text and tables from PDF files, fill forms, merge documents.</text>
+  <text x="310" y="365" class="md">Use when working with PDF files or when the user mentions PDFs.</text>
+  <text x="1660" y="320" class="an te">what it does</text><text x="1660" y="370" class="an te">+ WHEN to use it</text>
+  <text x="200" y="545" class="big c co">✗</text>
+  <rect x="280" y="480" width="760" height="100" rx="16" class="box"/>
+  <text x="310" y="545" class="md">I can help you process Excel files</text>
+  <text x="1090" y="525" class="sm bl">always third person,</text><text x="1090" y="565" class="sm bl">never "I" or "you"</text>
+  <text x="200" y="715" class="big c co">✗</text>
+  <rect x="280" y="650" width="760" height="100" rx="16" class="box"/>
+  <text x="310" y="715" class="md">Helps with documents</text>
+  <text x="1090" y="695" class="sm am">too vague to pick</text><text x="1090" y="735" class="sm am">out of 100 skills</text>
+  <rect x="510" y="830" width="900" height="110" rx="16" class="box da"/>
+  <text x="960" y="898" class="md c am">Write WHAT it does and WHEN to use it.</text>
+</svg>
+
+<!-- 18 -->
+<svg class="d" data-t="Name skills after the activity" data-s="A name should say what the skill does, not that it helps.">
+  <text x="600" y="290" class="bb c te">good: an activity</text>
+  <text x="1390" y="290" class="bb c co">avoid</text>
+  <g class="md">
+  <rect x="380" y="330" width="440" height="90" rx="14" class="fte ste" stroke-width="4"/><text x="600" y="387" class="c mono" font-size="28">processing-pdfs</text>
+  <rect x="380" y="450" width="440" height="90" rx="14" class="fte ste" stroke-width="4"/><text x="600" y="507" class="c mono" font-size="28">analyzing-spreadsheets</text>
+  <rect x="380" y="570" width="440" height="90" rx="14" class="fte ste" stroke-width="4"/><text x="600" y="627" class="c mono" font-size="28">managing-databases</text>
+  <rect x="380" y="690" width="440" height="90" rx="14" class="fte ste" stroke-width="4"/><text x="600" y="747" class="c mono" font-size="28">writing-documentation</text>
+  <rect x="1240" y="330" width="300" height="90" rx="14" class="box"/><text x="1390" y="387" class="c mono" font-size="28">helper</text>
+  <rect x="1240" y="450" width="300" height="90" rx="14" class="box"/><text x="1390" y="507" class="c mono" font-size="28">utils</text>
+  <rect x="1240" y="570" width="300" height="90" rx="14" class="box"/><text x="1390" y="627" class="c mono" font-size="28">documents</text>
+  <rect x="1240" y="690" width="300" height="90" rx="14" class="box"/><text x="1390" y="747" class="c mono" font-size="28">tools</text>
+  </g>
+  <line x1="1250" y1="375" x2="1530" y2="375" class="ln sco" stroke-width="5"/>
+  <line x1="1250" y1="495" x2="1530" y2="495" class="ln sco" stroke-width="5"/>
+  <line x1="1250" y1="615" x2="1530" y2="615" class="ln sco" stroke-width="5"/>
+  <line x1="1250" y1="735" x2="1530" y2="735" class="ln sco" stroke-width="5"/>
+  <rect x="460" y="840" width="1000" height="110" rx="16" class="box da"/>
+  <text x="960" y="908" class="md c am">Name the ACTIVITY. Never something vague.</text>
+</svg>
+
+<!-- 19 -->
+<svg class="d" data-t="How much freedom to give" data-s="A narrow bridge needs exact steps. An open field needs only the goal.">
+  <text x="500" y="270" class="md c co">narrow bridge: ONE safe path</text>
+  <rect x="140" y="300" width="720" height="360" rx="20" class="box" stroke-width="4"/>
+  <path d="M160 470 L330 450 L350 640 M640 640 L660 450 L840 470" class="ln"/>
+  <path d="M190 520l40 30M250 600l30-20M720 540l-30 40M780 600l20-30" class="ln mu"/>
+  <path d="M330 450 L660 450 L660 475 L330 475 Z" class="fam sam" stroke-width="4"/>
+  <path d="M370 450v25M410 450v25M450 450v25M490 450v25M530 450v25M570 450v25M610 450v25" class="ln sam" stroke-width="3"/>
+  <use href="#man" transform="translate(462 330) scale(0.62)"/>
+  <text x="1420" y="270" class="md c te">open field: MANY safe paths</text>
+  <rect x="1060" y="300" width="720" height="360" rx="20" class="box" stroke-width="4"/>
+  <path d="M1110 600l12-30 12 30M1200 450l12-30 12 30M1640 470l12-30 12 30M1690 610l12-30 12 30M1300 620l12-30 12 30M1560 600l12-30 12 30" class="ln ste"/>
+  <use href="#man" x="1370" y="380"/>
+  <text x="500" y="730" class="md c">LOW freedom: give the exact script</text>
+  <text x="500" y="770" class="md c">and say "do not change it"</text>
+  <text x="500" y="830" class="an c vi">python scripts/migrate.py --verify</text>
+  <text x="1420" y="730" class="md c">HIGH freedom: give the goal</text>
+  <text x="1420" y="770" class="md c">and let the model choose</text>
+  <text x="1420" y="830" class="an c bl">"review the code for bugs and readability"</text>
+  <text x="960" y="950" class="b c">Database migration = bridge. Code review = field. Over-specifying a field makes it worse.</text>
+</svg>
+
+<!-- 20 -->
+<svg class="d" data-t="One folder, loaded piece by piece" data-s="SKILL.md is a table of contents for everything beside it.">
+  <g class="md">
+  <text x="300" y="300">📁 pdf/</text>
+  <text x="360" y="370">📄 SKILL.md</text>
+  <text x="360" y="440">📄 FORMS.md</text>
+  <text x="360" y="510">📄 reference.md</text>
+  <text x="360" y="580">📄 examples.md</text>
+  <text x="360" y="650">📁 scripts/</text>
+  <text x="430" y="720">📄 analyze_form.py</text>
+  <text x="430" y="790">📄 fill_form.py</text>
+  </g>
+  <path d="M320 315 V650 M320 360h30M320 430h30M320 500h30M320 570h30M320 640h30 M390 665 V780 M390 710h30M390 780h30" class="ln mu" stroke="#868e96"/>
+  <path d="M600 360 Q800 330 980 360" class="ln sbl da" marker-start="url(#b)"/>
+  <text x="1000" y="370" class="md bl">always read FIRST</text>
+  <path d="M640 500 Q820 470 980 500" class="ln ste da" marker-start="url(#b)"/>
+  <text x="1000" y="510" class="md te">read only when needed</text>
+  <path d="M600 645 Q800 620 980 650" class="ln sam da" marker-start="url(#b)"/>
+  <text x="1000" y="650" class="md am">RUN, not read:</text>
+  <text x="1000" y="690" class="md am">only the output costs tokens</text>
+  <rect x="300" y="860" width="1320" height="110" rx="16" class="box da"/>
+  <text x="960" y="928" class="md c">Bundle as much as you like. Nothing costs anything until it is opened.</text>
+</svg>
+
+<!-- 21 -->
+<svg class="d" data-t="Keep references one level deep" data-s="Every reference file should be linked straight from SKILL.md.">
+  <rect x="140" y="250" width="760" height="580" rx="20" class="fco" stroke="#e03131" stroke-width="4"/>
+  <text x="520" y="315" class="bb c co">too deep</text>
+  <rect x="190" y="370" width="230" height="80" rx="12" class="box"/><text x="305" y="422" class="md c">SKILL.md</text>
+  <rect x="390" y="510" width="270" height="80" rx="12" class="box"/><text x="525" y="562" class="md c">advanced.md</text>
+  <rect x="610" y="650" width="240" height="80" rx="12" class="box"/><text x="730" y="702" class="md c">details.md</text>
+  <path d="M420 420 Q480 440 500 500" class="ln da" marker-end="url(#a)"/>
+  <path d="M660 560 Q720 580 730 640" class="ln da" marker-end="url(#a)"/>
+  <text x="730" y="780" class="an c co">the model may only</text><text x="730" y="808" class="an c co">skim this one</text>
+  <rect x="1020" y="250" width="760" height="580" rx="20" class="fte" stroke="#2f9e44" stroke-width="4"/>
+  <text x="1400" y="315" class="bb c te">one level</text>
+  <rect x="1070" y="500" width="230" height="80" rx="12" class="box"/><text x="1185" y="552" class="md c">SKILL.md</text>
+  <rect x="1460" y="370" width="270" height="80" rx="12" class="box"/><text x="1595" y="422" class="md c">advanced.md</text>
+  <rect x="1460" y="500" width="270" height="80" rx="12" class="box"/><text x="1595" y="552" class="md c">reference.md</text>
+  <rect x="1460" y="630" width="270" height="80" rx="12" class="box"/><text x="1595" y="682" class="md c">examples.md</text>
+  <path d="M1305 525 Q1380 440 1452 412" class="ln sbl da" marker-end="url(#a)"/>
+  <line x1="1305" y1="540" x2="1452" y2="540" class="ln sbl da" marker-end="url(#a)"/>
+  <path d="M1305 555 Q1380 640 1452 668" class="ln sbl da" marker-end="url(#a)"/>
+  <text x="960" y="920" class="b c am">SKILL.md links to everything. Nothing links further down.</text>
+</svg>
+
+<!-- 22 -->
+<svg class="d" data-t="Checklist or loop" data-s="Two shapes for the body of a skill: a straight list, or a circle that checks itself.">
+  <text x="480" y="270" class="bb c">① a CHECKLIST (vertical)</text>
+  <rect x="200" y="300" width="560" height="380" rx="18" class="box" stroke-width="4"/>
+  <g class="md">
+  <rect x="230" y="335" width="34" height="34" rx="4" class="box"/><text x="285" y="365">Step 1: Analyze the form</text>
+  <rect x="230" y="405" width="34" height="34" rx="4" class="box"/><text x="285" y="435">Step 2: Create field map</text>
+  <rect x="230" y="475" width="34" height="34" rx="4" class="box"/><text x="285" y="505">Step 3: Validate the map</text>
+  <rect x="230" y="545" width="34" height="34" rx="4" class="box"/><text x="285" y="575">Step 4: Fill the form</text>
+  <rect x="230" y="615" width="34" height="34" rx="4" class="box"/><text x="285" y="645">Step 5: Verify output</text>
+  </g>
+  <path d="M236 352l10 12 18-24M236 422l10 12 18-24" class="ln ste" stroke-width="5"/>
+  <text x="480" y="740" class="sm c bl">the model copies it into its reply</text>
+  <text x="480" y="780" class="sm c bl">and ticks items off as it goes</text>
+
+  <text x="1440" y="270" class="bb c">② a FEEDBACK LOOP (circular)</text>
+  <rect x="1240" y="320" width="300" height="100" rx="16" class="fbl sbl" stroke-width="4"/><text x="1390" y="380" class="md c">make the change</text>
+  <rect x="1440" y="530" width="300" height="100" rx="16" class="fam sam" stroke-width="4"/><text x="1590" y="590" class="md c">run the validator</text>
+  <rect x="1090" y="530" width="300" height="100" rx="16" class="fco sco" stroke-width="4"/><text x="1240" y="590" class="md c">fix the errors</text>
+  <path d="M1500 425 Q1580 460 1590 522" class="ln" marker-end="url(#a)"/>
+  <path d="M1435 600 L1398 600" class="ln sco" marker-end="url(#a)"/><text x="1418" y="660" class="an c co">fails</text>
+  <path d="M1220 525 Q1220 440 1300 425" class="ln" marker-end="url(#a)"/>
+  <path d="M1600 635 Q1620 720 1680 740" class="ln ste" marker-end="url(#a)"/>
+  <rect x="1500" y="720" width="360" height="90" rx="16" class="fte ste" stroke-width="4"/><text x="1680" y="777" class="md c">passes → continue</text>
+  <rect x="300" y="860" width="1320" height="110" rx="16" class="box da"/>
+  <text x="960" y="928" class="md c am">A checklist stops steps being skipped. A loop that verifies beats an instruction that hopes.</text>
+</svg>
+
+<!-- 23 -->
+<svg class="d" data-t="Write the tests before the skill" data-s="Build the skill against real failures, not imagined ones.">
+  <g class="md">
+  <rect x="80" y="280" width="300" height="190" rx="16" class="box"/><text x="230" y="350" class="c">① run the task</text><text x="230" y="395" class="c">with NO skill</text>
+  <rect x="440" y="280" width="300" height="190" rx="16" class="box"/><text x="590" y="350" class="c">② write down</text><text x="590" y="395" class="c">what failed</text>
+  <rect x="800" y="280" width="300" height="190" rx="16" class="box"/><text x="950" y="350" class="c">③ build 3 test</text><text x="950" y="395" class="c">scenarios</text>
+  <rect x="1160" y="280" width="300" height="190" rx="16" class="fam sam" stroke-width="4"/><text x="1310" y="350" class="c">④ write the</text><text x="1310" y="395" class="c">SMALLEST skill</text><text x="1310" y="440" class="c">that fixes it</text>
+  <rect x="1520" y="280" width="300" height="190" rx="16" class="fte ste" stroke-width="4"/><text x="1670" y="350" class="c">⑤ run the</text><text x="1670" y="395" class="c">tests again</text>
+  </g>
+  <line x1="385" y1="375" x2="432" y2="375" class="ln" marker-end="url(#a)"/>
+  <line x1="745" y1="375" x2="792" y2="375" class="ln" marker-end="url(#a)"/>
+  <line x1="1105" y1="375" x2="1152" y2="375" class="ln" marker-end="url(#a)"/>
+  <line x1="1465" y1="375" x2="1512" y2="375" class="ln" marker-end="url(#a)"/>
+  <text x="1310" y="250" class="an c am">smallest, not fullest</text>
+
+  <rect x="260" y="560" width="1400" height="260" rx="20" class="fbl sbl" stroke-width="4"/>
+  <text x="960" y="620" class="bb c bl">My test for the writing-style skill</text>
+  <text x="960" y="685" class="md c">write 100 articles with the skill → send each to an AI-detection API</text>
+  <text x="960" y="740" class="md c">the skill is NOT done until every article scores under 5% "AI"</text>
+  <text x="960" y="790" class="an c mu">you define the bar. that is the human's job.</text>
+  <text x="960" y="920" class="b c">How do you know your skill works? You test it. Only then does it go to production.</text>
+</svg>
+
+<!-- 24 -->
+<svg class="d" data-t="Two Claudes, one skill" data-s="One session writes the skill. A fresh session uses it and reports what went wrong.">
+  <circle cx="560" cy="520" r="120" class="fbl sbl" stroke-width="5"/>
+  <rect x="505" y="470" width="110" height="80" rx="16" class="box"/><circle cx="535" cy="505" r="9" class="dk"/><circle cx="585" cy="505" r="9" class="dk"/><path d="M530 530q30 16 60 0" class="ln"/>
+  <circle cx="1360" cy="520" r="120" class="fte ste" stroke-width="5"/>
+  <rect x="1305" y="470" width="110" height="80" rx="16" class="box"/><circle cx="1335" cy="505" r="9" class="dk"/><circle cx="1385" cy="505" r="9" class="dk"/><path d="M1330 530q30 16 60 0" class="ln"/>
+  <text x="260" y="500" class="bb c bl">Claude A</text><text x="260" y="545" class="sm c">helps you WRITE</text><text x="260" y="580" class="sm c">the skill</text>
+  <text x="1680" y="500" class="bb c te">Claude B</text><text x="1680" y="545" class="sm c">a FRESH session</text><text x="1680" y="580" class="sm c">that USES it</text>
+  <path d="M640 410 Q960 250 1280 410" class="ln" stroke-width="5" marker-end="url(#a)"/>
+  <text x="960" y="300" class="md c">give it the skill</text>
+  <path d="M1280 630 Q960 800 640 630" class="ln sam" stroke-width="5" marker-end="url(#a)"/>
+  <text x="960" y="770" class="md c am">report what it got wrong (be harsh!)</text>
+  <rect x="410" y="850" width="1100" height="110" rx="16" class="box da"/>
+  <text x="960" y="918" class="md c">Improve the skill from what a fresh session did, not from guesswork.</text>
+</svg>
+
+<!-- 25 -->
+<svg class="d" data-t="The last piece: date and folder" data-s="Small, easy to forget, and the agent is lost without it.">
+  <rect x="420" y="260" width="1080" height="260" rx="22" class="fbl sbl" stroke-width="5"/>
+  <text x="960" y="345" class="mono c" font-size="40">Current date: 2026-10-15</text>
+  <text x="960" y="420" class="mono c" font-size="40">Working directory: ~/shop-api</text>
+  <text x="960" y="490" class="an c bl">stamped LAST, rebuilt every call</text>
+  <rect x="150" y="610" width="760" height="230" rx="18" class="box"/>
+  <text x="530" y="680" class="md c">"Schedule the email for</text>
+  <text x="530" y="725" class="md c">tomorrow at the same time."</text>
+  <text x="530" y="795" class="sm c co">without the date: which tomorrow?</text>
+  <rect x="1010" y="610" width="760" height="230" rx="18" class="box"/>
+  <text x="1390" y="680" class="md c">"Run the tests in this project."</text>
+  <text x="1390" y="745" class="sm c co">without the folder: which project?</text>
+  <text x="960" y="940" class="b c">The model does not know what day it is. The harness must tell it.</text>
+</svg>
+
+<!-- 26 -->
+<svg class="d" data-t="&quot;Just summarize it&quot; is level one" data-s="Every harness compacts. The depth is in the questions that come after.">
+  <rect x="160" y="820" width="1600" height="110" rx="16" class="fte ste" stroke-width="4"/>
+  <text x="200" y="890" class="md">LEVEL 1 · "When it gets full, ask another LLM to summarize the past."</text>
+  <rect x="300" y="680" width="1460" height="110" rx="16" class="fbl sbl" stroke-width="4"/>
+  <text x="340" y="750" class="md">LEVEL 2 · WHEN do we start? Not at 200k. Some time BEFORE.</text>
+  <rect x="440" y="540" width="1320" height="110" rx="16" class="fam sam" stroke-width="4"/>
+  <text x="480" y="610" class="md">LEVEL 3 · WHAT is kept word for word, and what is summarized?</text>
+  <rect x="580" y="400" width="1180" height="110" rx="16" class="fvi svi" stroke-width="4"/>
+  <text x="620" y="470" class="md">LEVEL 4 · WHERE does the cut fall? (never mid-pair)</text>
+  <rect x="720" y="260" width="1040" height="110" rx="16" class="fco sco" stroke-width="4"/>
+  <text x="760" y="330" class="md">LEVEL 5 · What if compaction itself FAILS?</text>
+  <use href="#man" x="180" y="560"/>
+  <path d="M370 445 Q560 380 708 322" class="ln sam da" marker-end="url(#a)"/>
+  <text x="100" y="430" class="sm am">production harnesses</text>
+  <text x="100" y="465" class="sm am">live up here</text>
+  <text x="960" y="990" class="sm c">If an interview answer stops at level 1, the person has never built a harness.</text>
+</svg>
+
+<!-- 27 -->
+<svg class="d" data-t="Where the tokens actually go" data-s="A small question can trigger a giant answer, and that answer stays on the tape.">
+  <rect x="120" y="330" width="60" height="140" class="fvi svi" stroke-width="3"/>
+  <rect x="180" y="330" width="40" height="140" class="fbl sbl" stroke-width="3"/>
+  <rect x="220" y="330" width="200" height="140" class="fte ste" stroke-width="3"/>
+  <rect x="420" y="330" width="1380" height="140" class="fam sam" stroke-width="4"/>
+  <text x="150" y="530" class="an c vi">system</text>
+  <text x="200" y="575" class="an c bl">user</text>
+  <text x="320" y="530" class="an c te">assistant</text>
+  <text x="1110" y="415" class="big c am">TOOL RESULTS</text>
+  <text x="1110" y="530" class="md c">file contents · listings · build logs · test output</text>
+  <rect x="200" y="640" width="640" height="200" rx="16" class="box"/>
+  <text x="520" y="700" class="md c">user: "why is the build red?"</text>
+  <text x="520" y="760" class="an c mu">≈ 10 tokens</text>
+  <line x1="850" y1="740" x2="1000" y2="740" class="ln" marker-end="url(#a)"/>
+  <rect x="1010" y="610" width="720" height="260" rx="16" class="fco sco" stroke-width="4"/>
+  <text x="1370" y="680" class="md c">bash → a 5,000-line error log</text>
+  <text x="1370" y="740" class="an c">≈ 60,000 tokens</text>
+  <text x="1370" y="800" class="sm c">re-sent on EVERY later turn</text>
+  <text x="960" y="955" class="b c">Manage the tool results, and most of the budget is managed.</text>
+</svg>
+
+<!-- 28 -->
+<svg class="d" data-t="When Pi compacts" data-s="Compaction fires when usage climbs to within 16,384 tokens of the ceiling.">
+  <rect x="200" y="500" width="1520" height="130" rx="18" class="box" stroke-width="5"/>
+  <rect x="1440" y="502" width="278" height="126" rx="14" class="fco"/>
+  <path d="M1460 510l40 110M1510 510l40 110M1560 510l40 110M1610 510l40 110M1660 510l40 110" class="ln sco" stroke-width="2"/>
+  <line x1="1440" y1="470" x2="1440" y2="660" class="ln sco da" stroke-width="5"/>
+  <line x1="200" y1="440" x2="1430" y2="440" class="ln sbl" stroke-width="5" marker-end="url(#a)"/>
+  <text x="300" y="420" class="md bl">① contextTokens: what we are carrying</text>
+  <text x="1580" y="400" class="md c co">③ reserveTokens</text>
+  <text x="1580" y="445" class="md c co">= 16,384</text>
+  <text x="960" y="730" class="md c am">② compact when  contextTokens &gt; contextWindow − 16,384</text>
+  <rect x="460" y="820" width="1000" height="130" rx="16" class="box da"/>
+  <text x="960" y="875" class="md c bl">Pi compacts early, keeping 16,384 tokens</text>
+  <text x="960" y="920" class="md c bl">of room to write the reply.</text>
+</svg>
+
+<!-- 29 -->
+<svg class="d" data-t="Where Pi gets the token number" data-s="Exact up to the last assistant reply. Estimated only for what came after it.">
+  <g>
+  <rect x="140" y="330" width="210" height="110" rx="14" class="box"/>
+  <rect x="380" y="330" width="210" height="110" rx="14" class="box"/>
+  <rect x="620" y="330" width="210" height="110" rx="14" class="box"/>
+  <rect x="860" y="320" width="300" height="130" rx="14" class="fte ste" stroke-width="6"/>
+  <rect x="1190" y="330" width="210" height="110" rx="14" class="box"/>
+  <rect x="1430" y="330" width="210" height="110" rx="14" class="box da"/>
+  </g>
+  <text x="1010" y="370" class="an c te">last assistant reply:</text>
+  <text x="1010" y="400" class="an c te">provider told us the</text>
+  <text x="1010" y="430" class="an c te">EXACT usage</text>
+  <path d="M140 480 Q140 520 400 520 L600 520 Q650 520 650 560 Q650 520 700 520 L1000 520 Q1160 520 1160 480" class="ln ste" stroke-width="4"/>
+  <path d="M1190 480 Q1190 520 1300 520 Q1415 520 1415 560 Q1415 520 1530 520 Q1640 520 1640 480" class="ln sbl" stroke-width="4"/>
+  <text x="650" y="610" class="md c te">usageTokens</text><text x="650" y="650" class="sm c">exact, from the provider</text>
+  <text x="1415" y="610" class="md c bl">trailingTokens</text><text x="1415" y="650" class="sm c">estimated: chars ÷ 4</text>
+  <text x="960" y="770" class="big c am">tokens = usageTokens + trailingTokens</text>
+  <rect x="360" y="840" width="1200" height="110" rx="16" class="box da"/>
+  <text x="960" y="908" class="md c">Exact where the provider told us. Estimated only for the newest few.</text>
+</svg>
+
+<!-- 30 -->
+<svg class="d" data-t="Walking back to the last usage block" data-s="The newest entry is #28. #27 was aborted, so it has no usage. The walk stops at #24.">
+  <text x="560" y="280" class="an c te">exact · provider usage block</text>
+  <text x="1430" y="280" class="an c am">estimated locally · characters ÷ 4</text>
+  <g class="md">
+  <rect x="160" y="330" width="170" height="120" rx="14" class="box"/><text x="245" y="402" class="c">asst</text>
+  <rect x="360" y="330" width="170" height="120" rx="14" class="box"/><text x="445" y="402" class="c">tool</text>
+  <rect x="560" y="330" width="170" height="120" rx="14" class="box"/><text x="645" y="402" class="c">user</text>
+  <rect x="760" y="320" width="190" height="140" rx="14" class="fte ste" stroke-width="6"/><text x="855" y="402" class="c">asst</text>
+  <rect x="1000" y="330" width="170" height="120" rx="14" class="fam sam" stroke-width="3"/><text x="1085" y="402" class="c">tool</text>
+  <rect x="1200" y="330" width="170" height="120" rx="14" class="fam sam" stroke-width="3"/><text x="1285" y="402" class="c">user</text>
+  <rect x="1400" y="330" width="170" height="120" rx="14" class="fco sco da" stroke-width="3"/><text x="1485" y="402" class="c">asst</text>
+  <rect x="1600" y="330" width="170" height="120" rx="14" class="fam sam" stroke-width="3"/><text x="1685" y="402" class="c">user</text>
+  </g>
+  <g class="an">
+  <text x="245" y="315" class="c mu">#21</text><text x="445" y="315" class="c mu">#22</text><text x="645" y="315" class="c mu">#23</text><text x="855" y="305" class="c">#24</text>
+  <text x="1085" y="315" class="c mu">#25</text><text x="1285" y="315" class="c mu">#26</text><text x="1485" y="315" class="c mu">#27</text><text x="1685" y="315" class="c mu">#28</text>
+  <text x="245" y="500" class="c mu">in base</text><text x="445" y="500" class="c mu">in base</text><text x="645" y="500" class="c mu">in base</text>
+  <text x="855" y="500" class="c te" font-size="26">178,900</text>
+  <text x="1085" y="500" class="c">600</text><text x="1285" y="500" class="c">15</text><text x="1485" y="500" class="c">30</text><text x="1685" y="500" class="c">1,223</text>
+  </g>
+  <path d="M1685 560 Q1300 640 870 545" class="ln sco" stroke-width="4" marker-end="url(#a)"/>
+  <text x="1300" y="650" class="md c co">walk backwards from #28 …</text>
+  <text x="1485" y="560" class="an c co">aborted: no usage!</text>
+  <text x="960" y="760" class="md c">178,900 + 600 + 15 + 30 + 1,223 ≈ 180,768 tokens</text>
+  <rect x="300" y="830" width="1320" height="120" rx="16" class="box da"/>
+  <text x="960" y="903" class="md c">Even COUNTING tokens has edge cases. A harness must handle them.</text>
+</svg>
+
+<!-- 31 -->
+<svg class="d" data-t="How Pi estimates what it has no usage for" data-s="A rough chars-divided-by-four rule, only ever used for the newest messages.">
+  <text x="370" y="320" class="bb c">text</text>
+  <rect x="140" y="350" width="460" height="230" rx="18" class="fbl sbl" stroke-width="4"/>
+  <text x="370" y="450" class="md c">count the characters,</text><text x="370" y="495" class="md c">then divide by 4</text>
+  <text x="960" y="320" class="bb c">tool call</text>
+  <rect x="730" y="350" width="460" height="230" rx="18" class="fte ste" stroke-width="4"/>
+  <text x="960" y="450" class="md c">count the name plus</text><text x="960" y="495" class="md c">the JSON arguments</text>
+  <text x="1550" y="320" class="bb c">image</text>
+  <rect x="1320" y="350" width="460" height="230" rx="18" class="fam sam" stroke-width="4"/>
+  <text x="1550" y="450" class="md c">always counted as</text><text x="1550" y="495" class="md c">4,800 characters</text>
+  <text x="960" y="700" class="md c bl">The estimate deliberately runs HIGH,</text>
+  <text x="960" y="745" class="md c bl">so Pi compacts a little early rather than a little late.</text>
+  <rect x="460" y="830" width="1000" height="110" rx="16" class="box da"/>
+  <text x="960" y="898" class="md c">Too early costs a little. Too late crashes the call.</text>
+</svg>
+
+<!-- 32 -->
+<svg class="d" data-t="Walking backwards to find the cut" data-s="Pi keeps about 20,000 tokens of the most recent conversation, word for word.">
+  <g class="box" stroke-width="3">
+  <rect x="120" y="440" width="130" height="90" rx="14"/><rect x="270" y="440" width="130" height="90" rx="14"/><rect x="420" y="440" width="130" height="90" rx="14"/>
+  <rect x="570" y="440" width="130" height="90" rx="14"/><rect x="720" y="440" width="130" height="90" rx="14"/><rect x="870" y="440" width="130" height="90" rx="14"/>
+  </g>
+  <g class="fte ste" stroke-width="4">
+  <rect x="1090" y="440" width="130" height="90" rx="14"/><rect x="1240" y="440" width="130" height="90" rx="14"/><rect x="1390" y="440" width="130" height="90" rx="14"/>
+  <rect x="1540" y="440" width="130" height="90" rx="14"/><rect x="1690" y="440" width="130" height="90" rx="14"/>
+  </g>
+  <line x1="1045" y1="300" x2="1045" y2="680" class="ln sam" stroke-width="6"/>
+  <line x1="1820" y1="380" x2="140" y2="380" class="ln sbl" stroke-width="5" marker-end="url(#a)"/>
+  <text x="1440" y="350" class="md c bl">① walk backwards from the newest, adding tokens</text>
+  <path d="M1090 580 Q1090 610 1300 610 Q1455 610 1455 640 Q1455 610 1610 610 Q1820 610 1820 580" class="ln ste" stroke-width="4"/>
+  <text x="1455" y="690" class="md c te">② running total → 20,000</text>
+  <text x="1045" y="730" class="md c am">③ STOP: keepRecentTokens = 20,000</text>
+  <text x="560" y="600" class="md c mu">everything before the cut</text>
+  <text x="560" y="645" class="md c mu">→ goes to the summarizer</text>
+  <rect x="360" y="820" width="1200" height="120" rx="16" class="box da"/>
+  <text x="960" y="893" class="md c am">Recent = what you care about right now. Never touch it.</text>
+</svg>
+
+<!-- 33 -->
+<svg class="d" data-t="Pi is not allowed to cut just anywhere" data-s="A tool result must stay attached to the tool call that asked for it.">
+  <text x="700" y="270" class="md c te">legal places to cut</text>
+  <g class="md">
+  <rect x="520" y="295" width="360" height="62" rx="12" class="fte ste" stroke-width="3"/><text x="700" y="337" class="c">user ✓</text>
+  <rect x="520" y="367" width="360" height="62" rx="12" class="fte ste" stroke-width="3"/><text x="700" y="409" class="c">assistant ✓</text>
+  <rect x="520" y="439" width="360" height="62" rx="12" class="fte ste" stroke-width="3"/><text x="700" y="481" class="c">bashExecution ✓</text>
+  <rect x="520" y="511" width="360" height="62" rx="12" class="fte ste" stroke-width="3"/><text x="700" y="553" class="c">custom ✓</text>
+  <rect x="520" y="583" width="360" height="62" rx="12" class="fte ste" stroke-width="3"/><text x="700" y="625" class="c">branchSummary ✓</text>
+  <rect x="520" y="655" width="360" height="62" rx="12" class="fte ste" stroke-width="3"/><text x="700" y="697" class="c">compactionSummary ✓</text>
+  <rect x="520" y="770" width="360" height="62" rx="12" class="fco sco" stroke-width="4"/><text x="700" y="812" class="c">toolResult ✗</text>
+  </g>
+  <line x1="560" y1="775" x2="840" y2="828" class="ln sco" stroke-width="5"/><line x1="560" y1="828" x2="840" y2="775" class="ln sco" stroke-width="5"/>
+  <text x="700" y="760" class="md c co" dy="-0">never cut here</text>
+  <rect x="1060" y="380" width="700" height="330" rx="18" class="box da"/>
+  <text x="1410" y="440" class="md c">If the cut lands on a tool result,</text>
+  <text x="1410" y="485" class="md c">the fresh part starts with an ANSWER</text>
+  <text x="1410" y="530" class="md c">whose QUESTION was summarized away.</text>
+  <text x="1410" y="610" class="sm c co">A coat with no ticket.</text>
+  <text x="1410" y="650" class="sm c co">The API rejects the whole array.</text>
+  <rect x="300" y="880" width="1320" height="100" rx="16" class="box da"/>
+  <text x="960" y="942" class="md c am">Cutting between a tool call and its result leaves the history broken.</text>
+</svg>
+
+<!-- 34 -->
+<svg class="d" data-t="Two questions about the same message" data-s="Every turn start is a legal cut. Not every legal cut starts a turn.">
+  <rect x="420" y="270" width="1080" height="520" rx="10" class="box" stroke-width="4"/>
+  <line x1="740" y1="270" x2="740" y2="790" class="ln"/><line x1="1120" y1="270" x2="1120" y2="790" class="ln"/>
+  <line x1="420" y1="400" x2="1500" y2="400" class="ln"/><line x1="420" y1="530" x2="1500" y2="530" class="ln"/><line x1="420" y1="660" x2="1500" y2="660" class="ln"/>
+  <text x="930" y="325" class="md c">can we</text><text x="930" y="370" class="md c">CUT here?</text>
+  <text x="1310" y="325" class="md c">does it</text><text x="1310" y="370" class="md c">START a turn?</text>
+  <text x="580" y="478" class="bb c">user</text><text x="580" y="608" class="bb c">assistant</text><text x="580" y="738" class="bb c">toolResult</text>
+  <text x="930" y="485" class="big c te">✓</text><text x="1310" y="485" class="big c te">✓</text>
+  <text x="930" y="615" class="big c te">✓</text><text x="1310" y="615" class="big c co">✗</text>
+  <text x="930" y="745" class="big c co">✗</text><text x="1310" y="745" class="big c co">✗</text>
+  <rect x="1540" y="520" width="330" height="160" rx="16" class="fam sam da" stroke-width="3"/>
+  <text x="1705" y="575" class="sm c">this row is why a</text><text x="1705" y="610" class="sm c">cut can land in the</text><text x="1705" y="645" class="sm c">MIDDLE of a turn</text>
+  <path d="M1535 600 L1360 600" class="ln sam da" marker-end="url(#a)"/>
+  <rect x="460" y="850" width="1000" height="110" rx="16" class="box da"/>
+  <text x="960" y="918" class="md c">A turn = the user's question + everything that answers it.</text>
+</svg>
+
+<!-- 35 -->
+<svg class="d" data-t="A split turn: two summaries, joined" data-s="If the cut lands inside a turn, Pi also summarizes the start of that turn.">
+  <text x="200" y="370" class="sm c te">budget: 80% of</text><text x="200" y="405" class="sm c te">reserveTokens</text>
+  <rect x="340" y="300" width="380" height="150" rx="18" class="fam sam" stroke-width="4"/>
+  <text x="530" y="365" class="md c">history</text><text x="530" y="410" class="md c">summary</text>
+  <text x="200" y="620" class="sm c te">budget: 50% of</text><text x="200" y="655" class="sm c te">reserveTokens</text>
+  <rect x="340" y="550" width="380" height="150" rx="18" class="fbl sbl" stroke-width="4"/>
+  <text x="530" y="615" class="md c">turn prefix</text><text x="530" y="660" class="md c">summary</text>
+  <path d="M725 375 Q850 380 960 450" class="ln da" marker-end="url(#a)"/>
+  <path d="M725 625 Q850 620 960 560" class="ln da" marker-end="url(#a)"/>
+  <rect x="980" y="330" width="760" height="340" rx="20" class="box" stroke-width="5"/>
+  <text x="1360" y="400" class="bb c">one summary message</text>
+  <text x="1360" y="475" class="md c">history summary</text>
+  <text x="1360" y="520" class="md c mu">———</text>
+  <text x="1360" y="580" class="an c vi">**Turn Context (split turn):**</text>
+  <text x="1360" y="625" class="an c vi">what was asked at the start of this turn</text>
+  <rect x="560" y="800" width="800" height="110" rx="16" class="box da"/>
+  <text x="960" y="868" class="md c am">Two LLM calls. One stored summary.</text>
+</svg>
+
+<!-- 36 -->
+<svg class="d" data-t="What Pi's summary always contains" data-s="A fixed shape, so the next model always knows where to look.">
+  <rect x="560" y="240" width="560" height="640" rx="16" class="box" stroke-width="5"/>
+  <path d="M1060 240 L1120 300 L1060 300 Z" class="box"/>
+  <g class="md">
+  <text x="600" y="310">## Goal</text>
+  <text x="600" y="380">## Constraints &amp; Preferences</text>
+  <text x="600" y="450">## Progress</text>
+  <text x="650" y="500" class="sm">### Done</text>
+  <text x="650" y="545" class="sm">### In Progress</text>
+  <text x="650" y="590" class="sm">### Blocked</text>
+  <text x="600" y="660">## Key Decisions</text>
+  <text x="600" y="730">## Next Steps</text>
+  <text x="600" y="800">## Critical Context</text>
+  </g>
+  <rect x="1270" y="610" width="420" height="100" rx="14" class="fvi svi" stroke-width="3"/>
+  <text x="1480" y="652" class="an c vi">**[Decision]**:</text><text x="1480" y="688" class="an c vi">why it was made</text>
+  <line x1="1265" y1="655" x2="900" y2="655" class="ln svi da" marker-end="url(#a)"/>
+  <rect x="200" y="900" width="900" height="70" rx="12" class="fte ste" stroke-width="3"/>
+  <text x="650" y="945" class="an c">+ files read / modified: appended by CODE, not by the model</text>
+  <text x="1490" y="950" class="sm c">6 sections</text>
+</svg>
+
+<!-- 37 -->
+<svg class="d" data-t="Pi compaction, end to end" data-s="Pi decides WHERE to cut first, then summarizes everything before the cut.">
+  <g class="md">
+  <rect x="60" y="380" width="280" height="150" rx="16" class="box"/><text x="200" y="445" class="c">session</text><text x="200" y="485" class="c">entries</text>
+  <rect x="420" y="380" width="380" height="150" rx="16" class="fvi svi" stroke-width="4"/><text x="610" y="465" class="c mono" font-size="25">prepareCompaction()</text>
+  <rect x="880" y="380" width="330" height="150" rx="16" class="fam sam" stroke-width="4"/><text x="1045" y="465" class="c mono" font-size="25">findCutPoint()</text>
+  <rect x="1290" y="380" width="280" height="150" rx="16" class="fbl sbl" stroke-width="4"/><text x="1430" y="445" class="c">summarize</text><text x="1430" y="485" class="c">with an LLM</text>
+  <rect x="1630" y="380" width="250" height="150" rx="16" class="fte ste" stroke-width="4"/><text x="1755" y="445" class="c">new, shorter</text><text x="1755" y="485" class="c">context</text>
+  </g>
+  <line x1="345" y1="455" x2="412" y2="455" class="ln sbl" stroke-width="5" marker-end="url(#a)"/>
+  <line x1="805" y1="455" x2="872" y2="455" class="ln sbl" stroke-width="5" marker-end="url(#a)"/>
+  <line x1="1215" y1="455" x2="1282" y2="455" class="ln sbl" stroke-width="5" marker-end="url(#a)"/>
+  <line x1="1575" y1="455" x2="1622" y2="455" class="ln sbl" stroke-width="5" marker-end="url(#a)"/>
+  <text x="610" y="600" class="sm c">over 16,384 of the edge?</text><text x="610" y="640" class="sm c">count the tokens</text>
+  <text x="1045" y="600" class="sm c te">keep 20,000 recent</text><text x="1045" y="640" class="sm c te">never on a toolResult</text>
+  <text x="1430" y="600" class="sm c">one or two calls</text><text x="1430" y="640" class="sm c">(two if the turn is split)</text>
+  <text x="200" y="330" class="md c">①</text><text x="610" y="330" class="md c">②</text><text x="1045" y="330" class="md c">③</text><text x="1430" y="330" class="md c">④</text><text x="1755" y="330" class="md c">⑤</text>
+  <rect x="360" y="780" width="1200" height="120" rx="16" class="box da"/>
+  <text x="960" y="853" class="md c">Pi: one clean cut, one summary, one big drop in size.</text>
+</svg>
+
+<!-- 38 -->
+<svg class="d" data-t="When Hermes compacts" data-s="Hermes measures its percentage against the room actually left for input.">
+  <rect x="200" y="480" width="1520" height="130" rx="18" class="box" stroke-width="5"/>
+  <rect x="1460" y="482" width="258" height="126" rx="14" class="fam"/>
+  <line x1="1460" y1="480" x2="1460" y2="610" class="ln"/>
+  <line x1="830" y1="400" x2="830" y2="660" class="ln sco da" stroke-width="5"/>
+  <text x="830" y="370" class="md c am">③ trigger at 50% of the effective window</text>
+  <path d="M210 680 Q830 740 1450 680" class="ln ste" stroke-width="4" marker-end="url(#a)" marker-start="url(#b)"/>
+  <text x="830" y="790" class="md c te">① effective window = context_length − max_tokens</text>
+  <text x="1590" y="680" class="sm c">② max_tokens:</text><text x="1590" y="715" class="sm c">room for the reply</text>
+  <rect x="460" y="850" width="1000" height="110" rx="16" class="box da"/>
+  <text x="960" y="918" class="md c">Pi waits for the edge. Hermes starts at HALF.</text>
+</svg>
+
+<!-- 39 -->
+<svg class="d" data-t="Three corrections to the trigger" data-s="The rules stop a small model from compacting too early, or never at all.">
+  <rect x="110" y="300" width="500" height="320" rx="20" class="fte ste" stroke-width="4"/>
+  <text x="360" y="370" class="bb c">① floor</text>
+  <text x="360" y="450" class="md c">never trigger below</text><text x="360" y="495" class="md c">64,000 tokens</text>
+  <rect x="710" y="300" width="500" height="320" rx="20" class="fam sam" stroke-width="4"/>
+  <text x="960" y="370" class="bb c">② small window</text>
+  <text x="960" y="450" class="md c">window under 512K?</text><text x="960" y="495" class="md c">raise 50% → 75%</text>
+  <rect x="1310" y="300" width="500" height="320" rx="20" class="fco sco" stroke-width="4"/>
+  <text x="1560" y="370" class="bb c">③ too small</text>
+  <text x="1560" y="450" class="md c">floor bigger than</text><text x="1560" y="495" class="md c">the window?</text><text x="1560" y="545" class="md c">use 85% instead</text>
+  <line x1="615" y1="460" x2="702" y2="460" class="ln da" marker-end="url(#a)"/>
+  <line x1="1215" y1="460" x2="1302" y2="460" class="ln da" marker-end="url(#a)"/>
+  <text x="960" y="720" class="md c">example: a 32k model with a 64k floor → trigger at 85% of 32k</text>
+  <rect x="410" y="820" width="1100" height="120" rx="16" class="box da"/>
+  <text x="960" y="893" class="md c">Edge cases ARE the job in a production harness.</text>
+</svg>
+
+<!-- 40 -->
+<svg class="d" data-t="Head, middle, tail" data-s="The beginning and the end are protected. Only the middle is summarized.">
+  <rect x="100" y="320" width="1720" height="260" rx="20" class="box" stroke-width="4"/>
+  <rect x="120" y="340" width="420" height="220" rx="16" class="fbl sbl" stroke-width="4"/>
+  <text x="330" y="420" class="md c bl">HEAD</text><text x="330" y="465" class="sm c">system prompt +</text><text x="330" y="505" class="sm c">first 3 messages</text>
+  <rect x="560" y="340" width="780" height="220" rx="16" class="box"/>
+  <path d="M580 360l200 180M680 360l200 180M780 360l200 180M880 360l200 180M980 360l200 180M1080 360l200 180M1180 360l140 126" class="ln mu" stroke="#868e96" stroke-width="3"/>
+  <line x1="570" y1="350" x2="1330" y2="550" class="ln sco" stroke-width="6"/><line x1="570" y1="550" x2="1330" y2="350" class="ln sco" stroke-width="6"/>
+  <rect x="730" y="420" width="440" height="64" rx="12" fill="#fffdf7" stroke="#e03131" stroke-width="3"/><text x="950" y="465" class="bb c co">MIDDLE → summarized</text>
+  <rect x="1360" y="340" width="440" height="220" rx="16" class="fte ste" stroke-width="4"/>
+  <text x="1580" y="430" class="md c te">TAIL</text><text x="1580" y="475" class="sm c">kept word for word</text>
+  <path d="M1360 620 L1800 620" class="ln ste" marker-end="url(#a)" marker-start="url(#b)"/>
+  <text x="1580" y="670" class="sm c te">20% of the trigger, in tokens</text>
+  <text x="330" y="650" class="sm c bl">why? the first messages</text>
+  <text x="330" y="690" class="sm c bl">hold the TRUE intent</text>
+  <text x="950" y="650" class="sm c">the middle is where people</text>
+  <text x="950" y="690" class="sm c">wander off and get distracted</text>
+  <rect x="460" y="820" width="1000" height="120" rx="16" class="box da"/>
+  <text x="960" y="893" class="md c">Pi keeps only the tail. Hermes keeps head AND tail.</text>
+</svg>
+
+<!-- 41 -->
+<svg class="d" data-t="Step one is free" data-s="Old tool results become one line each, before any model is called.">
+  <text x="900" y="270" class="md c">before</text>
+  <rect x="560" y="290" width="680" height="260" rx="18" class="box" stroke-width="4"/>
+  <path d="M590 320 l600 200 M600 500 l580 -170 M610 330 q300 220 580 0 M600 470 q300 -200 590 20 M620 360 l560 100 M620 440 l560 -60" class="ln" stroke-width="3"/>
+  <text x="380" y="420" class="md c">a huge tool</text><text x="380" y="460" class="md c">result</text>
+  <text x="900" y="640" class="md c">after</text>
+  <rect x="560" y="660" width="680" height="120" rx="18" class="fte ste" stroke-width="4"/>
+  <text x="900" y="732" class="an c">[terminal] ran 'npm test' → exit 0, 47 lines</text>
+  <line x1="900" y1="560" x2="900" y2="610" class="ln" stroke-width="5" marker-end="url(#a)"/>
+  <rect x="1330" y="300" width="460" height="130" rx="14" class="fbl sbl" stroke-width="3"/>
+  <text x="1560" y="355" class="sm c">same file read 5 times?</text><text x="1560" y="395" class="sm c">keep only the newest copy</text>
+  <rect x="1330" y="470" width="460" height="100" rx="14" class="fbl sbl" stroke-width="3"/>
+  <text x="1560" y="530" class="sm c">old images are dropped</text>
+  <text x="1560" y="650" class="md c te">deterministic</text><text x="1560" y="695" class="md c te">no LLM · costs nothing</text>
+  <rect x="360" y="850" width="1200" height="110" rx="16" class="box da"/>
+  <text x="960" y="918" class="md c am">Most of the space is won back before any model is called.</text>
+</svg>
+
+<!-- 42 -->
+<svg class="d" data-t="What Hermes's summary always contains" data-s="Eleven fixed sections, including the exact state of the working directory.">
+  <rect x="520" y="230" width="620" height="720" rx="16" class="box" stroke-width="5"/>
+  <g class="md">
+  <text x="560" y="290">## Historical Task Snapshot</text>
+  <text x="560" y="350">## Goal</text>
+  <text x="560" y="410">## Constraints &amp; Preferences</text>
+  <text x="560" y="470">## Completed Actions</text>
+  <text x="560" y="530">## Active State</text>
+  <text x="560" y="590">## Blocked</text>
+  <text x="560" y="650">## Key Decisions</text>
+  <text x="560" y="710">## Resolved Questions</text>
+  <text x="560" y="770">## Relevant Files</text>
+  <text x="560" y="830">## Critical Context</text>
+  <text x="560" y="890">## Pruned Skills</text>
+  </g>
+  <rect x="1250" y="770" width="440" height="110" rx="14" class="fco sco" stroke-width="3"/>
+  <text x="1470" y="815" class="an c co">never write API keys:</text><text x="1470" y="850" class="an c co">write [REDACTED]</text>
+  <line x1="1245" y1="820" x2="920" y2="822" class="ln sco da" marker-end="url(#a)"/>
+  <rect x="1250" y="500" width="440" height="110" rx="14" class="fte ste" stroke-width="3"/>
+  <text x="1470" y="545" class="an c">Pi: 6 sections</text><text x="1470" y="580" class="an c">Hermes: 11 sections</text>
+</svg>
+
+<!-- 43 -->
+<svg class="d" data-t="Hermes compaction, end to end" data-s="Four cheap steps surround one expensive one.">
+  <g class="md">
+  <rect x="60" y="380" width="300" height="160" rx="16" class="fte ste" stroke-width="4"/><text x="210" y="445" class="c">prune old</text><text x="210" y="485" class="c">tool results</text>
+  <rect x="430" y="380" width="280" height="160" rx="16" class="fbl sbl" stroke-width="4"/><text x="570" y="445" class="c">protect</text><text x="570" y="485" class="c">the head</text>
+  <rect x="780" y="380" width="280" height="160" rx="16" class="fbl sbl" stroke-width="4"/><text x="920" y="445" class="c">protect</text><text x="920" y="485" class="c">the tail</text>
+  <rect x="1130" y="370" width="320" height="180" rx="16" class="fco sco" stroke-width="6"/><text x="1290" y="445" class="c">summarize</text><text x="1290" y="485" class="c">the middle</text>
+  <rect x="1520" y="380" width="340" height="160" rx="16" class="fte ste" stroke-width="4"/><text x="1690" y="445" class="c">next time,</text><text x="1690" y="485" class="c">UPDATE that summary</text>
+  </g>
+  <line x1="365" y1="460" x2="422" y2="460" class="ln sbl" stroke-width="5" marker-end="url(#a)"/>
+  <line x1="715" y1="460" x2="772" y2="460" class="ln sbl" stroke-width="5" marker-end="url(#a)"/>
+  <line x1="1065" y1="460" x2="1122" y2="460" class="ln sbl" stroke-width="5" marker-end="url(#a)"/>
+  <line x1="1455" y1="460" x2="1512" y2="460" class="ln sbl" stroke-width="5" marker-end="url(#a)"/>
+  <text x="210" y="330" class="md c">①</text><text x="570" y="330" class="md c">②</text><text x="920" y="330" class="md c">③</text><text x="1290" y="330" class="md c">④</text><text x="1690" y="330" class="md c">⑤</text>
+  <text x="210" y="610" class="sm c te">free, no LLM call</text>
+  <text x="1290" y="610" class="sm c co">the ONLY expensive step</text>
+  <text x="1690" y="610" class="sm c">no starting from zero</text>
+  <rect x="510" y="780" width="900" height="120" rx="16" class="box da"/>
+  <text x="960" y="853" class="md c am">Four cheap steps around one expensive one.</text>
+</svg>
+
+<!-- 44 -->
+<svg class="d" data-t="Micro-compaction" data-s="After every turn, Hermes folds ONE more exchange into a rolling summary.">
+  <rect x="140" y="380" width="300" height="200" rx="18" class="fam sam" stroke-width="5"/>
+  <text x="290" y="465" class="md c">rolling</text><text x="290" y="505" class="md c">summary</text>
+  <g class="md">
+  <rect x="500" y="420" width="150" height="120" rx="14" class="box"/><text x="575" y="492" class="c">E1</text>
+  <rect x="680" y="420" width="150" height="120" rx="14" class="box"/><text x="755" y="492" class="c">E2</text>
+  <rect x="900" y="420" width="150" height="120" rx="14" class="fte ste" stroke-width="3"/><text x="975" y="492" class="c">E3</text>
+  <rect x="1080" y="420" width="150" height="120" rx="14" class="fte ste" stroke-width="3"/><text x="1155" y="492" class="c">E4</text>
+  <rect x="1260" y="420" width="150" height="120" rx="14" class="fte ste" stroke-width="3"/><text x="1335" y="492" class="c">E5</text>
+  <rect x="1440" y="420" width="150" height="120" rx="14" class="fte ste" stroke-width="3"/><text x="1515" y="492" class="c">E6</text>
+  <rect x="1620" y="420" width="150" height="120" rx="14" class="fte ste" stroke-width="3"/><text x="1695" y="492" class="c">E7</text>
+  </g>
+  <line x1="865" y1="370" x2="865" y2="600" class="ln sco" stroke-width="7"/>
+  <text x="865" y="650" class="md c co">cursor</text>
+  <path d="M860 360 Q650 290 450 400" class="ln sam da" marker-end="url(#a)"/>
+  <text x="650" y="300" class="sm c am">after each turn, fold in ONE exchange</text>
+  <text x="1335" y="610" class="sm c te">not yet folded: kept as they are</text>
+  <text x="290" y="640" class="an c">E = one exchange:</text><text x="290" y="672" class="an c">user + assistant + tool</text>
+  <text x="1500" y="320" class="md c co">OFF by default</text>
+  <rect x="410" y="780" width="1100" height="130" rx="16" class="box da"/>
+  <text x="960" y="835" class="md c bl">The bill is paid in small instalments</text>
+  <text x="960" y="880" class="md c bl">instead of one large pause.</text>
+</svg>
+
+<!-- 45 -->
+<svg class="d" data-t="Two rhythms" data-s="The same total work, spread differently across the session.">
+  <text x="520" y="280" class="bb c">PI</text>
+  <rect x="160" y="310" width="720" height="420" rx="18" class="box" stroke-width="4"/>
+  <line x1="220" y1="680" x2="850" y2="680" class="ln"/><line x1="220" y1="680" x2="220" y2="350" class="ln"/>
+  <path d="M225 660 L280 620 L330 600 L380 560 L430 520 L480 470 L530 430 L560 380 L575 670 L630 620 L680 590 L730 540 L780 490 L830 420" class="ln sbl" stroke-width="5"/>
+  <line x1="220" y1="380" x2="850" y2="380" class="ln sco da" stroke-width="3"/>
+  <text x="840" y="710" class="an" text-anchor="end">time</text>
+  <text x="200" y="520" class="an" transform="rotate(-90 200 520)">context size</text>
+  <text x="520" y="790" class="md c">① one long pause</text>
+  <text x="1400" y="280" class="bb c">HERMES (micro-compaction on)</text>
+  <rect x="1040" y="310" width="720" height="420" rx="18" class="box" stroke-width="4"/>
+  <line x1="1100" y1="680" x2="1730" y2="680" class="ln"/><line x1="1100" y1="680" x2="1100" y2="350" class="ln"/>
+  <path d="M1105 640 L1150 590 Q1200 560 1250 585 Q1300 610 1350 580 Q1400 555 1450 585 Q1500 610 1550 578 Q1600 555 1650 583 Q1690 600 1720 580" class="ln ste" stroke-width="5"/>
+  <line x1="1100" y1="380" x2="1730" y2="380" class="ln sco da" stroke-width="3"/>
+  <text x="1720" y="710" class="an" text-anchor="end">time</text>
+  <text x="1400" y="790" class="md c">② many tiny pauses: almost flat</text>
+  <rect x="410" y="850" width="1100" height="110" rx="16" class="box da"/>
+  <text x="960" y="918" class="md c">Sawtooth or flat line: same work, different feel for the user.</text>
+</svg>
+
+<!-- 46 -->
+<svg class="d" data-t="When compaction itself fails" data-s="Four independent guards, for four different failures.">
+  <g class="md">
+  <text x="270" y="290" class="c bb">① the floor</text>
+  <rect x="80" y="320" width="380" height="330" rx="18" class="fco sco" stroke-width="4"/>
+  <text x="270" y="400" class="c">the system prompt</text><text x="270" y="445" class="c">and tool schemas</text><text x="270" y="490" class="c">can NOT be</text><text x="270" y="535" class="c">summarized</text>
+  <text x="710" y="290" class="c bb">② two strikes</text>
+  <rect x="520" y="320" width="380" height="330" rx="18" class="fam sam" stroke-width="4"/>
+  <text x="710" y="400" class="c">two passes barely</text><text x="710" y="445" class="c">helped? STOP trying</text>
+  <text x="1150" y="290" class="c bb">③ cooldown</text>
+  <rect x="960" y="320" width="380" height="330" rx="18" class="fte ste" stroke-width="4"/>
+  <text x="1150" y="400" class="c">summary model is</text><text x="1150" y="445" class="c">rate limited?</text><text x="1150" y="490" class="c">wait 600 seconds</text>
+  <text x="1590" y="290" class="c bb">④ fallback</text>
+  <rect x="1400" y="320" width="380" height="330" rx="18" class="fbl sbl" stroke-width="4"/>
+  <text x="1590" y="390" class="c">auxiliary model →</text><text x="1590" y="435" class="c">main model →</text><text x="1590" y="480" class="c">summary with</text><text x="1590" y="525" class="c">NO model at all</text>
+  <text x="1590" y="600" class="an c">(character budgets)</text>
+  </g>
+  <text x="960" y="740" class="md c">Pi on error: just retry. Hermes: a plan for each way it can break.</text>
+  <rect x="410" y="820" width="1100" height="120" rx="16" class="box da"/>
+  <text x="960" y="893" class="md c am">Compaction may fail. It is never allowed to loop.</text>
+</svg>
+
+<!-- 47 -->
+<svg class="d" data-t="Pi vs Hermes: WHEN" data-s="Pi reserves a constant. Hermes reserves a proportion.">
+  <text x="500" y="290" class="big c bl">PI</text>
+  <rect x="120" y="420" width="760" height="110" rx="16" class="box" stroke-width="4"/>
+  <rect x="740" y="422" width="138" height="106" rx="12" class="fco"/>
+  <text x="810" y="400" class="sm c co">16,384 fixed</text>
+  <text x="500" y="610" class="md c">a FIXED amount of room, always</text>
+  <line x1="960" y1="260" x2="960" y2="760" class="ln"/>
+  <text x="1420" y="290" class="big c te">HERMES</text>
+  <rect x="1040" y="420" width="760" height="110" rx="16" class="box" stroke-width="4"/>
+  <rect x="1650" y="422" width="148" height="106" rx="12" class="fam"/>
+  <line x1="1345" y1="390" x2="1345" y2="560" class="ln sco da" stroke-width="4"/>
+  <text x="1345" y="370" class="sm c co">50% (or 75% / 85%)</text>
+  <text x="1724" y="400" class="sm c">max_tokens</text>
+  <text x="1420" y="610" class="md c">a PERCENTAGE of what is left</text>
+  <rect x="410" y="830" width="1100" height="110" rx="16" class="box da"/>
+  <text x="960" y="898" class="md c am">Pi reserves a constant; Hermes reserves a proportion.</text>
+</svg>
+
+<!-- 48 -->
+<svg class="d" data-t="Pi vs Hermes: WHERE" data-s="Pi picks a safe boundary. Hermes repairs the boundary it took.">
+  <rect x="100" y="250" width="820" height="520" rx="20" class="box" stroke-width="4"/>
+  <text x="510" y="330" class="big c bl">PI</text>
+  <g class="box"><rect x="150" y="400" width="150" height="80" rx="12"/><rect x="320" y="400" width="150" height="80" rx="12"/><rect x="490" y="400" width="150" height="80" rx="12"/></g>
+  <rect x="660" y="400" width="210" height="80" rx="12" class="fco sco" stroke-width="3"/><text x="765" y="452" class="an c">toolResult</text>
+  <line x1="680" y1="395" x2="850" y2="485" class="ln sco" stroke-width="6"/><line x1="680" y1="485" x2="850" y2="395" class="ln sco" stroke-width="6"/>
+  <path d="M200 520 Q450 600 640 495" class="ln da" marker-end="url(#a)"/>
+  <text x="510" y="650" class="md c bl">pick a LEGAL cut point, then</text>
+  <text x="510" y="695" class="md c bl">summarize a split turn separately</text>
+  <rect x="1000" y="250" width="820" height="520" rx="20" class="box" stroke-width="4"/>
+  <text x="1410" y="330" class="big c te">HERMES</text>
+  <g class="box"><rect x="1050" y="400" width="160" height="80" rx="12"/><rect x="1230" y="400" width="160" height="80" rx="12"/><rect x="1410" y="400" width="160" height="80" rx="12"/><rect x="1590" y="400" width="160" height="80" rx="12"/></g>
+  <text x="1130" y="555" class="big c te">✓</text><text x="1310" y="555" class="big c te">✓</text><text x="1490" y="555" class="big c te">✓</text><text x="1670" y="555" class="big c te">✓</text>
+  <text x="1410" y="650" class="md c bl">cut by TOKEN BUDGET, then move</text>
+  <text x="1410" y="695" class="md c bl">the cut until the tail is valid</text>
+  <rect x="460" y="840" width="1000" height="110" rx="16" class="box da"/>
+  <text x="960" y="908" class="md c am">Pi chooses a safe boundary. Hermes repairs the one it took.</text>
+</svg>
+
+<!-- 49 -->
+<svg class="d" data-t="Two shapes of summary" data-s="Both keep the decisions. Hermes also keeps the working state.">
+  <text x="560" y="280" class="bb c bl">PI · 6 sections</text>
+  <rect x="330" y="310" width="460" height="400" rx="18" class="box" stroke-width="4"/>
+  <g class="md"><text x="380" y="380">Goal</text><text x="380" y="430">Constraints</text><text x="380" y="480">Progress</text><text x="380" y="530">Key Decisions</text><text x="380" y="580">Next Steps</text><text x="380" y="630">Critical Context</text></g>
+  <rect x="330" y="730" width="460" height="70" rx="12" class="fte ste" stroke-width="3"/><text x="560" y="775" class="an c">+ files read / modified</text>
+  <text x="1360" y="280" class="bb c te">HERMES · 11 sections</text>
+  <rect x="1090" y="310" width="540" height="560" rx="18" class="box" stroke-width="4"/>
+  <g class="sm"><text x="1130" y="360">Historical Task Snapshot</text><text x="1130" y="405">Goal</text><text x="1130" y="450">Constraints</text><text x="1130" y="495">Completed Actions</text><text x="1130" y="540" class="am">Active State</text><text x="1130" y="585">Blocked</text><text x="1130" y="630">Key Decisions</text><text x="1130" y="675">Resolved Questions</text><text x="1130" y="720" class="am">Relevant Files</text><text x="1130" y="765">Critical Context</text><text x="1130" y="810">Pruned Skills</text></g>
+  <rect x="410" y="920" width="1100" height="90" rx="16" class="box da"/>
+  <text x="960" y="978" class="md c am">Every harness picks its own shape. Claude Code has its own too.</text>
+</svg>
+
+<!-- 50 -->
+<svg class="d" data-t="Pi vs Hermes: the scorecard" data-s="Same problem, two very different designs.">
+  <rect x="140" y="240" width="1640" height="700" rx="12" class="box" stroke-width="4"/>
+  <line x1="560" y1="240" x2="560" y2="940" class="ln"/><line x1="1170" y1="240" x2="1170" y2="940" class="ln"/>
+  <line x1="140" y1="340" x2="1780" y2="340" class="ln"/><line x1="140" y1="460" x2="1780" y2="460" class="ln"/><line x1="140" y1="580" x2="1780" y2="580" class="ln"/><line x1="140" y1="700" x2="1780" y2="700" class="ln"/><line x1="140" y1="820" x2="1780" y2="820" class="ln"/>
+  <text x="865" y="305" class="bb c bl">PI</text><text x="1475" y="305" class="bb c te">HERMES</text>
+  <g class="md">
+  <text x="180" y="412">WHEN</text><text x="865" y="412" class="c">window − 16,384</text><text x="1475" y="412" class="c">50% of effective window</text>
+  <text x="180" y="532">WHAT is kept</text><text x="865" y="532" class="c">last 20,000 tokens</text><text x="1475" y="532" class="c">head + tail (20%)</text>
+  <text x="180" y="652">SUMMARY</text><text x="865" y="652" class="c">6 sections</text><text x="1475" y="652" class="c">11 sections</text>
+  <text x="180" y="772">FREE STEP</text><text x="865" y="772" class="c">none</text><text x="1475" y="772" class="c">prune tool results first</text>
+  <text x="180" y="892">IF IT FAILS</text><text x="865" y="892" class="c">retry</text><text x="1475" y="892" class="c">floor · 2 strikes · cooldown · fallback</text>
+  </g>
+  <text x="960" y="1000" class="sm c">Plus: Hermes can micro-compact every turn. Pi compacts in one batch.</text>
+</svg>
+
+<!-- 51 -->
+<svg class="d" data-t="DeepSeek Harness: compaction is a plugin" data-s="DeepSeek's open-source harness keeps the loop tiny. Compaction plugs in from outside.">
+  <circle cx="960" cy="560" r="170" class="fvi svi" stroke-width="5"/>
+  <text x="960" y="545" class="bb c vi">agent loop</text><text x="960" y="595" class="sm c">(the core)</text>
+  <rect x="1300" y="470" width="300" height="80" rx="14" class="box da"/><text x="1450" y="522" class="mono c" font-size="26">ctx.compaction</text>
+  <line x1="1135" y1="530" x2="1292" y2="510" class="ln" marker-end="url(#a)"/>
+  <text x="1450" y="610" class="an c">the "seam": a socket</text>
+  <g class="md">
+  <rect x="120" y="270" width="560" height="110" rx="16" class="fam sam" stroke-width="4"/><text x="400" y="320" class="c mono" font-size="24">dsh-compaction-basic</text><text x="400" y="358" class="c sm">the engine that folds</text>
+  <rect x="120" y="500" width="560" height="110" rx="16" class="fte ste" stroke-width="4"/><text x="400" y="550" class="c mono" font-size="24">…-tool-result-pruner</text><text x="400" y="588" class="c sm">optional: trims tool output first</text>
+  <rect x="120" y="730" width="560" height="110" rx="16" class="fbl sbl" stroke-width="4"/><text x="400" y="780" class="c mono" font-size="24">dsh-command-compact</text><text x="400" y="818" class="c sm">adds the /compact command</text>
+  </g>
+  <path d="M690 330 Q780 380 800 440" class="ln sam" marker-end="url(#a)"/>
+  <line x1="690" y1="555" x2="782" y2="555" class="ln ste" marker-end="url(#a)"/>
+  <path d="M690 785 Q780 740 800 680" class="ln sbl" marker-end="url(#a)"/>
+  <text x="1500" y="770" class="md c">swap the summarizer,</text><text x="1500" y="815" class="md c">keep the loop</text>
+  <text x="960" y="965" class="b c">Pi and Hermes build compaction IN. DeepSeek Harness plugs it in.</text>
+</svg>
+
+<!-- 52 -->
+<svg class="d" data-t="The log never forgets" data-s="An append-only session log. Compaction changes only what the model SEES.">
+  <text x="960" y="270" class="md c">the SESSION LOG: append-only, nothing is ever deleted</text>
+  <g class="box" stroke-width="3">
+  <rect x="140" y="300" width="120" height="90" rx="10"/><rect x="270" y="300" width="120" height="90" rx="10"/><rect x="400" y="300" width="120" height="90" rx="10"/><rect x="530" y="300" width="120" height="90" rx="10"/><rect x="660" y="300" width="120" height="90" rx="10"/><rect x="790" y="300" width="120" height="90" rx="10"/><rect x="920" y="300" width="120" height="90" rx="10"/><rect x="1050" y="300" width="120" height="90" rx="10"/>
+  </g>
+  <g class="fvi svi" stroke-width="3"><rect x="1180" y="300" width="190" height="90" rx="10"/><rect x="1380" y="300" width="210" height="90" rx="10"/><rect x="1600" y="300" width="170" height="90" rx="10"/></g>
+  <text x="1275" y="352" class="an c">compaction/</text><text x="1275" y="380" class="an c">start</text>
+  <text x="1485" y="352" class="an c">compaction/</text><text x="1485" y="380" class="an c">summary</text>
+  <text x="1685" y="352" class="an c">compaction/</text><text x="1685" y="380" class="an c">end</text>
+  <text x="1475" y="430" class="an c vi">log-only events</text>
+  <line x1="960" y1="455" x2="960" y2="540" class="ln" stroke-width="5" marker-end="url(#a)"/>
+  <text x="1000" y="505" class="sm">derive</text>
+  <text x="960" y="580" class="md c">the SURFACE: what the model actually sees</text>
+  <rect x="140" y="610" width="770" height="110" rx="14" class="fam sam" stroke-width="5"/>
+  <text x="525" y="665" class="md c">&lt;compacted-summary&gt;</text><text x="525" y="700" class="an c">replaces the "shadowed range"</text>
+  <g class="fte ste" stroke-width="3"><rect x="920" y="620" width="120" height="90" rx="10"/><rect x="1050" y="620" width="120" height="90" rx="10"/></g>
+  <text x="1040" y="770" class="sm c te">recent tail, intact</text>
+  <rect x="300" y="830" width="1320" height="130" rx="16" class="box da"/>
+  <text x="960" y="885" class="md c">Compaction is lossy for the model, NOT for you.</text>
+  <text x="960" y="930" class="sm c">Need the exact old text? Read it back from the log by its sequence number.</text>
+</svg>
+
+<!-- 53 -->
+<svg class="d" data-t="When DeepSeek Harness compacts" data-s="Two limits, and whichever bites first wins. Then the newest 16% is kept word for word.">
+  <rect x="300" y="250" width="1320" height="150" rx="18" class="fam sam" stroke-width="5"/>
+  <text x="960" y="315" class="mono c" font-size="36">trigger = min( 80% of W ,  W − O − 65,536 )</text>
+  <text x="960" y="370" class="an c">W = context window · O = output cap · 65,536 = extra headroom</text>
+  <rect x="300" y="430" width="1320" height="110" rx="18" class="fte ste" stroke-width="4"/>
+  <text x="960" y="500" class="mono c" font-size="34">keep word for word = newest 16% of (W − O)</text>
+  <rect x="200" y="600" width="1520" height="300" rx="12" class="box" stroke-width="4"/>
+  <line x1="200" y1="680" x2="1720" y2="680" class="ln"/><line x1="200" y1="790" x2="1720" y2="790" class="ln"/>
+  <line x1="640" y1="600" x2="640" y2="900" class="ln"/><line x1="1000" y1="600" x2="1000" y2="900" class="ln"/><line x1="1360" y1="600" x2="1360" y2="900" class="ln"/>
+  <g class="md">
+  <text x="420" y="652" class="c">example</text><text x="820" y="652" class="c">80% of W</text><text x="1180" y="652" class="c">W − O − 65,536</text><text x="1540" y="652" class="c">kept recent</text>
+  <text x="420" y="748" class="c">W=200k, O=32k</text><text x="820" y="748" class="c">160,000</text><text x="1180" y="748" class="c am">102,464 ← fires</text><text x="1540" y="748" class="c">26,880</text>
+  <text x="420" y="858" class="c">W=1M, O=32k</text><text x="820" y="858" class="c am">800,000 ← fires</text><text x="1180" y="858" class="c">902,464</text><text x="1540" y="858" class="c">154,880</text>
+  </g>
+  <text x="960" y="980" class="sm c">Small window: the headroom rule bites. Huge window: the 80% rule bites.</text>
+</svg>
+
+<!-- 54 -->
+<svg class="d" data-t="DeepSeek Harness compaction, end to end" data-s="Two triggers share one pipeline: pressure BEFORE the call, overflow AFTER a failed one.">
+  <rect x="60" y="280" width="330" height="150" rx="16" class="fbl sbl" stroke-width="4"/>
+  <text x="225" y="340" class="md c">① PRESSURE</text><text x="225" y="380" class="sm c">checked before the</text><text x="225" y="412" class="sm c">request is built</text>
+  <rect x="60" y="560" width="330" height="170" rx="16" class="fco sco" stroke-width="4"/>
+  <text x="225" y="615" class="md c">② OVERFLOW</text><text x="225" y="655" class="an c">CONTEXT_WINDOW_</text><text x="225" y="685" class="an c">EXCEEDED from provider</text>
+  <rect x="490" y="400" width="330" height="170" rx="16" class="fte ste" stroke-width="4"/>
+  <text x="655" y="460" class="md c">prune tool</text><text x="655" y="500" class="md c">results</text><text x="655" y="540" class="an c te">free · no model call</text>
+  <path d="M395 355 Q450 380 482 440" class="ln" marker-end="url(#a)"/>
+  <path d="M395 645 Q450 620 482 540" class="ln" marker-end="url(#a)"/>
+  <rect x="920" y="400" width="300" height="170" rx="16" class="box"/>
+  <text x="1070" y="470" class="md c">fits now?</text><text x="1070" y="520" class="sm c">re-measure</text>
+  <line x1="825" y1="485" x2="912" y2="485" class="ln" marker-end="url(#a)"/>
+  <path d="M1070 395 Q1070 300 1250 290" class="ln ste" marker-end="url(#a)"/>
+  <text x="1110" y="330" class="an te">yes</text>
+  <rect x="1260" y="240" width="560" height="100" rx="14" class="fte ste" stroke-width="3"/><text x="1540" y="300" class="sm c">skip the summary. done.</text>
+  <line x1="1225" y1="485" x2="1292" y2="485" class="ln" marker-end="url(#a)"/>
+  <text x="1255" y="470" class="an c co">no</text>
+  <rect x="1300" y="400" width="520" height="260" rx="16" class="fam sam" stroke-width="5"/>
+  <text x="1560" y="450" class="md c">ONE summary call</text>
+  <text x="1560" y="495" class="an c">replays system prompt + tools</text>
+  <text x="1560" y="525" class="an c">(keeps the prefix cache warm)</text>
+  <text x="1560" y="575" class="an c">→ &lt;compacted-summary&gt;</text>
+  <text x="1560" y="615" class="an c">replaces the oldest span</text>
+  <path d="M390 700 Q900 820 1540 668" class="ln sco da" marker-end="url(#a)"/>
+  <text x="900" y="800" class="sm c co">overflow: shrink harder in one pass, retry ONCE (maxOverflowRetries = 1)</text>
+  <rect x="300" y="870" width="1320" height="110" rx="16" class="box da"/>
+  <text x="960" y="938" class="md c">If the summary fails: log a warning, carry on with the full history.</text>
+</svg>
+
+<!-- 55 -->
+<svg class="d" data-t="DeepSeek's summary shape" data-s="Eight fixed sections, then wrapped so the model treats it as a checkpoint.">
+  <rect x="300" y="240" width="680" height="640" rx="16" class="box" stroke-width="5"/>
+  <text x="340" y="300" class="an vi">&lt;compacted-summary&gt;</text>
+  <g class="md">
+  <text x="360" y="360">1 · Primary Request and Intent</text>
+  <text x="360" y="420">2 · Key Technical Concepts</text>
+  <text x="360" y="480">3 · Files and Code</text>
+  <text x="360" y="540">4 · Errors and Fixes</text>
+  <text x="360" y="600">5 · Pending Jobs</text>
+  <text x="360" y="660">6 · Current Work</text>
+  <text x="360" y="720">7 · Next Step</text>
+  <text x="360" y="780">8 · Critical Context</text>
+  </g>
+  <text x="340" y="850" class="an vi">&lt;/compacted-summary&gt;</text>
+  <rect x="1100" y="280" width="660" height="150" rx="16" class="fbl sbl" stroke-width="4"/>
+  <text x="1430" y="340" class="md c">"This is a checkpoint.</text><text x="1430" y="385" class="md c">Continue. Don't acknowledge it."</text>
+  <rect x="1100" y="480" width="660" height="150" rx="16" class="fte ste" stroke-width="4"/>
+  <text x="1430" y="540" class="md c">only the summary TEXT is kept</text><text x="1430" y="585" class="sm c">no reasoning, no tool calls</text>
+  <rect x="1100" y="680" width="660" height="150" rx="16" class="fco sco" stroke-width="4"/>
+  <text x="1430" y="740" class="md c">cannot shrink: system prompt,</text><text x="1430" y="785" class="md c">tools, or ONE giant tool call</text>
+  <text x="960" y="960" class="b c">Pi: 6 sections · Hermes: 11 · DeepSeek Harness: 8</text>
+</svg>
+
+<!-- 56 -->
+<svg class="d" data-t="Three harnesses, side by side" data-s="The same five questions. Three different answers.">
+  <rect x="80" y="230" width="1760" height="740" rx="12" class="box" stroke-width="4"/>
+  <line x1="420" y1="230" x2="420" y2="970" class="ln"/><line x1="900" y1="230" x2="900" y2="970" class="ln"/><line x1="1370" y1="230" x2="1370" y2="970" class="ln"/>
+  <line x1="80" y1="320" x2="1840" y2="320" class="ln"/><line x1="80" y1="450" x2="1840" y2="450" class="ln"/><line x1="80" y1="580" x2="1840" y2="580" class="ln"/><line x1="80" y1="710" x2="1840" y2="710" class="ln"/><line x1="80" y1="840" x2="1840" y2="840" class="ln"/>
+  <text x="660" y="290" class="bb c bl">PI</text><text x="1135" y="290" class="bb c te">HERMES</text><text x="1605" y="290" class="bb c vi">DEEPSEEK HARNESS</text>
+  <g class="sm">
+  <text x="110" y="395">WHEN</text><text x="660" y="395" class="c">window − 16,384</text><text x="1135" y="395" class="c">50% of effective</text><text x="1605" y="380" class="c">min(80% W,</text><text x="1605" y="418" class="c">W − O − 65,536)</text>
+  <text x="110" y="525">KEEP</text><text x="660" y="525" class="c">last 20,000 tokens</text><text x="1135" y="525" class="c">head + tail</text><text x="1605" y="525" class="c">newest 16% of W − O</text>
+  <text x="110" y="655">FREE STEP</text><text x="660" y="655" class="c">none</text><text x="1135" y="655" class="c">prune tool results</text><text x="1605" y="655" class="c">optional pruner</text>
+  <text x="110" y="785">SUMMARY</text><text x="660" y="785" class="c">6 sections</text><text x="1135" y="785" class="c">11 sections</text><text x="1605" y="785" class="c">8 sections</text>
+  <text x="110" y="915">ON FAILURE</text><text x="660" y="915" class="c">retry</text><text x="1135" y="915" class="c">4 guards</text><text x="1605" y="900" class="c">warn + carry on;</text><text x="1605" y="938" class="c">overflow: retry once</text>
+  </g>
+</svg>
+
+<!-- 57 -->
+<svg class="d" data-t="Inside the DeepSeek model" data-s="DeepSeek-V3.2's rule for its own thinking during tool use.">
+  <g class="md">
+  <rect x="80" y="330" width="200" height="100" rx="14" class="fbl sbl" stroke-width="4"/><text x="180" y="390" class="c">user</text>
+  <rect x="320" y="330" width="200" height="100" rx="14" class="fvi svi" stroke-width="4"/><text x="420" y="390" class="c">thinking</text>
+  <rect x="560" y="330" width="200" height="100" rx="14" class="fte ste" stroke-width="4"/><text x="660" y="390" class="c">tool call</text>
+  <rect x="800" y="330" width="200" height="100" rx="14" class="fte ste" stroke-width="4"/><text x="900" y="390" class="c">result</text>
+  <rect x="1040" y="330" width="200" height="100" rx="14" class="fvi svi" stroke-width="4"/><text x="1140" y="390" class="c">thinking</text>
+  <rect x="1360" y="330" width="220" height="100" rx="14" class="fbl sbl" stroke-width="6"/><text x="1470" y="390" class="c">NEW user</text>
+  </g>
+  <path d="M420 460 Q780 560 1140 460" class="ln ste" stroke-width="4"/>
+  <text x="780" y="580" class="md c te">tool results arriving: thinking is KEPT</text>
+  <line x1="1300" y1="300" x2="1300" y2="470" class="ln sco da" stroke-width="5"/>
+  <rect x="200" y="660" width="760" height="190" rx="18" class="fco sco" stroke-width="4"/>
+  <text x="580" y="720" class="md c">a new user message arrives:</text><text x="580" y="765" class="md c">OLD thinking is dropped</text><text x="580" y="810" class="sm c">tool calls and results stay</text>
+  <rect x="1060" y="660" width="760" height="190" rx="18" class="box da"/>
+  <text x="1440" y="720" class="md c">their search agents also tested</text><text x="1440" y="765" class="md c">"discard all" when nearly full:</text><text x="1440" y="810" class="sm c">wipe tool history, keep the question</text>
+  <text x="960" y="950" class="b c">Context management lives in the harness AND in how the model was trained.</text>
+</svg>
+
+<!-- 58 -->
+<svg class="d" data-t="Prompt caching" data-s="Every turn re-sends the same beginning. The provider can keep the work it already did.">
+  <text x="200" y="300" class="md c">call 1</text>
+  <rect x="300" y="250" width="700" height="90" rx="12" class="fam sam" stroke-width="3"/><text x="650" y="307" class="sm c">system + tools + history</text>
+  <rect x="1000" y="250" width="160" height="90" rx="12" class="fam sam" stroke-width="3"/><text x="1080" y="307" class="sm c">msg</text>
+  <text x="200" y="440" class="md c">call 2</text>
+  <rect x="300" y="390" width="860" height="90" rx="12" class="fte ste" stroke-width="3"/><text x="730" y="447" class="sm c">same prefix → CACHED</text>
+  <rect x="1160" y="390" width="160" height="90" rx="12" class="fam sam" stroke-width="3"/><text x="1240" y="447" class="sm c">new</text>
+  <text x="200" y="580" class="md c">call 3</text>
+  <rect x="300" y="530" width="1020" height="90" rx="12" class="fte ste" stroke-width="3"/><text x="810" y="587" class="sm c">same prefix → CACHED</text>
+  <rect x="1320" y="530" width="160" height="90" rx="12" class="fam sam" stroke-width="3"/><text x="1400" y="587" class="sm c">new</text>
+  <path d="M1170 380 l20 -30 M1330 520 l20 -30" class="ln sco" stroke-width="4"/>
+  <text x="1560" y="380" class="an co">cache_control:</text><text x="1560" y="410" class="an co">the breakpoint</text>
+  <rect x="160" y="690" width="520" height="200" rx="16" class="fte ste" stroke-width="4"/>
+  <text x="420" y="745" class="md c">cached part: no PREFILL</text><text x="420" y="790" class="sm c">K and V vectors are</text><text x="420" y="825" class="sm c">already computed</text>
+  <rect x="700" y="690" width="520" height="200" rx="16" class="fbl sbl" stroke-width="4"/>
+  <text x="960" y="745" class="md c">cheaper + faster</text><text x="960" y="790" class="sm c">lower bill, lower TTFT</text><text x="960" y="825" class="sm c">(time to first token)</text>
+  <rect x="1240" y="690" width="520" height="200" rx="16" class="fam sam" stroke-width="4"/>
+  <text x="1500" y="745" class="md c">TTL: time to live</text><text x="1500" y="790" class="sm c">how long the cache lives</text><text x="1500" y="825" class="sm c">(e.g. 5 minutes or 1 hour)</text>
+  <text x="960" y="965" class="b c">The model is stateless. The cache is how you stop paying twice for the same prefix.</text>
+</svg>
+
+<!-- 59 -->
+<svg class="d" data-t="Every fold breaks the cache once" data-s="Compaction rewrites history, so everything after the fixed prefix must be computed again.">
+  <text x="200" y="320" class="md c">before</text>
+  <rect x="300" y="270" width="460" height="90" rx="12" class="fte ste" stroke-width="3"/><text x="530" y="327" class="sm c">system + tools ✓ cached</text>
+  <rect x="760" y="270" width="760" height="90" rx="12" class="fte ste" stroke-width="3"/><text x="1140" y="327" class="sm c">long history ✓ cached</text>
+  <rect x="1520" y="270" width="160" height="90" rx="12" class="fam sam" stroke-width="3"/><text x="1600" y="327" class="sm c">new</text>
+  <text x="200" y="500" class="md c">after</text>
+  <rect x="300" y="450" width="460" height="90" rx="12" class="fte ste" stroke-width="3"/><text x="530" y="507" class="sm c">system + tools ✓ cached</text>
+  <rect x="760" y="450" width="300" height="90" rx="12" class="fco sco" stroke-width="3"/><text x="910" y="507" class="sm c">summary ✗ new</text>
+  <rect x="1060" y="450" width="340" height="90" rx="12" class="fco sco" stroke-width="3"/><text x="1230" y="507" class="sm c">recent ✗ recomputed</text>
+  <rect x="160" y="620" width="760" height="230" rx="16" class="box"/>
+  <text x="540" y="680" class="md c">Rule 1: keep system + tools</text><text x="540" y="725" class="md c">STABLE and at the FRONT</text><text x="540" y="790" class="sm c">they stay cached across folds</text>
+  <rect x="1000" y="620" width="760" height="230" rx="16" class="box"/>
+  <text x="1380" y="680" class="md c">Rule 2: a fold every turn</text><text x="1380" y="725" class="md c">= a cache miss every turn</text><text x="1380" y="790" class="sm c">the price of micro-compaction</text>
+  <text x="960" y="950" class="b c">Fold rarely, fold cleanly, and keep the front of the prompt still.</text>
+</svg>
+
+<!-- 60 -->
+<svg class="d" data-t="Zill's fold: one fold, two halves" data-s="The simplest compaction that works. Old half becomes one summary; the last 6 stay exact.">
+  <g class="box" stroke-width="3">
+  <rect x="100" y="280" width="110" height="80" rx="10"/><rect x="220" y="280" width="110" height="80" rx="10"/><rect x="340" y="280" width="110" height="80" rx="10"/><rect x="460" y="280" width="110" height="80" rx="10"/><rect x="580" y="280" width="110" height="80" rx="10"/><rect x="700" y="280" width="110" height="80" rx="10"/><rect x="820" y="280" width="110" height="80" rx="10"/><rect x="940" y="280" width="110" height="80" rx="10"/>
+  </g>
+  <g class="fte ste" stroke-width="4">
+  <rect x="1120" y="280" width="110" height="80" rx="10"/><rect x="1240" y="280" width="110" height="80" rx="10"/><rect x="1360" y="280" width="110" height="80" rx="10"/><rect x="1480" y="280" width="110" height="80" rx="10"/><rect x="1600" y="280" width="110" height="80" rx="10"/><rect x="1720" y="280" width="110" height="80" rx="10"/>
+  </g>
+  <line x1="1085" y1="240" x2="1085" y2="400" class="ln sam" stroke-width="6"/>
+  <text x="575" y="420" class="md c">OLD half</text>
+  <text x="1475" y="420" class="md c te">last 6: KEEP_RECENT = 6</text>
+  <path d="M575 440 Q575 520 700 540" class="ln" marker-end="url(#a)"/>
+  <rect x="710" y="490" width="300" height="110" rx="55" class="fvi svi" stroke-width="4"/><text x="860" y="555" class="md c">one LLM call</text>
+  <path d="M860 605 Q860 650 860 680" class="ln" marker-end="url(#a)"/>
+  <rect x="260" y="690" width="900" height="200" rx="16" class="fam sam" stroke-width="5"/>
+  <text x="290" y="740" class="an">[Conversation so far, compacted]</text>
+  <text x="290" y="780" class="an">Original request (verbatim): "..."</text>
+  <text x="290" y="815" class="an">Goal · Constraints · Progress · Decisions</text>
+  <text x="290" y="850" class="an">Files touched · Errors · Next steps</text>
+  <path d="M1475 440 Q1475 760 1170 790" class="ln ste" stroke-width="4" marker-end="url(#a)"/>
+  <text x="1500" y="640" class="sm te">copied over exactly</text>
+  <text x="960" y="960" class="b c">Summarize the past. Keep the present sharp. Chars ÷ 4 is our meter.</text>
+</svg>
+
+<!-- 61 -->
+<svg class="d" data-t="The seam" data-s="Where the summary meets the kept slice. A cut can leave an orphan tool result there.">
+  <text x="480" y="270" class="bb c">BEFORE the fold</text>
+  <g class="md">
+  <rect x="100" y="300" width="760" height="70" rx="10" class="box"/><text x="130" y="347">assistant + tool_call(write four.txt)</text>
+  <rect x="100" y="410" width="760" height="70" rx="10" class="fco sco" stroke-width="4"/><text x="130" y="457">tool → "Wrote four.txt"</text>
+  <rect x="100" y="490" width="760" height="70" rx="10" class="box"/><text x="130" y="537">assistant + tool_call(read four.txt)</text>
+  <rect x="100" y="570" width="760" height="70" rx="10" class="box"/><text x="130" y="617">tool → "ping ping ping ..."</text>
+  </g>
+  <line x1="80" y1="390" x2="880" y2="390" class="ln sam da" stroke-width="5"/>
+  <text x="895" y="398" class="an am">cut</text>
+  <text x="1420" y="270" class="bb c">AFTER the fold</text>
+  <g class="md">
+  <rect x="1040" y="300" width="760" height="70" rx="10" class="fam sam" stroke-width="4"/><text x="1070" y="347">user: [Conversation so far, compacted] …</text>
+  <rect x="1040" y="380" width="760" height="70" rx="10" class="fco sco" stroke-width="4"/><text x="1070" y="427">tool → "Wrote four.txt"  ← ORPHAN</text>
+  <rect x="1040" y="460" width="760" height="70" rx="10" class="box"/><text x="1070" y="507">assistant + tool_call(read four.txt)</text>
+  <rect x="1040" y="540" width="760" height="70" rx="10" class="box"/><text x="1070" y="587">tool → "ping ping ping ..."</text>
+  </g>
+  <line x1="1050" y1="388" x2="1790" y2="442" class="ln sco" stroke-width="5"/>
+  <rect x="200" y="700" width="1520" height="180" rx="16" class="fte ste" stroke-width="4"/>
+  <text x="960" y="760" class="mono c" font-size="30">while kept and kept[0]["role"] == "tool": kept = kept[1:]</text>
+  <text x="960" y="830" class="md c">Drop it. Never invent a fake call: its meaning is already in the summary.</text>
+  <text x="960" y="960" class="b c">Same rule as Pi's "never cut on a toolResult", done the cheap way.</text>
+</svg>
+
+<!-- 62 -->
+<svg class="d" data-t="The sawtooth" data-s="Without compaction the tape hits the ceiling. With it, the tape saws safely under budget.">
+  <rect x="160" y="240" width="1600" height="640" rx="18" class="box" stroke-width="4"/>
+  <line x1="240" y1="820" x2="1700" y2="820" class="ln"/><line x1="240" y1="820" x2="240" y2="290" class="ln"/>
+  <line x1="240" y1="330" x2="1700" y2="330" class="ln sco" stroke-width="5"/>
+  <text x="1690" y="315" class="an co" text-anchor="end">the window: crash</text>
+  <line x1="240" y1="470" x2="1700" y2="470" class="ln sam da" stroke-width="4"/>
+  <text x="1690" y="455" class="an am" text-anchor="end">our budget: fold here</text>
+  <path d="M245 800 Q600 650 900 330" class="ln sco da" stroke-width="5"/>
+  <text x="900" y="300" class="bb c co">✗</text><text x="940" y="300" class="sm co">no compaction: crash</text>
+  <path d="M245 805 L420 640 L470 470 L480 740 L640 600 L700 470 L710 735 L880 590 L940 470 L950 730 L1120 600 L1180 470 L1190 735 L1360 600 L1420 470 L1430 730 L1600 600 L1660 480" class="ln ste" stroke-width="5"/>
+  <text x="1300" y="790" class="sm te">compacted: climb, fold, climb, fold…</text>
+  <text x="250" y="860" class="an">turn 1</text><text x="1690" y="860" class="an" text-anchor="end">turn 200</text>
+  <text x="960" y="960" class="b c">That dip is Zill writing its own recap, and the task never notices.</text>
+</svg>
+
+<!-- 63 -->
+<svg class="d" data-t="What we build today" data-s="One new file, one tiny socket in the loop, a test file and a demo.">
+  <rect x="120" y="250" width="820" height="560" rx="20" class="fam sam" stroke-width="5"/>
+  <text x="530" y="315" class="bb c mono" font-size="40">zill/context.py</text>
+  <g class="mono" font-size="25">
+  <text x="160" y="390">CHARS_PER_TOKEN = 4</text>
+  <text x="160" y="430">KEEP_RECENT = 6</text>
+  <text x="160" y="490">estimate_tokens(messages)</text>
+  <text x="160" y="530">render(messages)</text>
+  <text x="160" y="570">compact(model, messages, budget)</text>
+  <text x="160" y="610">_mend(kept)</text>
+  <text x="160" y="650">_fallback_summary(old)</text>
+  </g>
+  <text x="530" y="740" class="sm c">≈ 110 lines with docstrings</text>
+  <rect x="1040" y="250" width="760" height="160" rx="16" class="fbl sbl" stroke-width="4"/>
+  <text x="1420" y="310" class="md c mono" font-size="28">zill/loop.py: one new socket</text>
+  <text x="1420" y="365" class="an c">run_loop(..., before_turn=None)</text>
+  <rect x="1040" y="450" width="760" height="160" rx="16" class="fte ste" stroke-width="4"/>
+  <text x="1420" y="510" class="md c mono" font-size="28">tests/test_zill_context.py</text>
+  <text x="1420" y="565" class="an c">fake provider · no network · stdlib only</text>
+  <rect x="1040" y="650" width="760" height="160" rx="16" class="fvi svi" stroke-width="4"/>
+  <text x="1420" y="710" class="md c mono" font-size="28">demos/context_demo.py</text>
+  <text x="1420" y="765" class="an c">budget = 1,500 tokens → watch it fold</text>
+  <text x="960" y="900" class="b c">Pi and Hermes have thousands of lines for this. We start with the core idea.</text>
+</svg>
+
+<!-- 64 -->
+<svg class="d" data-t="Three decisions you must make" data-s="Designing your own harness? Compaction comes down to these.">
+  <rect x="100" y="280" width="540" height="460" rx="22" class="fbl sbl" stroke-width="5"/>
+  <text x="370" y="360" class="big c bl">WHEN?</text>
+  <text x="370" y="450" class="md c">a fixed reserve (Pi)</text><text x="370" y="500" class="md c">or a percentage (Hermes)</text><text x="370" y="550" class="md c">or both (DeepSeek)</text>
+  <rect x="690" y="280" width="540" height="460" rx="22" class="fam sam" stroke-width="5"/>
+  <text x="960" y="360" class="big c am">HOW?</text>
+  <text x="960" y="450" class="md c">what is kept exact,</text><text x="960" y="500" class="md c">where the cut falls,</text><text x="960" y="550" class="md c">what is pruned for free</text>
+  <rect x="1280" y="280" width="540" height="460" rx="22" class="fte ste" stroke-width="5"/>
+  <text x="1550" y="360" class="big c te">WHAT?</text>
+  <text x="1550" y="450" class="md c">the shape of the</text><text x="1550" y="500" class="md c">summary: which sections</text><text x="1550" y="550" class="md c">must always survive</text>
+  <rect x="410" y="820" width="1100" height="130" rx="16" class="fco sco" stroke-width="4"/>
+  <text x="960" y="875" class="md c">…and one more for production:</text>
+  <text x="960" y="920" class="md c">what happens when compaction FAILS?</text>
+</svg>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const only=new URLSearchParams(location.search).get('s');
+const pro=new URLSearchParams(location.search).get('theme')==='pro';
+if(pro) document.body.classList.add('pro');
+const all=[...document.querySelectorAll('svg.d')];
+const ORDER=Array.from({length:64},(_,i)=>i+1);
+
+const slides=ORDER.map(k=>all[k-1]);
+slides.forEach(s=>document.body.insertBefore(s,document.currentScript));
+slides.forEach((svg,i)=>{
+  const n=i+1, nn=String(n).padStart(2,'0');
+  if(only && +only!==n){svg.remove();return;}
+  svg.setAttribute('viewBox','0 0 1920 1080');
+  svg.setAttribute('xmlns',NS);
+  let head=`<defs>
+    <marker id="a${n}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker>
+    <marker id="b${n}" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M10 0L0 5L10 10z" fill="context-stroke"/></marker>
+  </defs>
+  <defs>
+    <filter id="wob${n}" filterUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+      <feTurbulence type="fractalNoise" baseFrequency="0.016" numOctaves="2" seed="${n*7}" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="8" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <g id="man${n}" fill="none" stroke="#1e1e1e" stroke-width="4" stroke-linecap="round">
+      <circle cx="50" cy="28" r="24" fill="#ffffff"/>
+      <path d="M41 23v5M59 23v5M40 37q10 9 20 0"/>
+      <path d="M50 52V125M50 78L12 108M50 78L90 100M50 125L22 196M50 125L80 196"/>
+    </g>
+  </defs>
+  <rect width="1920" height="1080" fill="#fffdf7"/>
+  <g filter="url(#wob${n})">
+  <text x="960" y="108" class="h c">${svg.dataset.t}</text>
+  <path class="ul" d=""/>
+  <text x="960" y="182" class="sub c">${svg.dataset.s}</text>
+  <text x="70" y="1048" class="ft">ZILL HARNESS · Lecture 4 · Context</text>
+  <text x="1850" y="1048" class="ft" text-anchor="end">${nn}</text>`;
+  if(pro) head=head.split('<rect width="1920"')[0]+`<pattern id="dots${n}" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="#d5dde7"/></pattern>
+  <rect width="1920" height="1080" fill="#f8fafc"/><rect width="1920" height="1080" fill="url(#dots${n})"/>
+  <g>
+  <path class="ul" d="M78 66V186"/>
+  <text x="104" y="84" class="kick">ZILL HARNESS · Lecture 4 · Context</text>
+  <text x="104" y="142" class="h">${svg.dataset.t}</text>
+  <text x="104" y="186" class="sub">${svg.dataset.s}</text>
+  <text x="1850" y="1048" class="ft" text-anchor="end">${nn} / ${slides.length}</text>`;
+  svg.innerHTML=head+svg.innerHTML.replaceAll('url(#a)',`url(#a${n})`).replaceAll('url(#b)',`url(#b${n})`).replaceAll('#man',`#man${n}`)+'</g>';
+  if(!pro){
+    const L=Math.min(svg.querySelector('.h').getComputedTextLength(),1750);
+    svg.querySelector('.ul').setAttribute('d',`M${960-L/2} 130 q${L/4} 12 ${L/2} 0 t${L/2} 0`);
+  }
+});
+if(only) document.body.classList.add('single');
+</script>
+</body>
+</html>

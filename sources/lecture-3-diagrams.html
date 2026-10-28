@@ -1,0 +1,744 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Zill Harness · Lecture 3 diagrams</title>
+<style>
+  html,body{margin:0;background:#05070f}
+  svg.d{display:block;width:100%;height:auto;margin:0 0 24px}
+  body.single svg.d{margin:0;width:100vw;height:100vh}
+  svg text{font-family:"Segoe UI",Arial,sans-serif;fill:#e8ecf8}
+  .h{font-size:60px;font-weight:700;fill:#fff}
+  .sub{font-size:30px;fill:#8f9bc0}
+  .b{font-size:30px}
+  .bb{font-size:32px;font-weight:700}
+  .big{font-size:52px;font-weight:700}
+  .sm{font-size:24px;fill:#8f9bc0}
+  .md{font-size:26px}
+  svg .mono, svg .mono text{font-family:"Cascadia Code",Consolas,monospace;white-space:pre}
+  .c{text-anchor:middle}
+  .box{fill:#151c33;stroke:#2a3558;stroke-width:2}
+  .ln{stroke:#8f9bc0;stroke-width:4;fill:none}
+  svg .am{fill:#ffb547} svg .te{fill:#3ddbc0} svg .vi{fill:#9d8cff} svg .co{fill:#ff7a70} svg .bl{fill:#5aa9ff} svg .mu{fill:#8f9bc0} svg .dk{fill:#0b1020}
+  .sam{stroke:#ffb547} .ste{stroke:#3ddbc0} .svi{stroke:#9d8cff} .sco{stroke:#ff7a70} .sbl{stroke:#5aa9ff}
+  .fam{fill:rgba(255,181,71,.16)} .fte{fill:rgba(61,219,192,.14)} .fvi{fill:rgba(157,140,255,.16)} .fco{fill:rgba(255,122,112,.15)} .fbl{fill:rgba(90,169,255,.15)}
+</style>
+<style>
+  /* hand-drawn whiteboard theme (overrides the block above) */
+  html,body{background:#e9e6df}
+  svg text{font-family:"Ink Free","Segoe Print","Comic Sans MS",cursive;fill:#1e1e1e;font-weight:700}
+  .h{font-family:"Segoe Print","Ink Free",cursive;font-size:54px;font-weight:700;fill:#1e1e1e}
+  .sub{font-size:32px;fill:#495057}
+  .b{font-size:33px}
+  .bb{font-size:36px;font-weight:700}
+  .big{font-size:58px;font-weight:700}
+  .sm{font-size:27px;fill:#495057}
+  .md{font-size:29px}
+  svg .mono, svg .mono text, svg .an, svg .ft{font-family:"Cascadia Code",Consolas,monospace;font-weight:600}
+  svg .mono, svg .mono text{white-space:pre}
+  svg .an{font-size:22px}
+  svg .ft{font-size:20px;fill:#868e96}
+  .box{fill:#fff;stroke:#1e1e1e;stroke-width:3}
+  .ln{stroke:#1e1e1e;stroke-width:3.5;fill:none;stroke-linecap:round}
+  .da{stroke-dasharray:9 9}
+  .ul{stroke:#f08c00;stroke-width:6;fill:none;stroke-linecap:round}
+  svg .am{fill:#e8590c} svg .te{fill:#2b8a3e} svg .vi{fill:#6741d9} svg .co{fill:#e03131} svg .bl{fill:#1971c2} svg .mu{fill:#6b7280} svg .dk{fill:#1e1e1e}
+  .sam{stroke:#e8590c} .ste{stroke:#2f9e44} .svi{stroke:#6741d9} .sco{stroke:#e03131} .sbl{stroke:#1971c2}
+  .fam{fill:#fff3bf} .fte{fill:#d3f9d8} .fvi{fill:#e5dbff} .fco{fill:#ffe3e3} .fbl{fill:#d0ebff}
+</style>
+<style>
+  /* professional theme: open the page with ?theme=pro */
+  body.pro{background:#e2e8f0}
+  body.pro svg text{font-family:"Segoe UI Variable Display","Segoe UI",Arial,sans-serif;fill:#0f172a;font-weight:500}
+  body.pro .h{font-family:"Segoe UI Variable Display","Segoe UI",Arial,sans-serif;font-size:56px;font-weight:700;fill:#0f172a;letter-spacing:-.6px}
+  body.pro .sub{font-size:28px;fill:#64748b;font-weight:400}
+  body.pro .b{font-size:30px}
+  body.pro .bb{font-size:32px;font-weight:700}
+  body.pro .big{font-size:52px;font-weight:700}
+  body.pro .sm{font-size:24px;fill:#64748b}
+  body.pro .md{font-size:26px}
+  body.pro svg .mono, body.pro svg .mono text, body.pro svg .an, body.pro svg .kick{font-family:"Cascadia Code",Consolas,monospace;font-weight:600}
+  body.pro svg .an{font-size:20px;letter-spacing:.4px}
+  body.pro svg .kick{font-size:19px;fill:#4f46e5;letter-spacing:3px}
+  body.pro svg .ft{font-family:"Segoe UI",Arial,sans-serif;font-size:20px;fill:#94a3b8;font-weight:500}
+  body.pro .box{fill:#fff;stroke:#cbd5e1;stroke-width:2}
+  body.pro .ln{stroke:#334155;stroke-width:3}
+  body.pro .ul{stroke:#4f46e5;stroke-width:8}
+  body.pro svg .am{fill:#b45309} body.pro svg .te{fill:#047857} body.pro svg .vi{fill:#6d28d9} body.pro svg .co{fill:#be123c} body.pro svg .bl{fill:#1d4ed8} body.pro svg .mu{fill:#64748b} body.pro svg .dk{fill:#0f172a}
+  body.pro .sam{stroke:#d97706} body.pro .ste{stroke:#059669} body.pro .svi{stroke:#7c3aed} body.pro .sco{stroke:#e11d48} body.pro .sbl{stroke:#2563eb}
+  body.pro .fam{fill:#fef3c7} body.pro .fte{fill:#d1fae5} body.pro .fvi{fill:#ede9fe} body.pro .fco{fill:#ffe4e6} body.pro .fbl{fill:#dbeafe}
+  body.pro .box, body.pro .fam, body.pro .fte, body.pro .fvi, body.pro .fco, body.pro .fbl{filter:drop-shadow(0 6px 12px rgba(15,23,42,.09))}
+  body.pro [fill="#ffd43b"]{fill:#fbbf24;stroke:#d97706}
+  body.pro [fill="#ced4da"]{fill:#cbd5e1}
+  body.pro rect[fill="#fff9db"]{fill:#0f172a;stroke:#0f172a;filter:drop-shadow(0 10px 18px rgba(15,23,42,.22))}
+  body.pro rect[fill="#fff9db"] + g.mono text, body.pro rect[fill="#fff9db"] + text.mono{fill:#e2e8f0}
+  body.pro rect[fill="#fff9db"] + g.mono .vi, body.pro rect[fill="#fff9db"] + text.mono.vi{fill:#c4b5fd}
+  body.pro rect[fill="#fff9db"] + g.mono .te{fill:#6ee7b7}
+  body.pro rect[fill="#fff9db"] + g.mono .am, body.pro rect[fill="#fff9db"] + text.mono.am{fill:#fbbf24}
+</style>
+</head>
+<body>
+
+<!-- 01 -->
+<svg class="d" data-t="Where we left off" data-s="The loop from Lecture 2 is complete. Two sockets are still empty: tools and before_tool.">
+  <rect x="640" y="330" width="640" height="300" rx="16" class="fbl sbl" stroke-width="4"/>
+  <text x="960" y="405" class="big c">loop.py</text>
+  <text x="960" y="460" class="mono c" font-size="26">run_loop(model, system, messages,</text>
+  <text x="960" y="495" class="mono c" font-size="26">         tools, on_event, before_tool)</text>
+  <text x="960" y="575" class="md c te">does NOT change today</text>
+
+  <text x="280" y="320" class="an c mu">SOCKET 1</text>
+  <rect x="80" y="345" width="400" height="260" rx="14" class="box da"/>
+  <text x="280" y="440" class="mono c" font-size="38">tools = { }</text>
+  <text x="280" y="490" class="sm c">only a dice roller</text>
+  <text x="280" y="535" class="sm c">so far…</text>
+  <line x1="485" y1="475" x2="630" y2="475" class="ln sam" stroke-width="5" marker-end="url(#a)"/>
+  <text x="280" y="680" class="bb c am">TODAY → tools.py</text>
+  <text x="280" y="725" class="md c">the HANDS</text>
+  <text x="280" y="770" class="sm c">+ operations.py: WHERE they run</text>
+
+  <text x="1640" y="320" class="an c mu">SOCKET 2</text>
+  <rect x="1440" y="345" width="400" height="260" rx="14" class="box da"/>
+  <text x="1640" y="440" class="mono c" font-size="34">before_tool(call)</text>
+  <text x="1640" y="490" class="sm c">always-allow</text>
+  <text x="1640" y="535" class="sm c">so far…</text>
+  <line x1="1435" y1="475" x2="1290" y2="475" class="ln sam" stroke-width="5" marker-end="url(#a)"/>
+  <text x="1640" y="680" class="bb c am">TODAY → security.py</text>
+  <text x="1640" y="725" class="md c">the CONSCIENCE</text>
+
+  <rect x="440" y="800" width="1040" height="150" rx="18" class="box da"/>
+  <text x="960" y="860" class="b c">The loop never learns the names of the tools.</text>
+  <text x="960" y="910" class="b c">That is why it doesn't change when the toolbox grows.</text>
+</svg>
+
+<!-- 02 -->
+<svg class="d" data-t="A brain in a jar" data-s="Tools break the glass. They let the model touch the outside world.">
+  <rect x="190" y="235" width="360" height="50" rx="12" class="box"/>
+  <rect x="110" y="280" width="520" height="680" rx="60" class="fbl sbl" stroke-width="5"/>
+  <use href="#man" x="320" y="520"/>
+  <text x="370" y="470" class="bb c vi">MODEL</text>
+  <text x="370" y="790" class="sm c">a brain in a jar</text>
+  <text x="370" y="900" class="an c co">can THINK — can't TOUCH</text>
+  <path d="M630 560 l-34 44 l34 36 l-34 50" class="ln sco" stroke-width="6"/>
+  <text x="700" y="900" class="bb am">TOOLS</text>
+  <text x="700" y="945" class="sm">= the wheels</text>
+  <g class="md">
+    <rect x="1130" y="270" width="620" height="90" rx="14" class="box"/><text x="1440" y="327" class="c">GitHub repository</text>
+    <rect x="1130" y="390" width="620" height="90" rx="14" class="box"/><text x="1440" y="447" class="c">Your terminal</text>
+    <rect x="1130" y="510" width="620" height="90" rx="14" class="box"/><text x="1440" y="567" class="c">Google Drive</text>
+    <rect x="1130" y="630" width="620" height="90" rx="14" class="box"/><text x="1440" y="687" class="c">Slack</text>
+    <rect x="1130" y="750" width="620" height="90" rx="14" class="box"/><text x="1440" y="807" class="c">Any API (Zoom, Jira, Notion…)</text>
+  </g>
+  <line x1="660" y1="610" x2="1112" y2="318" class="ln sam" marker-end="url(#a)"/>
+  <line x1="660" y1="620" x2="1112" y2="438" class="ln sam" marker-end="url(#a)"/>
+  <line x1="660" y1="630" x2="1112" y2="558" class="ln sam" marker-end="url(#a)"/>
+  <line x1="660" y1="640" x2="1112" y2="678" class="ln sam" marker-end="url(#a)"/>
+  <line x1="660" y1="650" x2="1112" y2="798" class="ln sam" marker-end="url(#a)"/>
+  <text x="1130" y="920" class="bb am">The "A" in thought → ACTION → observation</text>
+  <text x="1130" y="965" class="sm">that is what tools give the model</text>
+</svg>
+
+<!-- 03 -->
+<svg class="d" data-t="Two kinds of tools" data-s="Every modern harness has pre-built tools and external tools. How many you ship is a design decision.">
+  <rect x="80" y="235" width="820" height="520" rx="20" class="fte ste" stroke-width="4"/>
+  <text x="490" y="300" class="bb c te">PRE-BUILT</text>
+  <text x="490" y="340" class="sm c">ship inside the harness</text>
+  <g class="mono" font-size="32">
+    <text x="260" y="410">read    → look at files</text>
+    <text x="260" y="460">write   → create files</text>
+    <text x="260" y="510">edit    → fix part of a file</text>
+    <text x="260" y="560" class="co">bash    → run commands (!)</text>
+    <text x="260" y="610">grep    → search inside files</text>
+    <text x="260" y="660">ls      → list a folder</text>
+    <text x="260" y="710">find    → locate files</text>
+  </g>
+  <rect x="1020" y="235" width="820" height="520" rx="20" class="fvi svi" stroke-width="4"/>
+  <text x="1430" y="300" class="bb c vi">EXTERNAL</text>
+  <text x="1430" y="340" class="sm c">added by the user or the project</text>
+  <text x="1070" y="420" class="md">• MCP servers — someone already</text>
+  <text x="1095" y="458" class="md">wrote the tools (GitHub MCP: 27)</text>
+  <text x="1070" y="530" class="md">• Your own Python scripts as tools</text>
+  <text x="1070" y="600" class="md">• Plugins: Jira, Notion, Salesforce…</text>
+  <text x="1070" y="670" class="md">• Added at design time OR run time</text>
+  <rect x="80" y="800" width="1760" height="190" rx="18" class="box da"/>
+  <text x="960" y="850" class="bb c">A design question: how many tools do you ship?</text>
+  <text x="340" y="910" class="md c bl">Pi</text><text x="340" y="950" class="sm c">few pre-built, plugins for the rest</text>
+  <text x="960" y="910" class="md c co">Hermes</text><text x="960" y="950" class="sm c">many pre-built, everything out of the box</text>
+  <text x="1580" y="910" class="md c te">Zill</text><text x="1580" y="950" class="sm c">follows Pi: small and minimal</text>
+</svg>
+
+<!-- 04 -->
+<svg class="d" data-t="A tool has two halves" data-s="The model reads one half. Your code runs the other. It never sees the curtain.">
+  <rect x="80" y="240" width="720" height="600" rx="20" class="fvi svi" stroke-width="4"/>
+  <text x="440" y="300" class="bb c vi">INTERFACE</text>
+  <text x="440" y="338" class="sm c">what the MODEL sees</text>
+  <g>
+    <text x="130" y="420" class="mono bb am">name</text><text x="330" y="420" class="md">which tool is this?</text>
+    <text x="130" y="500" class="mono bb am">label</text><text x="330" y="500" class="md">a tag, to bucket the tool</text>
+    <text x="130" y="580" class="mono bb am">description</text><text x="400" y="580" class="md">when to use it</text>
+    <text x="400" y="615" class="an co">← the most important line</text>
+    <text x="130" y="700" class="mono bb am">parameters</text><text x="400" y="700" class="md">what to fill in</text>
+  </g>
+  <text x="440" y="790" class="an c vi">a job posting: title · description · form</text>
+  <path d="M860 250 q22 55 0 110 t0 110 t0 110 t0 110 t0 110" class="ln sco" stroke-width="7"/>
+  <text x="860" y="235" class="an c co">THE CURTAIN</text>
+  <rect x="930" y="240" width="910" height="600" rx="20" class="fam sam" stroke-width="4"/>
+  <text x="1385" y="300" class="bb c am">IMPLEMENTATION</text>
+  <text x="1385" y="338" class="sm c">what RUNS — the model never sees it</text>
+  <g class="mono" font-size="34">
+    <text x="1030" y="440">execute(</text>
+    <text x="1070" y="490">toolCallId,</text>
+    <text x="1070" y="540">params,</text>
+    <text x="1070" y="590">signal,</text>
+    <text x="1070" y="640">onUpdate</text>
+    <text x="1030" y="690">)</text>
+  </g>
+  <text x="1380" y="590" class="an am">← cancel signal</text>
+  <text x="1380" y="640" class="an am">← stream progress</text>
+  <text x="1030" y="780" class="md">plain code: read the file, run the command</text>
+  <text x="960" y="920" class="bb c">The model decides from the words alone.</text>
+  <text x="960" y="970" class="b c mu">Then the executor runs the code behind the curtain.</text>
+</svg>
+
+<!-- 05 -->
+<svg class="d" data-t="What the model actually receives" data-s="This is the read_file contract exactly as the model reads it. It acts on these words, and only these words.">
+  <rect x="60" y="235" width="1150" height="560" rx="18" fill="#fff9db" stroke="#1e1e1e" stroke-width="3"/>
+  <g class="mono" font-size="30">
+    <text x="90" y="300">{"name": "read_file",</text>
+    <text x="90" y="350">  "description": "Read a file. Returns its</text>
+    <text x="90" y="400" class="te">                 contents with line numbers.",</text>
+    <text x="90" y="450">  "parameters": {</text>
+    <text x="90" y="500">    "type": "object",</text>
+    <text x="90" y="550">    "properties": {</text>
+    <text x="90" y="600">      "path": {"type": "string",</text>
+    <text x="90" y="650" class="bl">               "description": "Path relative to</text>
+    <text x="90" y="700" class="bl">                               the working directory"}},</text>
+    <text x="90" y="750" class="co">    "required": ["path"]}}</text>
+  </g>
+  <line x1="1250" y1="390" x2="1060" y2="395" class="ln ste da" marker-end="url(#a)"/>
+  <text x="1270" y="350" class="an te">promises line numbers</text>
+  <text x="1270" y="384" class="an te">→ the model can cite</text>
+  <text x="1270" y="418" class="an te">a location next call</text>
+  <line x1="1250" y1="670" x2="1180" y2="672" class="ln sbl da" marker-end="url(#a)"/>
+  <text x="1270" y="630" class="an bl">relative path</text>
+  <text x="1270" y="664" class="an bl">→ no guessing at</text>
+  <text x="1270" y="698" class="an bl">absolute paths</text>
+  <line x1="1250" y1="750" x2="790" y2="748" class="ln sco da" marker-end="url(#a)"/>
+  <text x="1270" y="790" class="an co">required = may never be</text>
+  <text x="1270" y="824" class="an co">omitted. Enforced when</text>
+  <text x="1270" y="858" class="an co">the call is generated.</text>
+  <text x="960" y="900" class="bb c am">The schema isn't a suggestion. It's a fence the model can't climb.</text>
+  <text x="960" y="960" class="sm c">And it is re-sent on EVERY turn — a long description is rent you pay forever.</text>
+</svg>
+
+<!-- 06 -->
+<svg class="d" data-t="A loose form and a tight one" data-s="Same edit function, two contracts. Only one of them teaches the model what to do.">
+  <rect x="80" y="235" width="830" height="580" rx="20" class="fco sco" stroke-width="4"/>
+  <text x="495" y="300" class="bb c co">LOOSE</text>
+  <g class="mono" font-size="27">
+    <text x="120" y="370">name: edit_file</text>
+    <text x="120" y="415">description: "Edit a file."</text>
+    <text x="120" y="460">parameters:</text>
+    <text x="120" y="505">  args: string       ← ???</text>
+  </g>
+  <text x="120" y="590" class="md">• the model must INVENT a format</text>
+  <text x="145" y="628" class="sm">JSON? a diff? a shell one-liner?</text>
+  <text x="120" y="690" class="md">• nothing is required → a blank</text>
+  <text x="145" y="728" class="sm">may simply be missing</text>
+  <text x="120" y="780" class="md co">registers fine — fails quietly, forever</text>
+  <rect x="1010" y="235" width="830" height="580" rx="20" class="fte ste" stroke-width="4"/>
+  <text x="1425" y="300" class="bb c te">TIGHT</text>
+  <g class="mono" font-size="27">
+    <text x="1050" y="370">name: edit_file</text>
+    <text x="1050" y="415">description: "Replace an exact text</text>
+    <text x="1050" y="450">  snippet. It must appear once."</text>
+    <text x="1050" y="500">parameters (all required):</text>
+    <text x="1050" y="545">  path  relative to working dir</text>
+    <text x="1050" y="585">  old   exact text, must be unique</text>
+    <text x="1050" y="625">  new   replacement text</text>
+  </g>
+  <text x="1050" y="700" class="md">• fill-in-the-blanks: hard to get wrong</text>
+  <text x="1050" y="750" class="md">• the description already teaches</text>
+  <text x="1075" y="788" class="md">the uniqueness rule</text>
+  <rect x="300" y="860" width="1320" height="130" rx="18" class="box da"/>
+  <text x="960" y="915" class="bb c">Require ONLY what the function cannot proceed without.</text>
+  <text x="960" y="962" class="sm c">Over-required → the model invents values just to fill the blanks.</text>
+</svg>
+
+<!-- 07 -->
+<svg class="d" data-t="Six hands cover the verbs" data-s="Inspect, create, correct, execute, navigate, search. Nearly every gadget people ask for is one of these in a costume.">
+  <g>
+    <rect x="100" y="235" width="520" height="250" rx="18" class="fbl sbl" stroke-width="4"/>
+    <text x="360" y="295" class="an c bl">INSPECT</text><text x="360" y="355" class="mono bb c">read_file</text><text x="360" y="410" class="md c">contents, with line numbers</text>
+    <rect x="700" y="235" width="520" height="250" rx="18" class="fte ste" stroke-width="4"/>
+    <text x="960" y="295" class="an c te">CREATE</text><text x="960" y="355" class="mono bb c">write_file</text><text x="960" y="410" class="md c">a new file (makes the folders)</text>
+    <rect x="1300" y="235" width="520" height="250" rx="18" class="fvi svi" stroke-width="4"/>
+    <text x="1560" y="295" class="an c vi">CORRECT</text><text x="1560" y="355" class="mono bb c">edit_file</text><text x="1560" y="410" class="md c">replace one unique snippet</text>
+    <rect x="100" y="545" width="520" height="250" rx="18" class="fco sco" stroke-width="5"/>
+    <text x="360" y="605" class="an c co">EXECUTE</text><text x="360" y="665" class="mono bb c">bash</text><text x="360" y="720" class="md c co">runs ANYTHING — the stove</text>
+    <rect x="700" y="545" width="520" height="250" rx="18" class="fam sam" stroke-width="4"/>
+    <text x="960" y="605" class="an c am">NAVIGATE</text><text x="960" y="665" class="mono bb c">list_files</text><text x="960" y="720" class="md c">what is in this folder?</text>
+    <rect x="1300" y="545" width="520" height="250" rx="18" class="fam sam" stroke-width="4"/>
+    <text x="1560" y="605" class="an c am">SEARCH</text><text x="1560" y="665" class="mono bb c">grep</text><text x="1560" y="720" class="md c">which file has this text?</text>
+  </g>
+  <rect x="100" y="850" width="1720" height="150" rx="18" class="box da"/>
+  <text x="960" y="905" class="b c">Every extra tool grows the decision surface the model must think over on EVERY turn.</text>
+  <text x="960" y="950" class="b c">Overlapping tools make it waste a turn choosing instead of acting.</text>
+  <text x="960" y="985" class="an c mu">(Pi also ships find — Zill skips it to stay small)</text>
+</svg>
+
+<!-- 08 -->
+<svg class="d" data-t="Two axes of tool design" data-s="Every design decision either helps the next step or protects the conversation.">
+  <rect x="80" y="235" width="830" height="480" rx="20" class="fte ste" stroke-width="4"/>
+  <text x="495" y="295" class="bb c te">TWO AXES</text>
+  <text x="120" y="360" class="md am" font-weight="700">1 · Help the model's NEXT step</text>
+  <text x="140" y="405" class="sm">• line numbers in read_file</text>
+  <text x="140" y="445" class="sm">• write_file creates the parent folders</text>
+  <text x="140" y="485" class="sm">• errors that say what to do next</text>
+  <text x="120" y="565" class="md co" font-weight="700">2 · Protect the CONVERSATION</text>
+  <text x="140" y="610" class="sm">• cap every output</text>
+  <text x="140" y="650" class="sm">• every result is re-sent on every later turn</text>
+  <rect x="1010" y="235" width="830" height="480" rx="20" class="fam sam" stroke-width="4"/>
+  <text x="1425" y="295" class="bb c am">OUTPUT CAPS IN ZILL</text>
+  <g class="mono" font-size="28">
+    <text x="1050" y="375">read_file</text><text x="1290" y="375">stops at 4,000 lines</text>
+    <text x="1050" y="445">bash</text><text x="1290" y="445">12,000 chars max:</text>
+    <text x="1290" y="485" class="sm">first 6,000 + last 6,000</text>
+    <text x="1050" y="555">list_files</text><text x="1290" y="555">500 entries</text>
+    <text x="1050" y="625">grep</text><text x="1290" y="625">200 hits</text>
+  </g>
+  <text x="80" y="780" class="md am">Big file? Read it in chunks — "offset + limit" (how Pi's read tool pages)</text>
+  <g class="sm c">
+    <rect x="80" y="810" width="215" height="80" class="fam sam" stroke-width="3"/><text x="187" y="860">chunk 1</text>
+    <rect x="295" y="810" width="215" height="80" class="box"/><text x="402" y="860">chunk 2</text>
+    <rect x="510" y="810" width="215" height="80" class="fam sam" stroke-width="3"/><text x="617" y="860">chunk 3</text>
+    <rect x="725" y="810" width="215" height="80" class="box"/><text x="832" y="860">chunk 4</text>
+    <rect x="940" y="810" width="215" height="80" class="fam sam" stroke-width="3"/><text x="1047" y="860">chunk 5</text>
+    <rect x="1155" y="810" width="215" height="80" class="box"/><text x="1262" y="860">chunk 6</text>
+    <rect x="1370" y="810" width="215" height="80" class="fam sam" stroke-width="3"/><text x="1477" y="860">chunk 7</text>
+    <rect x="1585" y="810" width="255" height="80" class="box"/><text x="1712" y="860">chunk 8…</text>
+  </g>
+  <text x="960" y="955" class="b c">One chunk at a time, sequentially. Easier for the model to understand — and cheaper.</text>
+</svg>
+
+<!-- 09 -->
+<svg class="d" data-t="Edit beats overwrite" data-s="A 500-line file with a 3-line change. Which way would you rather let the model do it?">
+  <rect x="80" y="230" width="830" height="400" rx="20" class="fco sco" stroke-width="4"/>
+  <text x="495" y="290" class="bb c co">OVERWRITE</text>
+  <rect x="130" y="330" width="730" height="64" fill="#ffd43b" stroke="#1e1e1e" stroke-width="3"/>
+  <text x="495" y="373" class="md c">the model re-types all 500 lines</text>
+  <text x="495" y="460" class="md c">497 lines it meant to leave alone</text>
+  <text x="495" y="505" class="md c co">= 497 chances for a typo</text>
+  <text x="495" y="580" class="sm c">like hand-copying a phone book</text>
+  <rect x="1010" y="230" width="830" height="400" rx="20" class="fte ste" stroke-width="4"/>
+  <text x="1425" y="290" class="bb c te">EDIT</text>
+  <rect x="1060" y="330" width="730" height="64" fill="#ced4da" stroke="#1e1e1e" stroke-width="3"/>
+  <rect x="1380" y="330" width="70" height="64" fill="#ffd43b" stroke="#1e1e1e" stroke-width="3"/>
+  <text x="1415" y="460" class="md c">the model sends ~6 lines:</text>
+  <text x="1415" y="505" class="md c te">the old snippet + the new one</text>
+  <text x="1415" y="580" class="sm c">the other 494 lines are never touched</text>
+  <text x="80" y="690" class="bb am">The UNIQUENESS RULE — the snippet must appear exactly once</text>
+  <rect x="80" y="715" width="520" height="215" rx="16" class="fco sco" stroke-width="3"/>
+  <text x="340" y="765" class="bb c co">0 matches</text>
+  <g class="mono" font-size="23"><text x="105" y="810">ERROR: snippet not found</text><text x="105" y="845">— read the file and copy</text><text x="105" y="880">it exactly</text></g>
+  <rect x="700" y="715" width="520" height="215" rx="16" class="fte ste" stroke-width="3"/>
+  <text x="960" y="765" class="bb c te">exactly 1</text>
+  <g class="mono" font-size="26"><text x="780" y="830">Edited app.py  ✓</text></g>
+  <rect x="1320" y="715" width="520" height="215" rx="16" class="fco sco" stroke-width="3"/>
+  <text x="1580" y="765" class="bb c co">N matches</text>
+  <g class="mono" font-size="23"><text x="1345" y="810">ERROR: snippet appears N</text><text x="1345" y="845">times — include more</text><text x="1345" y="880">context to make it unique</text></g>
+  <text x="960" y="985" class="b c am">Every error names the NEXT action — it is written for the model's retry.</text>
+</svg>
+
+<!-- 10 -->
+<svg class="d" data-t="bash: the universal appliance" data-s="The one tool worth more than the other five — and the most dangerous.">
+  <rect x="80" y="235" width="520" height="440" rx="20" class="fte ste" stroke-width="4"/>
+  <text x="340" y="295" class="bb c te">WHAT IT BUYS</text>
+  <text x="120" y="365" class="md">• run the tests</text>
+  <text x="120" y="415" class="md">• start servers</text>
+  <text x="120" y="465" class="md">• git, npm, pip…</text>
+  <text x="120" y="525" class="md am" font-weight="700">• verify its OWN work</text>
+  <text x="145" y="565" class="sm">a claim is not a result</text>
+  <rect x="720" y="300" width="480" height="300" rx="24" class="fam sam" stroke-width="5"/>
+  <text x="960" y="400" class="c" font-size="84" font-weight="700">bash</text>
+  <text x="960" y="460" class="md c">runs ANY shell command</text>
+  <text x="960" y="500" class="md c">in the working directory</text>
+  <text x="960" y="565" class="an c co">the stove wearing every costume</text>
+  <line x1="605" y1="450" x2="712" y2="450" class="ln ste" stroke-width="5" marker-end="url(#a)"/>
+  <line x1="1315" y1="450" x2="1208" y2="450" class="ln sco" stroke-width="5" marker-end="url(#a)"/>
+  <rect x="1320" y="235" width="520" height="440" rx="20" class="fco sco" stroke-width="4"/>
+  <text x="1580" y="295" class="bb c co">WHAT IT RISKS</text>
+  <g class="mono" font-size="28">
+    <text x="1360" y="365">rm -rf …</text>
+    <text x="1360" y="415">curl … | sh</text>
+    <text x="1360" y="465">git push --force</text>
+    <text x="1360" y="515">overwrite anything</text>
+    <text x="1360" y="555">you can overwrite</text>
+  </g>
+  <text x="1580" y="630" class="an c co">the tool that runs your tests</text>
+  <text x="1580" y="660" class="an c co">can delete your work</text>
+  <rect x="80" y="730" width="880" height="200" rx="18" class="fbl sbl" stroke-width="4"/>
+  <text x="520" y="785" class="bb c bl">GUARD 1 · TIMEOUT</text>
+  <text x="520" y="835" class="md c">default 120 seconds</text>
+  <text x="520" y="880" class="sm c">a hung command must not hang the agent</text>
+  <rect x="1000" y="730" width="840" height="200" rx="18" class="fvi svi" stroke-width="4"/>
+  <text x="1420" y="785" class="bb c vi">GUARD 2 · OUTPUT CAP</text>
+  <text x="1420" y="835" class="md c">over 12,000 chars → keep first 6,000 + last 6,000</text>
+  <text x="1420" y="880" class="sm c">errors live at the top and the bottom of logs</text>
+  <text x="960" y="985" class="an c mu">even silence becomes a message: empty output → "(exit 0, no output)"</text>
+</svg>
+
+<!-- 11 -->
+<svg class="d" data-t="One checkpoint, three layers" data-s="Every tool call passes the permission gate before it runs. The order is the design.">
+  <rect x="560" y="225" width="400" height="75" rx="14" class="box"/>
+  <text x="760" y="275" class="md c">tool call (name + args)</text>
+  <text x="990" y="270" class="an mu">← the before_tool socket</text>
+  <line x1="760" y1="302" x2="760" y2="343" class="ln" marker-end="url(#a)"/>
+
+  <rect x="410" y="348" width="700" height="150" rx="16" class="fco sco" stroke-width="4"/>
+  <text x="760" y="405" class="bb c co">1 · DENY RULES</text>
+  <text x="760" y="447" class="sm c">regex on bash commands</text>
+  <text x="760" y="480" class="sm c">never run — in ANY mode</text>
+  <line x1="760" y1="500" x2="760" y2="533" class="ln" marker-end="url(#a)"/>
+
+  <rect x="490" y="538" width="540" height="150" rx="16" class="fam sam" stroke-width="4"/>
+  <text x="760" y="595" class="bb c am">2 · MODE</text>
+  <text x="760" y="637" class="mono c" font-size="26">read-only · safe · yolo</text>
+  <text x="760" y="670" class="sm c">whole categories need no question</text>
+  <line x1="760" y1="690" x2="760" y2="723" class="ln" marker-end="url(#a)"/>
+
+  <rect x="570" y="728" width="380" height="140" rx="16" class="fbl sbl" stroke-width="4"/>
+  <text x="760" y="785" class="bb c bl">3 · APPROVER</text>
+  <text x="760" y="827" class="sm c">a callback that asks a human</text>
+  <line x1="760" y1="870" x2="760" y2="903" class="ln ste" stroke-width="5" marker-end="url(#a)"/>
+  <rect x="610" y="908" width="300" height="80" rx="14" class="fte ste" stroke-width="4"/>
+  <text x="760" y="962" class="bb c te">RUN ✓</text>
+
+  <line x1="1115" y1="423" x2="1270" y2="423" class="ln sco" stroke-width="4" marker-end="url(#a)"/>
+  <rect x="1280" y="360" width="560" height="125" rx="14" class="fco sco" stroke-width="3"/>
+  <text x="1560" y="410" class="mono c" font-size="24">BLOCKED: command matches</text><text x="1560" y="450" class="mono c" font-size="24">deny rule: rm -rf on root</text>
+  <line x1="1035" y1="613" x2="1270" y2="613" class="ln sco" stroke-width="4" marker-end="url(#a)"/>
+  <rect x="1280" y="550" width="560" height="125" rx="14" class="fco sco" stroke-width="3"/>
+  <text x="1560" y="600" class="mono c" font-size="24">BLOCKED: policy is read-only;</text><text x="1560" y="640" class="mono c" font-size="24">only read tools allowed</text>
+  <line x1="955" y1="798" x2="1270" y2="798" class="ln sco" stroke-width="4" marker-end="url(#a)"/>
+  <rect x="1280" y="740" width="560" height="115" rx="14" class="fco sco" stroke-width="3"/>
+  <text x="1560" y="808" class="mono c" font-size="24">BLOCKED: not approved by user</text>
+
+  <text x="60" y="375" class="bb am">ORDER IS</text><text x="60" y="415" class="bb am">THE DESIGN</text>
+  <text x="60" y="465" class="an">deny first → no mode</text><text x="60" y="495" class="an">and no tired human</text><text x="60" y="525" class="an">can approve a</text><text x="60" y="555" class="an">catastrophe</text>
+  <text x="60" y="650" class="an">mode next → most calls</text><text x="60" y="680" class="an">need no question</text>
+  <text x="60" y="790" class="an">human last → sees only</text><text x="60" y="820" class="an">what the rest couldn't</text><text x="60" y="850" class="an">decide</text>
+</svg>
+
+<!-- 12 -->
+<svg class="d" data-t="The dial: read-only, safe, yolo" data-s="The middle layer is the one you will actually turn in practice.">
+  <line x1="120" y1="262" x2="1800" y2="262" class="ln sam" stroke-width="5" marker-end="url(#a)"/>
+  <text x="120" y="232" class="an am">more cautious</text>
+  <text x="1800" y="232" class="an am" text-anchor="end">more autonomy</text>
+  <rect x="80" y="300" width="540" height="520" rx="20" class="fte ste" stroke-width="4"/>
+  <text x="350" y="370" class="mono c te" font-size="44" font-weight="700">read-only</text>
+  <text x="120" y="440" class="md">allows:</text>
+  <text x="120" y="480" class="mono" font-size="26">read_file  list_files  grep</text>
+  <text x="120" y="545" class="md">blocks:  everything else</text>
+  <text x="120" y="640" class="md am">use it to point the agent at</text><text x="120" y="676" class="md am">a codebase you don't trust yet</text>
+  <rect x="690" y="300" width="540" height="520" rx="20" class="fam sam" stroke-width="4"/>
+  <text x="960" y="370" class="mono c am" font-size="44" font-weight="700">safe</text>
+  <text x="730" y="440" class="md">reads → allowed automatically</text>
+  <text x="730" y="490" class="md">side effects → ask the approver,</text><text x="730" y="526" class="md">one call at a time</text>
+  <text x="730" y="610" class="md co">no approver wired in?</text><text x="730" y="646" class="md co">it REFUSES. The gate fails closed.</text>
+  <rect x="1300" y="300" width="540" height="520" rx="20" class="fco sco" stroke-width="4"/>
+  <text x="1570" y="370" class="mono c co" font-size="44" font-weight="700">yolo</text>
+  <text x="1340" y="440" class="md">approves everything</text>
+  <text x="1340" y="500" class="md">the right default for a jailed,</text><text x="1340" y="536" class="md">headless run — no human to ask</text>
+  <text x="1340" y="620" class="md te">deny rules + the jail</text><text x="1340" y="656" class="md te">STILL hold</text>
+  <text x="1340" y="730" class="md co">yolo + bash on local</text><text x="1340" y="766" class="md co">is REFUSED — use sandbox / ssh</text>
+  <text x="960" y="900" class="bb c">Pure allow = reckless.  Pure deny = useless.</text>
+  <text x="960" y="950" class="b c am">Working agents live in "ask on the risky part".</text>
+  <text x="960" y="995" class="sm c">Claude Code has the same dial: default · accept edits · bypass permissions</text>
+</svg>
+
+<!-- 13 -->
+<svg class="d" data-t="A deny rule firing, on the tape" data-s="A blocked call is answered, never skipped. The refusal is information, not an ending.">
+  <rect x="60" y="225" width="1800" height="465" rx="18" fill="#fff9db" stroke="#1e1e1e" stroke-width="3"/>
+  <rect x="72" y="352" width="1776" height="48" rx="8" class="fco sco" stroke-width="3"/>
+  <g class="mono" font-size="25">
+    <text x="90" y="290">[user]       Please delete my home directory to free up disk space.</text>
+    <text x="90" y="340">[assistant]  "Removing the home directory now."  + tool_use(t1, bash "rm -rf ~")</text>
+    <text x="90" y="390" class="co">[tool]       t1 → BLOCKED: command matches deny rule: rm -rf on root / home</text>
+    <text x="90" y="440">[assistant]  "That is blocked, and not something I should do. Inside this project</text>
+    <text x="90" y="490">              I can find what is taking the space."  + tool_use(t2, bash "du -sh * | sort -h")</text>
+    <text x="90" y="540">[tool]       t2 → 412M  node_modules ...</text>
+    <text x="90" y="590">[assistant]  "The bulk is node_modules. Want me to remove just that?"   (no tool → loop ends)</text>
+  </g>
+  <rect x="80" y="725" width="820" height="110" rx="14" class="fco sco" stroke-width="3"/>
+  <text x="490" y="775" class="md c co">every ticket gets a result</text>
+  <text x="490" y="815" class="sm c">the tool_use / tool_result pairing survives</text>
+  <rect x="1020" y="725" width="820" height="110" rx="14" class="fte ste" stroke-width="3"/>
+  <text x="1430" y="775" class="md c te">the model reads the reason</text>
+  <text x="1430" y="815" class="sm c">declines, and proposes a safe alternative</text>
+  <text x="80" y="890" class="an am">THE SIX CATASTROPHES  (deny rules)</text>
+  <g class="mono" font-size="22">
+    <rect x="80" y="910" width="270" height="70" rx="35" class="box"/><text x="215" y="953" class="c">rm -rf / ~ $HOME</text>
+    <rect x="370" y="910" width="270" height="70" rx="35" class="box"/><text x="505" y="953" class="c">sudo</text>
+    <rect x="660" y="910" width="270" height="70" rx="35" class="box"/><text x="795" y="953" class="c">mkfs / dd if=</text>
+    <rect x="950" y="910" width="270" height="70" rx="35" class="box"/><text x="1085" y="953" class="c">curl … | sh</text>
+    <rect x="1240" y="910" width="300" height="70" rx="35" class="box"/><text x="1390" y="953" class="c">git push --force</text>
+    <rect x="1560" y="910" width="280" height="70" rx="35" class="box"/><text x="1700" y="953" class="c">&gt; /dev/sd…</text>
+  </g>
+</svg>
+
+<!-- 14 -->
+<svg class="d" data-t="The jail and the blast radius" data-s="The gate decides what may run. The jail decides how far a mistake can reach.">
+  <rect x="100" y="240" width="760" height="600" rx="24" class="fte ste" stroke-width="8" stroke-dasharray="22 12"/>
+  <text x="480" y="300" class="bb c te">THE JAIL</text>
+  <text x="480" y="338" class="sm c">= the working directory</text>
+  <g class="mono" font-size="27">
+    <rect x="160" y="390" width="250" height="80" rx="10" class="box"/><text x="285" y="440" class="c">src/</text>
+    <rect x="450" y="390" width="250" height="80" rx="10" class="box"/><text x="575" y="440" class="c">tests/</text>
+    <rect x="160" y="510" width="250" height="80" rx="10" class="box"/><text x="285" y="560" class="c">app.py</text>
+    <rect x="450" y="510" width="250" height="80" rx="10" class="box"/><text x="575" y="560" class="c">package.json</text>
+  </g>
+  <text x="480" y="660" class="md c te">the agent works freely in here</text>
+  <text x="480" y="705" class="sm c">mess in here? git can undo it</text>
+  <text x="480" y="790" class="an c mu">resolve(path) → realpath → inside root?</text>
+  <line x1="690" y1="620" x2="1040" y2="620" class="ln sco" stroke-width="5"/>
+  <text x="1040" y="660" class="co" font-size="80" font-weight="700">✕</text>
+  <text x="880" y="572" class="an co">read ../../etc/passwd</text>
+  <g class="md">
+    <rect x="1120" y="250" width="720" height="85" rx="12" class="fco sco" stroke-width="3"/><text x="1480" y="305" class="c">~/.ssh  — your secret keys</text>
+    <rect x="1120" y="360" width="720" height="85" rx="12" class="fco sco" stroke-width="3"/><text x="1480" y="415" class="c">/etc/passwd — system files</text>
+    <rect x="1120" y="470" width="720" height="85" rx="12" class="fco sco" stroke-width="3"/><text x="1480" y="525" class="c">your other projects</text>
+  </g>
+  <text x="1480" y="620" class="an c co">OUTSIDE — never reachable</text>
+  <rect x="1120" y="680" width="720" height="160" rx="14" class="fam sam" stroke-width="3"/>
+  <text x="1480" y="735" class="md c am">PermissionError</text>
+  <text x="1480" y="775" class="sm c">comes back as an ERROR tool result</text>
+  <text x="1480" y="810" class="sm c">the model reads it. Nothing crashes.</text>
+  <text x="960" y="905" class="bb c am">Blast radius = how far the damage reaches when it goes wrong.</text>
+  <text x="520" y="965" class="md c">gate → fewer bad attempts</text>
+  <text x="1400" y="965" class="md c">jail → a cheaper miss</text>
+</svg>
+
+<!-- 15 -->
+<svg class="d" data-t="Where a tool runs" data-s="Pi separates what a tool does from where it runs. Switch the backend for the whole project, or for one tool.">
+  <rect x="640" y="235" width="640" height="115" rx="16" class="fvi svi" stroke-width="4"/>
+  <text x="960" y="290" class="bb c vi">the TOOL: bash · read · edit</text>
+  <text x="960" y="328" class="sm c">WHAT it does</text>
+  <line x1="960" y1="352" x2="960" y2="418" class="ln" marker-end="url(#a)"/>
+  <rect x="440" y="422" width="1040" height="130" rx="16" class="fam sam" stroke-width="4"/>
+  <text x="960" y="480" class="bb c am">OPERATIONS LAYER</text>
+  <text x="960" y="520" class="sm c">WHERE it runs — one small change, no tool code touched</text>
+  <line x1="700" y1="555" x2="350" y2="640" class="ln" marker-end="url(#a)"/>
+  <line x1="960" y1="555" x2="960" y2="640" class="ln" marker-end="url(#a)"/>
+  <line x1="1220" y1="555" x2="1570" y2="640" class="ln" marker-end="url(#a)"/>
+  <rect x="80" y="645" width="540" height="200" rx="18" class="fte ste" stroke-width="4"/>
+  <text x="350" y="705" class="bb c te">LOCAL</text><text x="350" y="755" class="md c">your own machine</text><text x="350" y="795" class="sm c">fastest · riskiest for bash</text>
+  <rect x="690" y="645" width="540" height="200" rx="18" class="fbl sbl" stroke-width="4"/>
+  <text x="960" y="705" class="bb c bl">SSH</text><text x="960" y="755" class="md c">a remote machine / VM</text><text x="960" y="795" class="sm c">dangerous work stays off your PC</text>
+  <rect x="1300" y="645" width="540" height="200" rx="18" class="fco sco" stroke-width="4"/>
+  <text x="1570" y="705" class="bb c co">SANDBOX</text><text x="1570" y="755" class="md c">a jail inside your own OS</text><text x="1570" y="795" class="sm c">only a fixed folder is reachable</text>
+  <text x="960" y="905" class="bb c am">bash → remote VM     ·     read → local     (per tool!)</text>
+  <text x="960" y="960" class="sm c">Zill builds all three today: local · ssh · sandbox — for the whole project, or per tool.</text>
+</svg>
+
+<!-- 16 -->
+<svg class="d" data-t="Three levels of security" data-s="Security is baked into the design of a harness. It is not something you bolt on afterwards.">
+  <circle cx="150" cy="330" r="48" class="fam sam" stroke-width="4"/><text x="150" y="348" class="bb c">1</text>
+  <rect x="230" y="255" width="1190" height="150" rx="18" class="box"/>
+  <text x="270" y="315" class="bb">Gate the tool call</text>
+  <text x="270" y="360" class="md">allow · ask the human · refuse — Claude Code, Pi and Hermes all do this</text>
+  <rect x="1470" y="290" width="370" height="80" rx="40" class="fte ste" stroke-width="3"/><text x="1655" y="342" class="md c te">in Zill ✓</text>
+  <circle cx="150" cy="560" r="48" class="fam sam" stroke-width="4"/><text x="150" y="578" class="bb c">2</text>
+  <rect x="230" y="485" width="1190" height="150" rx="18" class="box"/>
+  <text x="270" y="545" class="bb">Restrict paths and files</text>
+  <text x="270" y="590" class="md">protected paths: never write here, never edit that (Zill: the path jail)</text>
+  <rect x="1470" y="520" width="370" height="80" rx="40" class="fte ste" stroke-width="3"/><text x="1655" y="572" class="md c te">in Zill ✓</text>
+  <circle cx="150" cy="790" r="48" class="fco sco" stroke-width="4"/><text x="150" y="808" class="bb c">3</text>
+  <rect x="230" y="715" width="1190" height="150" rx="18" class="box"/>
+  <text x="270" y="775" class="bb">User-level access (RBAC / org unit)</text>
+  <text x="270" y="820" class="md">which USER may use which tools — the open problem for enterprises</text>
+  <rect x="1470" y="750" width="370" height="80" rx="40" class="fco sco" stroke-width="3"/><text x="1655" y="802" class="md c co">not in Zill</text>
+  <text x="960" y="935" class="bb c am">Around all three: SANDBOXING — a free room with a fixed blast radius.</text>
+  <text x="960" y="985" class="sm c">Enterprises want it so small, observable and deterministic that the agent can never escape.</text>
+</svg>
+
+<!-- 17 -->
+<svg class="d" data-t="What happens to one tool call today" data-s="The loop from Lecture 2, now with a contract in front of it and a gate in the middle.">
+  <rect x="60" y="260" width="360" height="130" rx="16" class="fvi svi" stroke-width="4"/>
+  <text x="240" y="315" class="md c vi">the model picks a tool</text><text x="240" y="352" class="sm c">from its CONTRACT</text>
+  <line x1="425" y1="325" x2="560" y2="325" class="ln" marker-end="url(#a)"/>
+  <polygon points="580,325 760,225 940,325 760,425" class="fam sam" stroke-width="4"/>
+  <text x="760" y="320" class="md c">safety check</text><text x="760" y="355" class="an c">tool-level + path-level</text>
+  <line x1="945" y1="325" x2="1100" y2="325" class="ln ste" stroke-width="5" marker-end="url(#a)"/>
+  <text x="1020" y="300" class="md c te">safe</text>
+  <rect x="1110" y="260" width="360" height="130" rx="16" class="fte ste" stroke-width="4"/>
+  <text x="1290" y="315" class="md c te">harness executes</text><text x="1290" y="352" class="sm c">(we run it, not the model)</text>
+  <line x1="1475" y1="325" x2="1560" y2="325" class="ln" marker-end="url(#a)"/>
+  <rect x="1570" y="260" width="290" height="130" rx="16" class="fbl sbl" stroke-width="4"/>
+  <text x="1715" y="315" class="md c bl">append the</text><text x="1715" y="352" class="md c bl">result to messages</text>
+  <path d="M1715 262 Q1715 205 1100 205 Q300 205 240 258" class="ln sam da" marker-end="url(#a)"/>
+  <text x="1290" y="240" class="an c am">↻ back to the loop</text>
+  <line x1="760" y1="428" x2="760" y2="560" class="ln sco" stroke-width="5" marker-end="url(#a)"/>
+  <text x="840" y="500" class="md co">not safe</text>
+  <rect x="580" y="565" width="360" height="110" rx="16" class="fam sam" stroke-width="4"/>
+  <text x="760" y="620" class="md c am">ask the human</text><text x="760" y="655" class="sm c">allow this call?</text>
+  <line x1="945" y1="620" x2="1280" y2="400" class="ln ste da" marker-end="url(#a)"/>
+  <text x="1170" y="560" class="an te">yes → run it</text>
+  <line x1="760" y1="680" x2="760" y2="760" class="ln sco" stroke-width="5" marker-end="url(#a)"/>
+  <text x="810" y="725" class="md co">no</text>
+  <rect x="580" y="765" width="360" height="110" rx="16" class="fco sco" stroke-width="4"/>
+  <text x="760" y="818" class="md c co">tell the model:</text><text x="760" y="852" class="mono c" font-size="24">BLOCKED + reason</text>
+  <line x1="575" y1="820" x2="450" y2="820" class="ln" marker-end="url(#a)"/>
+  <rect x="60" y="765" width="385" height="110" rx="16" class="box"/>
+  <text x="252" y="818" class="md c">the model proposes</text><text x="252" y="852" class="md c">an alternative</text>
+  <path d="M250 760 Q250 600 240 400" class="ln da" marker-end="url(#a)"/>
+  <text x="270" y="560" class="an mu">↻ back</text>
+  <text x="960" y="960" class="bb c am">A tool failing — or being refused — never crashes the loop.</text>
+</svg>
+
+<!-- 18 -->
+<svg class="d" data-t="Four levels of depth on tools" data-s="How far down have you gone when someone asks, “what is a tool?”">
+  <rect x="100" y="810" width="400" height="150" class="fbl sbl" stroke-width="4"/>
+  <text x="300" y="860" class="an c bl">LEVEL 1</text><text x="300" y="905" class="bb c">What a tool is</text><text x="300" y="945" class="sm c">access to the outside world</text>
+  <rect x="540" y="670" width="400" height="290" class="fte ste" stroke-width="4"/>
+  <text x="740" y="720" class="an c te">LEVEL 2</text><text x="740" y="765" class="bb c">The contract</text><text x="740" y="805" class="sm c">interface vs implementation</text>
+  <rect x="980" y="530" width="400" height="430" class="fam sam" stroke-width="4"/>
+  <text x="1180" y="580" class="an c am">LEVEL 3</text><text x="1180" y="625" class="bb c">Gate the call</text><text x="1180" y="665" class="sm c">deny · ask · allow</text>
+  <rect x="1420" y="390" width="400" height="570" class="fco sco" stroke-width="4"/>
+  <text x="1620" y="440" class="an c co">LEVEL 4</text><text x="1620" y="485" class="bb c">Where it runs</text><text x="1620" y="525" class="sm c">local · SSH · sandbox</text>
+  <line x1="120" y1="330" x2="1000" y2="330" class="ln sam" stroke-width="5" marker-end="url(#a)"/>
+  <text x="120" y="300" class="an am">depth of understanding</text>
+  <text x="1010" y="280" class="md am" font-weight="700">Most people stop at Level 1.</text>
+  <text x="1010" y="322" class="md" font-weight="700">Harness engineers go to Level 4.</text>
+</svg>
+
+<!-- 19 -->
+<svg class="d" data-t="What we build today" data-s="Three files and some tests: operations.py, tools.py and security.py. Then we run it.">
+  <rect x="80" y="235" width="800" height="460" rx="20" fill="#fff9db" stroke="#1e1e1e" stroke-width="3"/>
+  <g class="mono" font-size="30">
+    <text x="120" y="300">zill-harness/</text>
+    <text x="120" y="350">├─ zill/</text>
+    <text x="120" y="400">│   ├─ provider.py    ✓ lecture 2</text>
+    <text x="120" y="440">│   ├─ loop.py        ✓ lecture 2</text>
+    <text x="120" y="480" class="am" font-weight="700">│   ├─ operations.py  ← today</text>
+    <text x="120" y="520" class="am" font-weight="700">│   ├─ tools.py       ← today</text>
+    <text x="120" y="560" class="am" font-weight="700">│   └─ security.py    ← today</text>
+    <text x="120" y="600">├─ demos/build_demo.py</text>
+    <text x="120" y="640" class="am" font-weight="700">└─ tests/             ← today</text>
+  </g>
+  <text x="960" y="290" class="bb">Lines in your repo</text>
+  <rect x="960" y="320" width="150" height="70" class="fam sam" stroke-width="3"/>
+  <rect x="1110" y="320" width="326" height="70" class="fte ste" stroke-width="3"/>
+  <rect x="1436" y="320" width="404" height="70" class="box da"/>
+  <text x="1035" y="440" class="an c am">~170</text><text x="1035" y="470" class="sm c">lecture 2</text>
+  <text x="1273" y="440" class="an c te">~370</text><text x="1273" y="470" class="sm c">today</text>
+  <text x="1638" y="440" class="an c mu">still to come…</text><text x="1638" y="470" class="sm c">toward ~1,000 total</text>
+  <text x="960" y="560" class="md">So after today: roughly 540 lines,</text>
+  <text x="960" y="600" class="md">zero third-party packages.</text>
+  <text x="960" y="660" class="md am">Loop untouched. Only the sockets get filled.</text>
+  <text x="80" y="760" class="bb">Demo beats</text>
+  <rect x="80" y="785" width="560" height="170" rx="16" class="fte ste" stroke-width="3"/>
+  <text x="360" y="835" class="md c te">1 · capability</text><text x="360" y="880" class="sm c">write fib.py, run it,</text><text x="360" y="918" class="sm c">verify the output 832040</text>
+  <rect x="680" y="785" width="560" height="170" rx="16" class="fco sco" stroke-width="3"/>
+  <text x="960" y="835" class="md c co">2 · restraint</text><text x="960" y="880" class="sm c">“delete my home directory”</text><text x="960" y="918" class="sm c">→ BLOCKED, with a reason</text>
+  <rect x="1280" y="785" width="560" height="170" rx="16" class="fam sam" stroke-width="3"/>
+  <text x="1560" y="835" class="md c am">3 · the jail</text><text x="1560" y="880" class="sm c">read ../../etc/passwd</text><text x="1560" y="918" class="sm c">→ PermissionError, no crash</text>
+  <text x="960" y="1000" class="an c mu">4 · same command, local vs sandbox: the secret is hidden  +  the landing page from Lecture 2, built for real</text>
+</svg>
+
+<!-- 20 -->
+<svg class="d" data-t="Zill's operations layer" data-s="Local, SSH and sandbox all ship in operations.py. Choose one for the project, or per tool.">
+  <g class="mono" font-size="26">
+    <rect x="90" y="235" width="270" height="70" rx="12" class="box"/><text x="225" y="281" class="c">read_file</text>
+    <rect x="388" y="235" width="270" height="70" rx="12" class="box"/><text x="523" y="281" class="c">write_file</text>
+    <rect x="686" y="235" width="270" height="70" rx="12" class="box"/><text x="821" y="281" class="c">edit_file</text>
+    <rect x="984" y="235" width="270" height="70" rx="12" class="fco sco" stroke-width="4"/><text x="1119" y="281" class="c">bash</text>
+    <rect x="1282" y="235" width="270" height="70" rx="12" class="box"/><text x="1417" y="281" class="c">list_files</text>
+    <rect x="1580" y="235" width="270" height="70" rx="12" class="box"/><text x="1715" y="281" class="c">grep</text>
+  </g>
+  <line x1="225" y1="310" x2="500" y2="372" class="ln" marker-end="url(#a)"/>
+  <line x1="523" y1="310" x2="700" y2="372" class="ln" marker-end="url(#a)"/>
+  <line x1="821" y1="310" x2="880" y2="372" class="ln" marker-end="url(#a)"/>
+  <line x1="1119" y1="310" x2="1080" y2="372" class="ln" marker-end="url(#a)"/>
+  <line x1="1417" y1="310" x2="1250" y2="372" class="ln" marker-end="url(#a)"/>
+  <line x1="1715" y1="310" x2="1450" y2="372" class="ln" marker-end="url(#a)"/>
+  <rect x="300" y="378" width="1320" height="125" rx="16" class="fam sam" stroke-width="4"/>
+  <text x="960" y="428" class="bb c am">OPERATIONS — one interface</text>
+  <text x="960" y="470" class="mono c" font-size="26">resolve · read_text · write_text · walk · run</text>
+  <line x1="500" y1="506" x2="360" y2="590" class="ln" marker-end="url(#a)"/>
+  <line x1="960" y1="506" x2="960" y2="590" class="ln" marker-end="url(#a)"/>
+  <line x1="1420" y1="506" x2="1560" y2="590" class="ln" marker-end="url(#a)"/>
+  <rect x="80" y="595" width="560" height="270" rx="18" class="fte ste" stroke-width="4"/>
+  <text x="360" y="650" class="bb c te">LocalOps</text>
+  <text x="360" y="700" class="md c">your own machine</text>
+  <text x="360" y="745" class="an c">path jail: realpath + root check</text>
+  <text x="360" y="790" class="an c">fastest · riskiest for bash</text>
+  <rect x="680" y="595" width="560" height="270" rx="18" class="fco sco" stroke-width="4"/>
+  <text x="960" y="650" class="bb c co">SandboxOps</text>
+  <text x="960" y="700" class="md c">scrubbed env — no secrets leak</text>
+  <text x="960" y="745" class="an c">cwd = root · CPU + file limits</text>
+  <text x="960" y="790" class="an c">docker tier: no network</text>
+  <rect x="1280" y="595" width="560" height="270" rx="18" class="fbl sbl" stroke-width="4"/>
+  <text x="1560" y="650" class="bb c bl">SSHOps</text>
+  <text x="1560" y="700" class="md c">a remote machine / VM</text>
+  <text x="1560" y="745" class="an c">system ssh · BatchMode</text>
+  <text x="1560" y="790" class="an c">shlex-quoted · jail checked first</text>
+  <text x="960" y="925" class="mono c am" font-size="24">ZILL_BACKEND=sandbox     ZILL_TOOL_BACKENDS=bash=sandbox,read_file=local</text>
+  <text x="960" y="975" class="sm c">The process sandbox stops accidents, not attackers. Docker or a remote machine is the real wall.</text>
+</svg>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const only=new URLSearchParams(location.search).get('s');
+const pro=new URLSearchParams(location.search).get('theme')==='pro';
+if(pro) document.body.classList.add('pro');
+const all=[...document.querySelectorAll('svg.d')];
+const ORDER=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+
+const slides=ORDER.map(k=>all[k-1]);
+slides.forEach(s=>document.body.insertBefore(s,document.currentScript));
+slides.forEach((svg,i)=>{
+  const n=i+1, nn=String(n).padStart(2,'0');
+  if(only && +only!==n){svg.remove();return;}
+  svg.setAttribute('viewBox','0 0 1920 1080');
+  svg.setAttribute('xmlns',NS);
+  let head=`<defs>
+    <marker id="a${n}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker>
+    <marker id="b${n}" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M10 0L0 5L10 10z" fill="context-stroke"/></marker>
+  </defs>
+  <defs>
+    <filter id="wob${n}" filterUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+      <feTurbulence type="fractalNoise" baseFrequency="0.016" numOctaves="2" seed="${n*7}" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="8" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <g id="man${n}" fill="none" stroke="#1e1e1e" stroke-width="4" stroke-linecap="round">
+      <circle cx="50" cy="28" r="24" fill="#ffffff"/>
+      <path d="M41 23v5M59 23v5M40 37q10 9 20 0"/>
+      <path d="M50 52V125M50 78L12 108M50 78L90 100M50 125L22 196M50 125L80 196"/>
+    </g>
+  </defs>
+  <rect width="1920" height="1080" fill="#fffdf7"/>
+  <g filter="url(#wob${n})">
+  <text x="960" y="108" class="h c">${svg.dataset.t}</text>
+  <path class="ul" d=""/>
+  <text x="960" y="182" class="sub c">${svg.dataset.s}</text>
+  <text x="70" y="1048" class="ft">ZILL HARNESS · Lecture 3 · Tools</text>
+  <text x="1850" y="1048" class="ft" text-anchor="end">${nn}</text>`;
+  if(pro) head=head.split('<rect width="1920"')[0]+`<pattern id="dots${n}" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="#d5dde7"/></pattern>
+  <rect width="1920" height="1080" fill="#f8fafc"/><rect width="1920" height="1080" fill="url(#dots${n})"/>
+  <g>
+  <path class="ul" d="M78 66V186"/>
+  <text x="104" y="84" class="kick">ZILL HARNESS · Lecture 3 · Tools</text>
+  <text x="104" y="142" class="h">${svg.dataset.t}</text>
+  <text x="104" y="186" class="sub">${svg.dataset.s}</text>
+  <text x="1850" y="1048" class="ft" text-anchor="end">${nn} / ${slides.length}</text>`;
+  svg.innerHTML=head+svg.innerHTML.replaceAll('url(#a)',`url(#a${n})`).replaceAll('url(#b)',`url(#b${n})`).replaceAll('#man',`#man${n}`)+'</g>';
+  if(!pro){
+    const L=Math.min(svg.querySelector('.h').getComputedTextLength(),1750);
+    svg.querySelector('.ul').setAttribute('d',`M${960-L/2} 130 q${L/4} 12 ${L/2} 0 t${L/2} 0`);
+  }
+});
+if(only) document.body.classList.add('single');
+</script>
+</body>
+</html>

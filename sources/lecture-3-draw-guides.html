@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Zill Lecture 3 · Chalkboard drawing guides</title>
+<style>
+  html,body{margin:0;background:#0f1a17}
+  svg.d{display:block;width:100%;height:auto;margin:0 0 24px}
+  body.single svg.d{margin:0;width:100vw;height:100vh}
+  svg text{font-family:"Ink Free","Segoe Print","Comic Sans MS",cursive;fill:#f4f1e8;stroke:none;font-size:30px;font-weight:700}
+  svg rect,svg circle,svg ellipse,svg line,svg path,svg polygon{fill:none;stroke:#f4f1e8;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+  svg .y{stroke:#ffd95a} svg .p{stroke:#ff8f8f} svg .g{stroke:#8fe3a1} svg .b{stroke:#8cc8ff} svg .d2{stroke:#a9b8b0}
+  svg text.y{fill:#ffd95a;stroke:none} svg text.p{fill:#ff8f8f;stroke:none} svg text.g{fill:#8fe3a1;stroke:none} svg text.b{fill:#8cc8ff;stroke:none} svg text.dm{fill:#a9b8b0;stroke:none}
+  svg .fy{fill:rgba(255,217,90,.28)} svg .fp{fill:rgba(255,143,143,.2)} svg .fg{fill:rgba(143,227,161,.2)} svg .fb{fill:rgba(140,200,255,.18)} svg .fw{fill:rgba(244,241,232,.1)}
+  svg .da{stroke-dasharray:14 10}
+  svg .sm{font-size:24px} svg .md{font-size:28px} svg .lg{font-size:36px} svg .xl{font-size:46px}
+  svg .mono{font-family:"Cascadia Code",Consolas,monospace;font-weight:600}
+  svg .c{text-anchor:middle}
+  svg .badge{fill:#14211d;stroke:#ffd95a;stroke-width:4}
+  svg .bt{fill:#ffd95a;stroke:none;font-size:26px}
+  svg .man{stroke:#f4f1e8;fill:none;stroke-width:5;stroke-linecap:round}
+  svg marker path{stroke-width:2.5}
+</style>
+</head>
+<body>
+
+<!-- 1 -->
+<svg class="d" data-t="Drawing 1 · The job posting and the curtain" data-s="Beat 3.1 · about 2 minutes · draw in the numbered order" data-w="The applicant never sees the work. Only the posting.">
+  <text x="900" y="290" class="c md dm">CORK BOARD</text>
+  <rect x="520" y="310" width="760" height="470" rx="14"/>
+  <circle cx="670" cy="326" r="7" class="y"/><circle cx="910" cy="326" r="7" class="y"/><circle cx="1150" cy="326" r="7" class="y"/>
+  <rect x="560" y="345" width="220" height="150" rx="8" class="b"/>
+  <text x="670" y="395" class="c md b">TITLE</text><text x="670" y="440" class="c sm">Kitchen</text><text x="670" y="472" class="c sm">porter</text>
+  <rect x="800" y="345" width="220" height="150" rx="8" class="g"/>
+  <text x="910" y="395" class="c md g">DESCRIPTION</text><text x="910" y="440" class="c sm">Wash dishes</text><text x="910" y="472" class="c sm">during service</text>
+  <rect x="1040" y="345" width="200" height="150" rx="8" class="p"/>
+  <text x="1140" y="395" class="c md p">FORM</text><text x="1140" y="440" class="c sm">years of</text><text x="1140" y="472" class="c sm">experience? __</text>
+  <text x="560" y="570" class="md b">TITLE = the tool's name</text>
+  <text x="560" y="620" class="md g">DESCRIPTION = when to use it</text>
+  <text x="560" y="670" class="md p">FORM = the parameters</text>
+  <text x="560" y="740" class="sm y">vague posting → wrong applications.  precise posting → right ones.</text>
+  <use href="#man" class="man" transform="translate(170 430)"/>
+  <text x="220" y="690" class="c md">the model</text><text x="220" y="728" class="c sm dm">= the applicant</text>
+  <line x1="300" y1="520" x2="505" y2="520" class="y" marker-end="url(#ar)"/>
+  <path d="M1380 300 q26 60 0 120 t0 120 t0 120 t0 100" class="p" stroke-width="8"/>
+  <text x="1380" y="280" class="c sm p">THE CURTAIN</text>
+  <rect x="1480" y="430" width="340" height="220" rx="12" class="d2 da"/>
+  <text x="1650" y="510" class="c md">the actual work</text><text x="1650" y="552" class="c md">(your code)</text><text x="1650" y="610" class="c sm dm">the model can't see this</text>
+  <g class="step" data-at="490,330" data-n="1"/><g class="step" data-at="670,525" data-n="2"/><g class="step" data-at="150,430" data-n="3"/><g class="step" data-at="1320,340" data-n="4"/>
+</svg>
+
+<!-- 2 -->
+<svg class="d" data-t="Drawing 2 · The cook with a few hands" data-s="Beat 4.1 · about 2 minutes · draw in the numbered order" data-w="Nearly every gadget is the stove wearing a costume.">
+  <text x="330" y="290" class="c lg y">40 gadgets</text>
+  <rect x="100" y="320" width="560" height="430" rx="14"/>
+  <rect x="320" y="338" width="120" height="22" rx="10" class="d2"/>
+  <text x="140" y="410" class="sm">garlic press</text><text x="140" y="460" class="sm">avocado slicer</text><text x="140" y="510" class="sm">egg separator</text><text x="140" y="560" class="sm">strawberry huller</text><text x="140" y="610" class="sm">cherry pitter</text><text x="140" y="670" class="sm dm">… 35 more …</text>
+  <text x="330" y="800" class="c md dm">a drawer of single-use gadgets</text>
+  <use href="#man" class="man" transform="translate(790 360)"/>
+  <text x="840" y="610" class="c md">the cook</text><text x="840" y="648" class="c sm dm">6 hands</text>
+  <line x1="880" y1="460" x2="1010" y2="330" class="b"/><text x="1030" y="338" class="md b">eyes → read_file</text>
+  <line x1="885" y1="470" x2="1010" y2="415" class="g"/><text x="1030" y="423" class="md g">fresh card → write_file</text>
+  <line x1="890" y1="480" x2="1010" y2="500" class="y"/><text x="1030" y="508" class="md y">pencil + eraser → edit_file</text>
+  <line x1="890" y1="490" x2="1010" y2="590" class="p"/><text x="1030" y="598" class="md p">STOVE → bash</text>
+  <ellipse cx="1210" cy="590" rx="215" ry="40" class="p"/>
+  <path d="M1400 560 q10 -30 20 0 q10 -30 20 0 q10 -30 20 0" class="p"/>
+  <line x1="885" y1="500" x2="1010" y2="675" class="d2"/><text x="1030" y="683" class="md">pantry list → list_files</text>
+  <line x1="880" y1="510" x2="1010" y2="760" class="d2"/><text x="1030" y="768" class="md">index → grep</text>
+  <g class="step" data-at="80,310" data-n="1"/><g class="step" data-at="750,360" data-n="2"/><g class="step" data-at="990,330" data-n="3"/><g class="step" data-at="1450,590" data-n="4"/>
+</svg>
+
+<!-- 3 -->
+<svg class="d" data-t="Drawing 3 · The intern and the senior" data-s="Beat 5.1 · about 2 minutes · draw in the numbered order" data-w="We are not building the intern. We are building the person standing behind him.">
+  <use href="#man" class="man" transform="translate(1180 470) scale(0.85)"/>
+  <rect x="1060" y="690" width="360" height="56" rx="8" class="b"/>
+  <path d="M1090 718h30M1140 718h30M1190 718h30M1240 718h30M1290 718h30M1340 718h30" class="b" stroke-width="4"/>
+  <path d="M1130 640 q-30 20 0 40 M1110 630 q-40 30 0 60 M1380 640 q30 20 0 40 M1400 630 q40 30 0 60" class="y"/>
+  <text x="1240" y="800" class="c md">the agent</text><text x="1240" y="838" class="c sm dm">(the intern) · types 100× faster</text>
+  <use href="#man" class="man g" transform="translate(470 400) scale(1.1)"/>
+  <path d="M525 486 L1215 538" class="g" stroke-width="7"/>
+  <text x="525" y="800" class="c md g">the harness</text><text x="525" y="838" class="c sm dm">(the senior)</text>
+  <path d="M300 205 h420 a24 24 0 0 1 24 24 v60 a24 24 0 0 1 -24 24 h-190 l-40 45 v-45 h-190 a24 24 0 0 1 -24 -24 v-60 a24 24 0 0 1 24 -24 z" class="y"/>
+  <text x="510" y="272" class="c lg y">"Wait. Are you sure?"</text>
+  <g class="step" data-at="1130,470" data-n="1"/><g class="step" data-at="410,470" data-n="2"/><g class="step" data-at="860,520" data-n="3"/><g class="step" data-at="270,215" data-n="4"/>
+</svg>
+
+<!-- 4 -->
+<svg class="d" data-t="Drawing 4 · The funnel" data-s="Beat 6.1 · about 3 minutes · draw in the numbered order" data-w="Deny first: nothing above it can approve a catastrophe.">
+  <text x="860" y="228" class="c md">tool calls</text>
+  <line x1="700" y1="245" x2="700" y2="298" class="y" marker-end="url(#ar)"/><line x1="860" y1="245" x2="860" y2="298" class="y" marker-end="url(#ar)"/><line x1="1020" y1="245" x2="1020" y2="298" class="y" marker-end="url(#ar)"/>
+  <polygon points="620,310 1100,310 950,730 770,730"/>
+  <line x1="674" y1="450" x2="1046" y2="450"/><line x1="722" y1="585" x2="998" y2="585"/>
+  <text x="860" y="395" class="c lg p">1 · DENY</text>
+  <text x="860" y="527" class="c lg y">2 · MODE</text>
+  <text x="860" y="670" class="c md b">3 · HUMAN</text>
+  <line x1="1060" y1="380" x2="1240" y2="380" class="p" marker-end="url(#ar)"/><rect x="1250" y="340" width="260" height="80" rx="10" class="p fp"/><text x="1380" y="393" class="c md p">BLOCKED</text>
+  <line x1="1035" y1="515" x2="1240" y2="515" class="p" marker-end="url(#ar)"/><rect x="1250" y="475" width="260" height="80" rx="10" class="p fp"/><text x="1380" y="528" class="c md p">BLOCKED</text>
+  <line x1="995" y1="660" x2="1240" y2="660" class="p" marker-end="url(#ar)"/><rect x="1250" y="620" width="260" height="80" rx="10" class="p fp"/><text x="1380" y="673" class="c md p">BLOCKED</text>
+  <line x1="860" y1="734" x2="860" y2="800" class="g" marker-end="url(#ar)"/>
+  <rect x="750" y="805" width="220" height="80" rx="10" class="g fg"/><text x="860" y="858" class="c lg g">RUN ✓</text>
+  <text x="90" y="400" class="md y">Most calls:</text><text x="90" y="440" class="md y">waved through.</text><text x="90" y="500" class="md b">Some: ask.</text><text x="90" y="560" class="md p">A few: never.</text>
+  <g class="step" data-at="560,320" data-n="1"/><g class="step" data-at="630,455" data-n="2"/><g class="step" data-at="1560,380" data-n="3"/><g class="step" data-at="1010,845" data-n="4"/>
+</svg>
+
+<!-- 5 -->
+<svg class="d" data-t="Drawing 5 · The firecracker: bucket vs warehouse" data-s="Beat 7.2 · about 2 minutes · draw in the numbered order" data-w="The danger is not only the action. It is what sits within reach.">
+  <line x1="790" y1="240" x2="790" y2="880" class="d2 da"/>
+  <polygon points="250,560 530,560 490,770 290,770"/>
+  <ellipse cx="390" cy="560" rx="140" ry="22"/>
+  <rect x="380" y="610" width="22" height="60" rx="4" class="p"/>
+  <path d="M391 610 q10 -25 22 -32" class="y"/>
+  <path d="M410 570 l22 -22 M425 585 l30 -8 M372 570 l-20 -22 M360 590 l-32 -8 M392 555 l0 -30" class="y"/>
+  <text x="390" y="830" class="c md">a steel bucket</text>
+  <text x="390" y="888" class="c md y">blast radius: a few inches</text>
+  <polygon points="900,430 1350,330 1800,430"/>
+  <rect x="900" y="430" width="900" height="340"/>
+  <g class="b" stroke-width="4"><path d="M960 490 h40 M980 470 v40 M1100 560 h40 M1120 540 v40 M960 650 h40 M980 630 v40 M1560 480 h40 M1580 460 v40 M1700 600 h40 M1720 580 v40 M1600 690 h40 M1620 670 v40 M1200 700 h40 M1220 680 v40 M1450 700 h40 M1470 680 v40"/></g>
+  <g class="spike" data-c="1350,590" data-outer="200" data-inner="105" data-n="12"/>
+  <rect x="1338" y="560" width="22" height="60" rx="4" class="p"/>
+  <text x="1350" y="830" class="c md">a fireworks warehouse</text>
+  <text x="1350" y="888" class="c md p">blast radius: the building</text>
+  <text x="790" y="215" class="c lg y">same mistake · wildly different blast radius</text>
+  <g class="step" data-at="230,540" data-n="1"/><g class="step" data-at="430,600" data-n="2"/><g class="step" data-at="880,420" data-n="3"/><g class="step" data-at="1180,380" data-n="4"/>
+</svg>
+
+<!-- 6 -->
+<svg class="d" data-t="Drawing 6 · The three rings" data-s="Beat 7.3 · about 2 minutes · draw in the numbered order" data-w="Gate = fewer attempts. Jail = a cheaper miss.">
+  <circle cx="960" cy="570" r="350" class="d2 da"/>
+  <circle cx="960" cy="570" r="300" class="g"/>
+  <circle cx="960" cy="570" r="210" class="p"/>
+  <circle cx="960" cy="570" r="120" class="y"/>
+  <use href="#man" class="man" transform="translate(930 520) scale(0.4)"/>
+  <text x="960" y="650" class="c sm">the agent</text>
+  <line x1="1206" y1="392" x2="1330" y2="330" class="g"/><text x="1340" y="338" class="md g">JAIL</text><text x="1340" y="374" class="sm">bounds WHERE (which folder)</text>
+  <line x1="1170" y1="570" x2="1330" y2="570" class="p"/><text x="1340" y="565" class="md p">DENY RULES</text><text x="1340" y="601" class="sm">bound WHAT (which commands)</text>
+  <line x1="1058" y1="640" x2="1330" y2="790" class="y"/><text x="1340" y="798" class="md y">MODES + APPROVER</text><text x="1340" y="834" class="sm">bound WHO decides</text>
+  <text x="70" y="480" class="sm dm">dotted ring:</text><text x="70" y="514" class="sm dm">network tools need</text><text x="70" y="548" class="sm dm">a ring of their own</text>
+  <g class="step" data-at="960,470" data-n="1"/><g class="step" data-at="860,570" data-n="2"/><g class="step" data-at="765,570" data-n="3"/><g class="step" data-at="660,570" data-n="4"/>
+</svg>
+
+<!-- 7 -->
+<svg class="d" data-t="Drawing 7 · The operations switch" data-s="Beat 8.1 · about 2 minutes · draw in the numbered order" data-w="bash → sandbox   ·   read → local   (per tool!)">
+  <rect x="720" y="240" width="480" height="100" rx="12" class="b fb"/><text x="960" y="305" class="c lg b">TOOL: bash</text>
+  <text x="1230" y="305" class="md b">← WHAT it does</text>
+  <line x1="960" y1="344" x2="960" y2="420" class="y" marker-end="url(#ar)"/>
+  <rect x="620" y="425" width="680" height="130" rx="12" class="y fy"/><text x="960" y="505" class="c lg y">OPERATIONS</text>
+  <circle cx="680" cy="490" r="14" class="y"/><line x1="680" y1="490" x2="720" y2="455" class="y"/>
+  <text x="1330" y="505" class="md y">← WHERE it runs (a switch)</text>
+  <line x1="800" y1="559" x2="450" y2="670" class="w" marker-end="url(#ar)"/><line x1="960" y1="559" x2="960" y2="670" class="w" marker-end="url(#ar)"/><line x1="1120" y1="559" x2="1470" y2="670" class="w" marker-end="url(#ar)"/>
+  <rect x="240" y="675" width="420" height="170" rx="12"/><text x="450" y="745" class="c lg">LOCAL</text><text x="450" y="795" class="c md dm">my own PC</text>
+  <rect x="750" y="675" width="420" height="170" rx="12" class="b"/><text x="960" y="745" class="c lg b">SSH</text><text x="960" y="795" class="c md dm">a remote machine</text>
+  <rect x="1260" y="675" width="420" height="170" rx="12" class="g fg"/><text x="1470" y="745" class="c lg g">SANDBOX</text><text x="1470" y="795" class="c md dm">a jail inside my OS</text>
+  <text x="1470" y="880" class="c sm g">safe place for dangerous commands</text>
+  <g class="step" data-at="690,250" data-n="1"/><g class="step" data-at="590,435" data-n="2"/><g class="step" data-at="440,665" data-n="3"/><g class="step" data-at="1240,690" data-n="4"/>
+</svg>
+
+<!-- 8 -->
+<svg class="d" data-t="Drawing 8 · The enterprise tree" data-s="Beat 9.2 · about 3 minutes · draw in the numbered order" data-w="The same gate that checks a tool call and a path must also check a USER.">
+  <rect x="810" y="225" width="300" height="64" rx="10" class="y"/><text x="960" y="269" class="c md y">COMPANY</text>
+  <path d="M960 289 v40 M360 329 h1200 M360 329 v30 M960 329 v30 M1560 329 v30"/>
+  <rect x="230" y="360" width="260" height="60" rx="10"/><text x="360" y="402" class="c md">Country A</text>
+  <rect x="830" y="360" width="260" height="60" rx="10"/><text x="960" y="402" class="c md">Country B</text>
+  <rect x="1430" y="360" width="260" height="60" rx="10"/><text x="1560" y="402" class="c md">Country C</text>
+  <path d="M360 420 v30 M260 450 h200 M260 450 v22 M460 450 v22 M960 420 v52 M1560 420 v30 M1460 450 h200 M1460 450 v22 M1660 450 v22"/>
+  <rect x="170" y="472" width="180" height="56" rx="8"/><text x="260" y="510" class="c sm">Entity</text>
+  <rect x="370" y="472" width="180" height="56" rx="8"/><text x="460" y="510" class="c sm">Entity</text>
+  <rect x="870" y="472" width="180" height="56" rx="8"/><text x="960" y="510" class="c sm">Entity</text>
+  <rect x="1370" y="472" width="180" height="56" rx="8"/><text x="1460" y="510" class="c sm">Entity</text>
+  <rect x="1570" y="472" width="180" height="56" rx="8"/><text x="1660" y="510" class="c sm">Entity</text>
+  <path d="M260 528 v40 M960 528 v40 M1460 528 v40"/>
+  <rect x="170" y="568" width="180" height="56" rx="8" class="b"/><text x="260" y="606" class="c sm b">Org unit</text>
+  <rect x="870" y="568" width="180" height="56" rx="8" class="b"/><text x="960" y="606" class="c sm b">Org unit</text>
+  <rect x="1370" y="568" width="180" height="56" rx="8" class="b"/><text x="1460" y="606" class="c sm b">Org unit</text>
+  <path d="M260 624 v34 M960 624 v34 M1460 624 v34"/>
+  <use href="#man" class="man" transform="translate(222 650) scale(0.32)"/><use href="#man" class="man" transform="translate(262 650) scale(0.32)"/>
+  <use href="#man" class="man" transform="translate(932 650) scale(0.32)"/>
+  <use href="#man" class="man" transform="translate(1422 650) scale(0.32)"/><use href="#man" class="man" transform="translate(1462 650) scale(0.32)"/>
+  <text x="90" y="740" class="sm dm">users</text>
+  <g class="p"><polygon points="960,300 976,314 960,328 944,314"/><polygon points="360,432 376,446 360,460 344,446"/><polygon points="960,432 976,446 960,460 944,446"/><polygon points="1560,432 1576,446 1560,460 1544,446"/><polygon points="260,536 276,550 260,564 244,550"/><polygon points="960,536 976,550 960,564 944,550"/><polygon points="1460,536 1476,550 1460,564 1444,550"/><polygon points="260,636 276,650 260,664 244,650" opacity="0"/></g>
+  <polygon points="140,830 158,848 140,866 122,848" class="p"/><text x="180" y="858" class="md p">= a gate: "which tools may this level use?"</text>
+  <g class="step" data-at="750,257" data-n="1"/><g class="step" data-at="160,390" data-n="2"/><g class="step" data-at="120,500" data-n="3"/><g class="step" data-at="120,596" data-n="4"/><g class="step" data-at="120,700" data-n="5"/>
+</svg>
+
+<!-- 9 -->
+<svg class="d" data-t="Extra A · The 500-line file, by hand" data-s="Beat 4.3 · about 1 minute · optional" data-w="497 chances for a typo  vs  about 6 lines.">
+  <text x="140" y="290" class="lg y">OVERWRITE — the model re-types the whole file</text>
+  <rect x="140" y="320" width="1640" height="70" class="y fy"/>
+  <text x="960" y="368" class="c md">500 lines</text>
+  <text x="140" y="450" class="md p">497 lines it meant to leave alone = 497 chances for a typo</text>
+  <text x="140" y="600" class="lg g">EDIT — the model sends only the change</text>
+  <rect x="140" y="630" width="1640" height="70"/>
+  <rect x="900" y="630" width="120" height="70" class="y fy"/>
+  <text x="960" y="780" class="c md y">≈ 6 lines: the old snippet + the new one</text>
+  <text x="140" y="850" class="md g">the other 494 lines are never touched</text>
+  <g class="step" data-at="110,320" data-n="1"/><g class="step" data-at="110,630" data-n="2"/>
+</svg>
+
+<!-- 10 -->
+<svg class="d" data-t="Extra B · The tape with a BLOCKED line" data-s="Beat 6.3 · about 1 minute · optional" data-w="A blocked call is answered, never skipped. The refusal is information.">
+  <g class="md">
+    <rect x="260" y="250" width="1000" height="70" rx="8"/><text x="290" y="297">user</text><text x="560" y="297" class="sm dm">"delete my home directory"</text>
+    <rect x="260" y="340" width="1000" height="70" rx="8"/><text x="290" y="387">assistant</text><text x="560" y="387" class="sm dm">rm -rf ~   (tool_use t1)</text>
+    <rect x="260" y="430" width="1000" height="70" rx="8" class="p fp"/><text x="290" y="477" class="p">tool</text><text x="560" y="477" class="sm p">t1 → BLOCKED: matches deny rule</text>
+    <rect x="260" y="520" width="1000" height="70" rx="8"/><text x="290" y="567">assistant</text><text x="560" y="567" class="sm dm">"blocked — I can look inside the project instead"</text>
+    <rect x="260" y="610" width="1000" height="70" rx="8"/><text x="290" y="657">tool</text><text x="560" y="657" class="sm dm">412M node_modules …</text>
+    <rect x="260" y="700" width="1000" height="70" rx="8"/><text x="290" y="747">assistant</text><text x="560" y="747" class="sm dm">"Want me to remove just that?"</text>
+  </g>
+  <path d="M1275 555 q60 -50 0 -100" class="g" marker-end="url(#ar)"/>
+  <text x="1360" y="520" class="md g">the model reads</text><text x="1360" y="558" class="md g">the reason</text>
+  <g class="step" data-at="230,285" data-n="1"/><g class="step" data-at="230,465" data-n="2"/><g class="step" data-at="1340,440" data-n="3"/>
+</svg>
+
+<!-- 11 -->
+<svg class="d" data-t="Extra C · The four steps of depth" data-s="Beat 9.3 · about 1 minute · optional" data-w="Most people stop at step 1. Harness engineers go to step 4.">
+  <polygon points="140,860 520,860 520,780 140,780"/>
+  <polygon points="520,860 900,860 900,670 520,670"/>
+  <polygon points="900,860 1280,860 1280,560 900,560"/>
+  <polygon points="1280,860 1660,860 1660,450 1280,450"/>
+  <text x="330" y="830" class="c md">what a tool is</text>
+  <text x="710" y="790" class="c md">the contract</text><text x="710" y="828" class="c sm dm">interface vs implementation</text>
+  <text x="1090" y="710" class="c md">gate the call</text><text x="1090" y="748" class="c sm dm">deny · ask · allow</text>
+  <text x="1470" y="610" class="c md">where it runs</text><text x="1470" y="648" class="c sm dm">local · ssh · sandbox</text>
+  <use href="#man" class="man" transform="translate(280 590) scale(0.5)"/>
+  <text x="330" y="560" class="c sm p">most people stop here</text>
+  <use href="#man" class="man g" transform="translate(1440 240) scale(0.5)"/>
+  <text x="1470" y="210" class="c sm g">harness engineers go here</text>
+  <g class="step" data-at="120,780" data-n="1"/><g class="step" data-at="500,670" data-n="2"/><g class="step" data-at="880,560" data-n="3"/><g class="step" data-at="1260,450" data-n="4"/>
+</svg>
+
+<script>
+const only=new URLSearchParams(location.search).get('s');
+const all=[...document.querySelectorAll('svg.d')];
+const total=all.length;
+all.forEach((svg,i)=>{
+  const n=i+1;
+  if(only && +only!==n){svg.remove();return;}
+  svg.setAttribute('viewBox','0 0 1920 1080');
+  svg.setAttribute('xmlns','http://www.w3.org/2000/svg');
+  svg.querySelectorAll('g.step').forEach(g=>{
+    const [x,y]=g.dataset.at.split(',');
+    g.setAttribute('transform',`translate(${x} ${y})`);
+    g.innerHTML=`<circle r="23" class="badge"/><text class="bt c" y="9">${g.dataset.n}</text>`;
+  });
+  svg.querySelectorAll('g.spike').forEach(g=>{
+    const [cx,cy]=g.dataset.c.split(',').map(Number);
+    const R=+g.dataset.outer,r=+g.dataset.inner,k=+g.dataset.n,pts=[];
+    for(let j=0;j<k*2;j++){const a=Math.PI*j/k-Math.PI/2,rad=j%2?r:R;pts.push((cx+rad*Math.cos(a)).toFixed(1)+','+(cy+rad*Math.sin(a)).toFixed(1));}
+    g.innerHTML=`<polygon points="${pts.join(' ')}" class="p fp"/>`;
+  });
+  const body=svg.innerHTML.replaceAll('href="#man"',`href="#man${n}"`).replaceAll('url(#ar)',`url(#ar${n})`);
+  const head=`<defs>
+    <filter id="wob${n}" filterUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="${n*5}" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <radialGradient id="vg${n}" cx="50%" cy="50%" r="75%"><stop offset="0" stop-color="#27403a"/><stop offset="1" stop-color="#14211d"/></radialGradient>
+    <marker id="ar${n}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10" fill="none" stroke="context-stroke" stroke-width="2"/></marker>
+    <g id="man${n}"><circle cx="50" cy="28" r="24"/><path d="M41 23v5M59 23v5M40 37q10 9 20 0"/><path d="M50 52V125M50 78L12 108M50 78L88 100M50 125L22 196M50 125L80 196"/></g>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#vg${n})"/>
+  <rect x="14" y="14" width="1892" height="1052" rx="10" fill="none" stroke="#8a6b3f" stroke-width="12"/>
+  <g filter="url(#wob${n})">
+  <text x="80" y="108" class="xl y">${svg.dataset.t}</text>
+  <text x="80" y="156" class="md dm">${svg.dataset.s}</text>`;
+  const foot=`
+  <rect x="80" y="925" width="1760" height="96" rx="12" class="d2 da"/>
+  <text x="104" y="958" class="sm dm">WRITE THIS AT THE BOTTOM ▸</text>
+  <text x="104" y="1002" class="lg y">${svg.dataset.w}</text>
+  </g>
+  <text x="80" y="1055" class="sm dm" style="font-size:20px">ZILL · Lecture 3 · copy this on the board · ${n} of ${total}</text>`;
+  svg.innerHTML=head+body+foot;
+});
+if(only) document.body.classList.add('single');
+</script>
+</body>
+</html>

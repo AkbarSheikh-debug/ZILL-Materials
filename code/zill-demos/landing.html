@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brew &amp; Co. - built by ZILL-Harness</title>
+<style>
+:root{--bg:#fbf6ef;--ink:#2b2018;--accent:#b5632b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,serif}
+nav{display:flex;justify-content:space-between;padding:18px 6vw;font-family:system-ui,sans-serif}
+nav a{margin-left:18px;color:var(--ink);text-decoration:none;font-size:14px}
+.hero{padding:10vh 6vw;text-align:center}
+.hero h1{font-size:clamp(2.2rem,6vw,4rem);margin:0 0 12px}
+.hero p{max-width:520px;margin:0 auto 24px;font-size:1.1rem;line-height:1.6}
+.btn{display:inline-block;background:var(--accent);color:#fff;padding:12px 26px;border-radius:999px;text-decoration:none;font-family:system-ui}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:0 6vw 8vh}
+.card{background:#fff;border-radius:14px;padding:22px;box-shadow:0 4px 14px rgba(0,0,0,.07)}
+.card h3{margin:0 0 6px}.card span{color:var(--accent);font-family:system-ui;font-weight:600}
+footer{text-align:center;padding:24px;font:12px system-ui;color:#8a7a6c}
+</style></head><body>
+<nav><strong>Brew &amp; Co.</strong><div><a href="#menu">Menu</a><a href="#visit">Visit</a></div></nav>
+<section class="hero"><h1>Coffee, slowly made.</h1>
+<p>Small-batch beans, roasted every Tuesday, poured by people who care about your morning.</p>
+<a class="btn" href="#menu">See the menu</a></section>
+<section class="cards" id="menu">
+<div class="card"><h3>Flat White</h3><p>Silky microfoam over a double shot.</p><span>$4.50</span></div>
+<div class="card"><h3>Cold Brew</h3><p>Steeped 18 hours, served over ice.</p><span>$5.00</span></div>
+<div class="card"><h3>Cardamom Bun</h3><p>Baked fresh every morning.</p><span>$3.75</span></div>
+</section>
+<footer id="visit">12 Maple Street &middot; Open 7am&ndash;4pm &middot; Page built by ZILL-Harness</footer>
+</body></html>
